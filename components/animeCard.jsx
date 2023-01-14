@@ -13,7 +13,8 @@ export default function AnimeCard({ animeData }) {
 			/* card class for linear-gradient background transition */
 			className="card w-[380px] border-[1px] flex items-center transition 
 			duration-300 gap-4 shadow-md hover:-translate-x-[1px] relative
-			hover:-translate-y-[2px] cursor-pointer hover:shadow-xl group"
+			hover:-translate-y-[2px] cursor-pointer hover:shadow-xl group rounded-sm 
+			overflow-hidden"
 		>
 			<Image
 				src={imageUrl}
@@ -24,7 +25,7 @@ export default function AnimeCard({ animeData }) {
 				className="object-cover h-[120px] w-[85px]"
 			/>
 			{/* Maybe switch whitespace-nowrap to line-clamp */}
-			<div className=" whitespace-nowrap overflow-x-hidden pb-1">
+			<div className=" whitespace-nowrap pb-1">
 				<p
 					className="absolute top-0 text-[11px] bg-darkBlue/75
 				text-shadowLightBlue flex items-center gap-1 py-[2px] px-1 rounded-b-md
