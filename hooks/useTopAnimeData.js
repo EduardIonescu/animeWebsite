@@ -1,25 +1,38 @@
 import { useEffect, useState } from "react";
 import getData from "./getData";
 
-// I want 50 items, the limit is 25
-const popularAnimeUrl1 = "https://api.jikan.moe/v4/top/anime?tv";
-// Remove comment later, it makes development harder because request are limited
-//const popularAnimeUrl2 = "https://api.jikan.moe/v4/top/anime?tv&page=2";
+// I want 50 items, the limit is 25 per page
+const popularAnimeUrls = [
+	"https://api.jikan.moe/v4/top/anime?tv",
+	"https://api.jikan.moe/v4/top/anime?tv?page=2",
+];
+const trendingAnimeUrls = [
+	"https://api.jikan.moe/v4/seasons/now",
+	"https://api.jikan.moe/v4/seasons/now?page=2",
+];
 
-const trendingAnimeUrl = "https://api.jikan.moe/v4/seasons/now";
+const delay = (ms) => new Promise((res) => setTimeout(res, ms));
 
 export default function useTopAnimeData(showTrending) {
 	const [animeData, setAnimeData] = useState([]);
 
 	useEffect(() => {
 		let ignore = false;
-		const url = showTrending ? trendingAnimeUrl : popularAnimeUrl1;
+		const urls = showTrending ? trendingAnimeUrls : popularAnimeUrls;
 
 		async function startFetching() {
-			const data1 = await getData(url);
-			//			const data2 = await fetchData(topAnimeUrl2);
+			const data = await Promise.all(
+				urls.map(async (url, i) => {
+					// API allows only 3 requests per second so I have to delay requests
+					// React strict doubles my requests, making them 4 instead of 2
+					// Remove next line on deployment
+					if (i > 0) await delay(600);
+					return await getData(url);
+				})
+			);
+
 			if (!ignore) {
-				setAnimeData([...data1.data /*...data2.data*/]);
+				setAnimeData([...data[0].data, ...data[1].data]);
 			}
 		}
 
