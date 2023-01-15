@@ -5,7 +5,7 @@ export default function AlternativeTitles({ animeData }) {
 	return (
 		<article className="pt-6">
 			<h3 className="pb-1 font-bold">Alternative Titles</h3>
-			<hr className="w-full relative border-black/20" />
+			<hr className="w-full border-black/20" />
 			<ul className="text-[12px] font-light pt-1">
 				{titleSynonyms && (
 					<li>
