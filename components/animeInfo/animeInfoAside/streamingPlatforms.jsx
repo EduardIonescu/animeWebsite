@@ -4,8 +4,8 @@ export default function StreamingPlatforms({ streaming }) {
 			<h3 className="pb-1 font-bold">Streaming Platforms</h3>
 			<hr className="w-full relative border-black/20" />
 			<ul className="text-[12px] font-light pt-1">
-				{streaming.map((platform) => (
-					<li>
+				{streaming.map((platform, i) => (
+					<li key={i}>
 						<a
 							href={platform.url}
 							target="_blank"

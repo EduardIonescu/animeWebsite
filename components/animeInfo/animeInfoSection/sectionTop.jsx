@@ -58,17 +58,33 @@ export default function SectionTop({ animeData }) {
 			<article className="mt-6">
 				<h3 className="font-bold">Background</h3>
 				<hr className="border-black/20 my-1" />
-				<p className="text-[12px] whitespace-pre-wrap">{background}</p>
+				<p className="text-[12px] whitespace-pre-wrap">
+					{background || "This title has no background information."}
+				</p>
 			</article>
 			<article className="mt-6">
 				<h3 className="font-bold">Related Anime</h3>
 				<hr className="border-black/20 my-1" />
-				{relations.map((relation, i) => (
-					<p className="text-[14px] border-b-[1px] leading-7">
-						{relation.relation}:{" "}
-						<InlineLinks array={relation.entry} />
-					</p>
-				))}
+				<table>
+					<tbody className="">
+						{relations.map((relation, i) => (
+							<tr
+								key={i}
+								className="text-[12px] border-b-[1px] leading-7"
+							>
+								<td className="a whitespace-pre text-right align-top">
+									{relation.relation}:{" "}
+								</td>
+								<td>
+									<InlineLinks
+										array={relation.entry}
+										samePage={true}
+									/>
+								</td>
+							</tr>
+						))}
+					</tbody>
+				</table>
 			</article>
 			<article className="mt-6">
 				<h3 className="font-bold">Characters & Voice Actors</h3>

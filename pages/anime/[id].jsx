@@ -8,6 +8,8 @@ import Statistics from "../../components/animeInfo/animeInfoAside/statistics";
 import StreamingPlatforms from "../../components/animeInfo/animeInfoAside/streamingPlatforms";
 import SectionNavbar from "../../components/animeInfo/animeInfoSection/sectionNavbar";
 import SectionTop from "../../components/animeInfo/animeInfoSection/sectionTop";
+import SectionCharacters from "../../components/animeInfo/animeInfoSection/characters/sectionCharacters";
+import SectionReviews from "../../components/animeInfo/animeInfoSection/reviews/sectionReviews";
 export default function Anime() {
 	const [animeData, setAnimeData] = useState(false);
 	const animeId = useRouter().query.id;
@@ -60,13 +62,15 @@ export default function Anime() {
 					<AlternativeTitles animeData={animeData} />
 					<Information animeData={animeData} />
 					<Statistics animeData={animeData} />
-					{animeData.streaming && (
+					{animeData.streaming.length >= 1 && (
 						<StreamingPlatforms streaming={animeData.streaming} />
 					)}
 				</aside>
 				<section className="w-[75%] px-4">
 					<SectionNavbar />
 					<SectionTop animeData={animeData} />
+					<SectionCharacters animeId={animeId} />
+					<SectionReviews animeId={animeId} />
 				</section>
 				{animeData && console.log(animeData)}
 			</main>
