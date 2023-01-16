@@ -10,6 +10,7 @@ import SectionNavbar from "../../components/animeInfo/animeInfoSection/sectionNa
 import SectionTop from "../../components/animeInfo/animeInfoSection/sectionTop";
 import SectionCharacters from "../../components/animeInfo/animeInfoSection/characters/sectionCharacters";
 import SectionReviews from "../../components/animeInfo/animeInfoSection/reviews/sectionReviews";
+import SectionRecommendations from "../../components/animeInfo/animeInfoSection/recommendations/sectionRecommendations";
 export default function Anime() {
 	const [animeData, setAnimeData] = useState(false);
 	const animeId = useRouter().query.id;
@@ -71,6 +72,7 @@ export default function Anime() {
 					<SectionTop animeData={animeData} />
 					<SectionCharacters animeId={animeId} />
 					<SectionReviews animeId={animeId} />
+					<SectionRecommendations animeId={animeId} />
 				</section>
 				{animeData && console.log(animeData)}
 			</main>
