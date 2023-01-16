@@ -14,7 +14,9 @@
     "eslint-config-next": "13.0.7",
     "next": "13.0.7",
     "react": "18.2.0",
-    "react-dom": "18.2.0"
+    "react-dom": "18.2.0",
+    "react-modal": "^3.16.1",
+    "react-swipeable": "^7.0.0"
   },
   "devDependencies": {
     "@tailwindcss/line-clamp": "^0.4.2",

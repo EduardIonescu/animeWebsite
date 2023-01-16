@@ -8,10 +8,10 @@ export default function CharacterCard({ characterInfo, index }) {
 		>
 			<div className="flex gap-2">
 				<Image
-					className="border-[1px] border-black/20"
+					className="border-[1px] border-black/20 w-[44px] h-[67px] object-cover"
 					src={character.images.jpg.image_url}
 					width={44}
-					height={64}
+					height={67}
 					alt=""
 					aria-hidden="true"
 				/>
@@ -20,22 +20,26 @@ export default function CharacterCard({ characterInfo, index }) {
 					<p className="text-[11px]">{role}</p>
 				</div>
 			</div>
-			<div className="flex gap-2">
-				<div className="text-end">
-					<h4 className="text-[14px] mb-1">
-						{voice_actors[0].person.name}
-					</h4>
-					<p className="text-[11px]">{voice_actors[0].language}</p>
+			{voice_actors.length >= 1 && (
+				<div className="flex gap-2">
+					<div className="text-end">
+						<h4 className="text-[14px] mb-1">
+							{voice_actors[0].person.name}
+						</h4>
+						<p className="text-[11px]">
+							{voice_actors[0].language}
+						</p>
+					</div>
+					<Image
+						className="border-[1px] border-black/20"
+						src={voice_actors[0].person.images.jpg.image_url}
+						width={44}
+						height={64}
+						alt=""
+						aria-hidden="true"
+					/>
 				</div>
-				<Image
-					className="border-[1px] border-black/20"
-					src={voice_actors[0].person.images.jpg.image_url}
-					width={44}
-					height={64}
-					alt=""
-					aria-hidden="true"
-				/>
-			</div>
+			)}
 		</li>
 	);
 }

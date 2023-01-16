@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import getData from "./getData";
+import getData from "../lib/getData";
 
 // I want 50 items, the limit is 25 per page
 const popularAnimeUrls = [
@@ -11,8 +11,6 @@ const trendingAnimeUrls = [
 	"https://api.jikan.moe/v4/seasons/now?page=2",
 ];
 
-const delay = (ms) => new Promise((res) => setTimeout(res, ms));
-
 export default function useTopAnimeData(showTrending) {
 	const [animeData, setAnimeData] = useState([]);
 
@@ -22,11 +20,10 @@ export default function useTopAnimeData(showTrending) {
 
 		async function startFetching() {
 			const data = await Promise.all(
-				urls.map(async (url, i) => {
+				urls.map(async (url) => {
 					// API allows only 3 requests per second so I have to delay requests
 					// React strict doubles my requests, making them 4 instead of 2
 					// Remove next line on deployment
-					if (i > 0) await delay(600);
 					return await getData(url);
 				})
 			);

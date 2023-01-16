@@ -1,68 +1,95 @@
-import { useState, useEffect } from "react";
-import getData from "../../../../hooks/getData";
-import { Carousel } from "react-responsive-carousel";
-import "react-responsive-carousel/lib/styles/carousel.min.css";
-import Image from "next/image";
+import { useRef } from "react";
 import RecommendationCard from "./recommendationCard";
+import { useRecommendationsData } from "../../../../hooks/useAnimeData";
+//import { useSwipeable } from "react-swipeable";
 
 export default function SectionRecommendations({ animeId }) {
-	const [recommendations, setRecommendations] = useState(false);
+	const [recommendations, setRecommendations] =
+		useRecommendationsData(animeId);
+	const ulRef = useRef(null);
+	/*
+	// Maybe implement useSwipeable later
+	const handlers = useSwipeable({
+		onSwipedLeft: handleClickNext,
+		onSwipedRight: handleClickPrevious,
+		delta: 50,
+		swipeDuration: 1000,
+		preventScrollOnSwipe: true,
+		trackMouse: true,
+	});
+	*/
 
-	useEffect(() => {
-		let ignore = false;
-
-		async function startFetching() {
-			const data = await getData(
-				`https://api.jikan.moe/v4/anime/${animeId}/recommendations`
-			);
-			if (!ignore) {
-				setRecommendations(
-					data.data.length >= 21 ? data.data.slice(0, 21) : data.data
-				);
-			}
-		}
-		if (animeId) {
-			startFetching();
-		}
-		return () => {
-			ignore = true;
-		};
-	}, [animeId]);
+	function handleClickPrevious() {
+		// shenanigans under the hood
+		ulRef.current.style.transition = "all 0.3s";
+		ulRef.current.style.transform = "translateX(728px)";
+		setTimeout(() => {
+			ulRef.current.style.transition = "none";
+			ulRef.current.style.transform = "translateX(0)";
+			setRecommendations((r) => [...r.slice(14, 21), ...r.slice(0, 14)]);
+		}, 250);
+	}
+	function handleClickNext() {
+		ulRef.current.style.transition = "all 0.3s";
+		ulRef.current.style.transform = "translateX(-728px)";
+		setTimeout(() => {
+			ulRef.current.style.transition = "none";
+			ulRef.current.style.transform = "translateX(0)";
+			setRecommendations((r) => [...r.slice(7, 21), ...r.slice(0, 7)]);
+		}, 250);
+	}
 	if (recommendations)
 		return (
 			<section className="mt-6">
-				{console.log("dsa", recommendations)}
 				<h3 className="font-bold">Recommendations</h3>
 				<hr className="border-black/20 my-1" />
 				<section className="h-36 flex  ">
 					<div className="overflow-hidden w-full relative group">
 						<ul
-							className="flex gap-2 max-h-full w-[3000px] 
-						hover:-translate-x-[500px] transition duration-300 "
+							//{...handlers}
+							ref={ulRef}
+							className={`flex gap-2 max-h-full w-[3000px] relative select-none ${
+								recommendations.length > 8 && "-left-[728px]"
+							} `}
 						>
-							{recommendations.map((recommendation, i) => (
+							{[
+								...recommendations.slice(14, 21),
+								...recommendations,
+							].map((recommendation, i) => (
 								<RecommendationCard
 									key={i}
 									recommendation={recommendation}
 								/>
 							))}
 						</ul>
-						<button
-							type="button"
-							className="w-7 h-14 rounded-r-full bg-black absolute top-[44px] 
+						{recommendations.length > 8 && (
+							<>
+								<button
+									onClick={handleClickPrevious}
+									type="button"
+									className="w-7 h-14 rounded-r-full bg-black absolute top-[44px] 
 							-left-7 opacity-80 text-white font-bold group-hover:translate-x-7
 							transition duration-300"
-						>
-							&lt;
-						</button>
-						<button
-							type="button"
-							className="w-7 h-14 rounded-l-full bg-black absolute top-[44px] 
+								>
+									<div
+										className="h-0 w-0 border-y-[10px] border-y-transparent
+									border-r-[10px] border-r-white pl-1"
+									/>
+								</button>
+								<button
+									onClick={handleClickNext}
+									type="button"
+									className="w-7 h-14 rounded-l-full bg-black absolute top-[44px] 
 							-right-7 opacity-80 text-white font-bold group-hover:-translate-x-7
 							transition duration-300"
-						>
-							&gt;
-						</button>
+								>
+									<div
+										className="h-0 w-0 border-y-[10px] border-y-transparent
+									border-l-[10px] border-l-white ml-3"
+									/>
+								</button>
+							</>
+						)}
 					</div>{" "}
 					<button
 						type="button"

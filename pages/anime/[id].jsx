@@ -1,13 +1,13 @@
 import { useEffect, useState } from "react";
 import { useRouter } from "next/router";
-import getData from "../../hooks/getData";
+import getData from "../../lib/getData";
 import Image from "next/image";
 import AlternativeTitles from "../../components/animeInfo/animeInfoAside/alternativeTitles";
 import Information from "../../components/animeInfo/animeInfoAside/information";
 import Statistics from "../../components/animeInfo/animeInfoAside/statistics";
 import StreamingPlatforms from "../../components/animeInfo/animeInfoAside/streamingPlatforms";
-import SectionNavbar from "../../components/animeInfo/animeInfoSection/sectionNavbar";
-import SectionTop from "../../components/animeInfo/animeInfoSection/sectionTop";
+import SectionNavbar from "../../components/animeInfo/sectionNavbar";
+import SectionTop from "../../components/animeInfo/animeInfoSection/top/sectionTop";
 import SectionCharacters from "../../components/animeInfo/animeInfoSection/characters/sectionCharacters";
 import SectionReviews from "../../components/animeInfo/animeInfoSection/reviews/sectionReviews";
 import SectionRecommendations from "../../components/animeInfo/animeInfoSection/recommendations/sectionRecommendations";
@@ -71,7 +71,7 @@ export default function Anime() {
 					<SectionNavbar />
 					<SectionTop animeData={animeData} />
 					<SectionCharacters animeId={animeId} />
-					<SectionReviews animeId={animeId} />
+					<SectionReviews key={animeId} animeId={animeId} />
 					<SectionRecommendations animeId={animeId} />
 				</section>
 				{animeData && console.log(animeData)}
