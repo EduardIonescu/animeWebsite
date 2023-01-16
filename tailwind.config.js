@@ -13,6 +13,7 @@ module.exports = {
 				shadowDarkBlue: "#203647",
 				shadowLightBlue: "#EEFBFB",
 				darkRed: "#dc3545",
+				darkYellow: "#ffc43d",
 			},
 		},
 	},
