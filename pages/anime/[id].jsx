@@ -32,6 +32,7 @@ export default function Anime() {
 	if (animeData)
 		return (
 			<main
+				key={`id-${animeId}`}
 				className="w-[75rem] h-[100%] mx-auto pb-4 bg-shadowLightBlue
   text-shadowDarkBlue flex flex-wrap"
 			>
@@ -42,8 +43,15 @@ export default function Anime() {
 					<h1 className="font-bold text-lg">{titleEnglish}</h1>
 					<h2 className="opacity-70 text-base">{title}</h2>
 				</nav>
-				<AnimeInfoAside animeData={animeData} />
-				<AnimeInfoSection animeData={animeData} animeId={animeId} />
+				<AnimeInfoAside
+					key={`aside-${animeId}`}
+					animeData={animeData}
+				/>
+				<AnimeInfoSection
+					key={`section-${animeId}`}
+					animeData={animeData}
+					animeId={animeId}
+				/>
 				{animeData && console.log(animeData)}
 			</main>
 		);

@@ -8,6 +8,8 @@ import { useReviewsData } from "../../../hooks/useAnimeData";
 import { useCharactersData } from "../../../hooks/useAnimeData";
 import { useState } from "react";
 import AnimeCharactersSection from "../animeCharactersSection/AnimeCharactersSection";
+import AnimeReviewsSection from "../animeReviewsSection/animeReviewsSection";
+import AnimeRecommendationsSection from "../animeRecommendationsSection/animeRecommendationsSection";
 export default function AnimeInfoSection({ animeData, animeId }) {
 	const characters = useCharactersData(animeId);
 	const reviews = useReviewsData(animeId);
@@ -30,6 +32,12 @@ export default function AnimeInfoSection({ animeData, animeId }) {
 			)}
 			{page == "characters" && (
 				<AnimeCharactersSection characters={characters} />
+			)}
+			{page == "reviews" && <AnimeReviewsSection reviews={reviews} />}
+			{page == "recommendations" && (
+				<AnimeRecommendationsSection
+					recommendations={recommendations}
+				/>
 			)}
 		</section>
 	);

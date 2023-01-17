@@ -57,6 +57,7 @@ export default function SectionTop({ animeData }) {
 				{trailer.images.medium_image_url && (
 					<>
 						<TrailerModal
+							key={`trailer-${animeData.mal_id}`}
 							imageSrc={trailer.images.medium_image_url}
 							youtubeId={trailer.youtube_id}
 						/>
