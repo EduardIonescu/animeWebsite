@@ -1,7 +1,5 @@
 import Review from "./review";
-import { useReviewsData } from "../../../../hooks/useAnimeData";
-export default function SectionReviews({ animeId }) {
-	const reviews = useReviewsData(animeId);
+export default function SectionReviews({ reviews }) {
 	if (reviews)
 		return (
 			<section className="mt-6">

@@ -1,8 +1,5 @@
 import CharacterCard from "./characterCard";
-import { useCharactersData } from "../../../../hooks/useAnimeData";
-export default function SectionCharacters({ animeId }) {
-	const characters = useCharactersData(animeId);
-
+export default function SectionCharacters({ characters }) {
 	if (characters)
 		return (
 			<section className="flex">

@@ -1,5 +1,9 @@
 import Image from "next/image";
-export default function CharacterCard({ characterInfo, index }) {
+export default function CharacterCard({
+	characterInfo,
+	index,
+	isPage = false,
+}) {
 	const { character, role, voice_actors } = characterInfo;
 	return (
 		<li
@@ -7,9 +11,9 @@ export default function CharacterCard({ characterInfo, index }) {
       py-1 border-b-[1px] border-black/10`}
 		>
 			<div className="flex gap-2">
-				<div className="relative w-[44px] h-[67px]">
+				<div className="relative w-[44px] h-[67px] border-[1px] border-black/20">
 					<Image
-						className="border-[1px] border-black/20  object-cover"
+						className="object-cover"
 						src={character.images.jpg.image_url}
 						fill
 						sizes="100%"
@@ -22,7 +26,7 @@ export default function CharacterCard({ characterInfo, index }) {
 					<p className="text-[11px]">{role}</p>
 				</div>
 			</div>
-			{voice_actors.length >= 1 && (
+			{voice_actors.length >= 1 && !isPage && (
 				<div className="flex gap-2">
 					<div className="text-end">
 						<h4 className="text-[14px] mb-1">
@@ -32,15 +36,43 @@ export default function CharacterCard({ characterInfo, index }) {
 							{voice_actors[0].language}
 						</p>
 					</div>
-					<Image
-						className="border-[1px] border-black/20"
-						src={voice_actors[0].person.images.jpg.image_url}
-						width={44}
-						height={64}
-						alt=""
-						aria-hidden="true"
-					/>
+					<div className="relative shrink-0 w-[44px] h-[67px] border-[1px] border-black/20">
+						<Image
+							className="object-cover"
+							src={voice_actors[0].person.images.jpg.image_url}
+							fill
+							sizes="100%"
+							alt=""
+							aria-hidden="true"
+						/>
+					</div>
 				</div>
+			)}
+			{voice_actors.length >= 1 && isPage && (
+				<ul className="flex flex-col items-end">
+					{voice_actors.map((voiceActor) => (
+						<li className="flex gap-2">
+							<div className="text-end">
+								<h4 className="text-[14px] mb-1">
+									{voiceActor.person.name}
+								</h4>
+								<p className="text-[11px]">
+									{voiceActor.language}
+								</p>
+							</div>
+							<div className="relative shrink-0 w-[44px] h-[67px] border-[1px] border-black/20">
+								<Image
+									className="object-cover"
+									src={voiceActor.person.images.jpg.image_url}
+									fill
+									sizes="100%"
+									alt=""
+									aria-hidden="true"
+								/>
+							</div>
+						</li>
+					))}
+				</ul>
 			)}
 		</li>
 	);

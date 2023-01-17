@@ -3,14 +3,34 @@ import SectionTop from "./top/sectionTop";
 import SectionCharacters from "./characters/sectionCharacters";
 import SectionReviews from "./reviews/sectionReviews";
 import SectionRecommendations from "./recommendations/sectionRecommendations";
+import { useRecommendationsData } from "../../../hooks/useAnimeData";
+import { useReviewsData } from "../../../hooks/useAnimeData";
+import { useCharactersData } from "../../../hooks/useAnimeData";
+import { useState } from "react";
+import AnimeCharactersSection from "../animeCharactersSection/AnimeCharactersSection";
 export default function AnimeInfoSection({ animeData, animeId }) {
+	const characters = useCharactersData(animeId);
+	const reviews = useReviewsData(animeId);
+	const [recommendations, setRecommendations] =
+		useRecommendationsData(animeId);
+	const [page, setPage] = useState("details");
 	return (
 		<section className="w-[75%] px-4">
-			<SectionNavbar />
-			<SectionTop animeData={animeData} />
-			<SectionCharacters animeId={animeId} />
-			<SectionReviews key={animeId} animeId={animeId} />
-			<SectionRecommendations animeId={animeId} />
+			<SectionNavbar page={page} setPage={setPage} />
+			{page == "details" && (
+				<>
+					<SectionTop animeData={animeData} />
+					<SectionCharacters characters={characters} />
+					<SectionReviews key={animeId} reviews={reviews} />
+					<SectionRecommendations
+						recommendations={recommendations}
+						setRecommendations={setRecommendations}
+					/>
+				</>
+			)}
+			{page == "characters" && (
+				<AnimeCharactersSection characters={characters} />
+			)}
 		</section>
 	);
 }

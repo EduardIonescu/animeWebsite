@@ -1,11 +1,11 @@
 import { useRef } from "react";
 import RecommendationCard from "./recommendationCard";
-import { useRecommendationsData } from "../../../../hooks/useAnimeData";
 //import { useSwipeable } from "react-swipeable";
 
-export default function SectionRecommendations({ animeId }) {
-	const [recommendations, setRecommendations] =
-		useRecommendationsData(animeId);
+export default function SectionRecommendations({
+	recommendations,
+	setRecommendations,
+}) {
 	const ulRef = useRef(null);
 	/*
 	// Maybe implement useSwipeable later
