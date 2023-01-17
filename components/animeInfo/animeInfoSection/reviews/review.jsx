@@ -17,14 +17,16 @@ export default function Review({ review }) {
 			className="flex py-4 border-b-[1px] border-black/10 items-start
   "
 		>
-			<Image
-				src={review.user.images.jpg.image_url}
-				width={44}
-				height={64}
-				alt=""
-				aria-hidden="true"
-				className="object-contain"
-			/>
+			<div className="relative h-16 w-[44px] shrink-0">
+				<Image
+					src={review.user.images.jpg.image_url}
+					fill
+					sizes="100%"
+					alt=""
+					aria-hidden="true"
+					className="object-contain"
+				/>
+			</div>
 			<div className="text-[12px] ml-2 relative">
 				<h4>{review.user.username}</h4>
 				<p className="absolute right-0 top-0 text-[12px] opacity-60">
@@ -56,13 +58,15 @@ export default function Review({ review }) {
 				)}
 				<div className="flex px-3 mt-2 items-center gap-16">
 					<div className="flex items-center gap-2 ">
-						<Image
-							src="/icons/thumbs-icon.svg"
-							width={20}
-							height={20}
-							alt="Likes"
-							className="cursor-pointer"
-						/>
+						<div className="relative w-[18px] h-[18px]">
+							<Image
+								src="/icons/thumbs-icon.svg"
+								fill
+								sizes="100%"
+								alt="Likes"
+								className="cursor-pointer object-cover"
+							/>
+						</div>
 						<p className="opacity-60 pt-[2px]">
 							{review.reactions.overall}
 						</p>
@@ -73,16 +77,18 @@ export default function Review({ review }) {
 						className="pt-[2px] opacity-75 hover:text-lighterBlue
         transition duration-300"
 					>
-						<Image
-							src="/icons/angle-down-icon.svg"
-							width={12}
-							height={12}
-							alt=""
-							aria-hidden="true"
-							className={`inline mr-[2px] transition duration-200 ${
-								readMore ? "rotate-180" : ""
-							}`}
-						/>{" "}
+						<div className="w-3 h-3 relative inline-block mr-[1px]">
+							<Image
+								src="/icons/angle-down-icon.svg"
+								fill
+								sizes="100%"
+								alt=""
+								aria-hidden="true"
+								className={`transition duration-200 mt-[1px]  ${
+									readMore ? "rotate-180" : ""
+								}`}
+							/>
+						</div>{" "}
 						{readMore ? "Show less" : "Read more"}
 					</button>
 				</div>

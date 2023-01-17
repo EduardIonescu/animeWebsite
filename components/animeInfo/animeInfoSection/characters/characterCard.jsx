@@ -7,14 +7,16 @@ export default function CharacterCard({ characterInfo, index }) {
       py-1 border-b-[1px] border-black/10`}
 		>
 			<div className="flex gap-2">
-				<Image
-					className="border-[1px] border-black/20 w-[44px] h-[67px] object-cover"
-					src={character.images.jpg.image_url}
-					width={44}
-					height={67}
-					alt=""
-					aria-hidden="true"
-				/>
+				<div className="relative w-[44px] h-[67px]">
+					<Image
+						className="border-[1px] border-black/20  object-cover"
+						src={character.images.jpg.image_url}
+						fill
+						sizes="100%"
+						alt=""
+						aria-hidden="true"
+					/>
+				</div>
 				<div>
 					<h4 className="text-[14px] mb-1">{character.name}</h4>
 					<p className="text-[11px]">{role}</p>

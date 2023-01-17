@@ -1,9 +1,6 @@
 import InlineLinks from "../../inlineLinks";
-import Image from "next/image";
 import TrailerModal from "./trailerModal";
-import { useState } from "react";
 export default function SectionTop({ animeData }) {
-	const [modalIsOpen, setModalIsOpen] = useState(false);
 	const {
 		score,
 		scored_by,
@@ -16,12 +13,6 @@ export default function SectionTop({ animeData }) {
 		trailer,
 	} = animeData;
 
-	function openModal() {
-		setModalIsOpen(true);
-	}
-	function closeModal() {
-		setModalIsOpen(false);
-	}
 	return (
 		<section>
 			<article className="flex gap-4 mt-2">
@@ -65,17 +56,9 @@ export default function SectionTop({ animeData }) {
 				</div>
 				{trailer.images.medium_image_url && (
 					<>
-						<Image
-							onClick={openModal}
-							src={trailer.images.medium_image_url}
-							width={160}
-							height={100}
-							alt="trailer"
-							className="h-[102px] w-auto object-cover"
-						/>
 						<TrailerModal
-							modalIsOpen={modalIsOpen}
-							closeModal={closeModal}
+							imageSrc={trailer.images.medium_image_url}
+							youtubeId={trailer.youtube_id}
 						/>
 					</>
 				)}

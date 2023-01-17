@@ -1,22 +1,13 @@
 import { useEffect, useState } from "react";
 import { useRouter } from "next/router";
 import getData from "../../lib/getData";
-import Image from "next/image";
-import AlternativeTitles from "../../components/animeInfo/animeInfoAside/alternativeTitles";
-import Information from "../../components/animeInfo/animeInfoAside/information";
-import Statistics from "../../components/animeInfo/animeInfoAside/statistics";
-import StreamingPlatforms from "../../components/animeInfo/animeInfoAside/streamingPlatforms";
-import SectionNavbar from "../../components/animeInfo/sectionNavbar";
-import SectionTop from "../../components/animeInfo/animeInfoSection/top/sectionTop";
-import SectionCharacters from "../../components/animeInfo/animeInfoSection/characters/sectionCharacters";
-import SectionReviews from "../../components/animeInfo/animeInfoSection/reviews/sectionReviews";
-import SectionRecommendations from "../../components/animeInfo/animeInfoSection/recommendations/sectionRecommendations";
+import AnimeInfoAside from "../../components/animeInfo/animeInfoAside/animeInfoAside";
+import AnimeInfoSection from "../../components/animeInfo/animeInfoSection/animeInfoSection";
 export default function Anime() {
 	const [animeData, setAnimeData] = useState(false);
 	const animeId = useRouter().query.id;
 	const titleEnglish = animeData && animeData.title_english,
-		title = animeData && animeData.title,
-		imageSrc = animeData && animeData.images.jpg.large_image_url;
+		title = animeData && animeData.title;
 
 	useEffect(() => {
 		let ignore = false;
@@ -51,29 +42,8 @@ export default function Anime() {
 					<h1 className="font-bold text-lg">{titleEnglish}</h1>
 					<h2 className="opacity-70 text-base">{title}</h2>
 				</nav>
-				<aside className="w-[25%] px-4 border-r-[1px]">
-					<Image
-						src={imageSrc}
-						width={268}
-						height={400}
-						alt={`${title}'s Image`}
-						className="pb-4"
-					/>
-
-					<AlternativeTitles animeData={animeData} />
-					<Information animeData={animeData} />
-					<Statistics animeData={animeData} />
-					{animeData.streaming.length >= 1 && (
-						<StreamingPlatforms streaming={animeData.streaming} />
-					)}
-				</aside>
-				<section className="w-[75%] px-4">
-					<SectionNavbar />
-					<SectionTop animeData={animeData} />
-					<SectionCharacters animeId={animeId} />
-					<SectionReviews key={animeId} animeId={animeId} />
-					<SectionRecommendations animeId={animeId} />
-				</section>
+				<AnimeInfoAside animeData={animeData} />
+				<AnimeInfoSection animeData={animeData} animeId={animeId} />
 				{animeData && console.log(animeData)}
 			</main>
 		);

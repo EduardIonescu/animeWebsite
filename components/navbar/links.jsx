@@ -25,9 +25,9 @@ export default function Links() {
 						href={link.address}
 						className={`flex items-end gap-2 ${
 							link.address == "/"
-								? "leading-[14px] before:-bottom-[23px]"
-								: "leading-[18px] before:-bottom-[21px]"
-						} relative 
+								? "leading-[16px]"
+								: "leading-[18px]"
+						} relative before:-bottom-[21px]
             before:content-[''] before:absolute before:block before:w-full
              before:h-[4px] before:left-0 before:bg-[#ffc43d]
             before:scale-x-0 before:transition-transform before:duration-300
@@ -37,13 +37,16 @@ export default function Links() {
 						: "before:opacity-80 hover:before:scale-x-100  "
 				}`}
 					>
-						<Image
-							src={link.src}
-							width={20}
-							height={20}
-							alt=""
-							aria-hidden="true"
-						/>{" "}
+						{" "}
+						<div className="relative w-5 h-5">
+							<Image
+								src={link.src}
+								fill
+								sizes="100%"
+								alt=""
+								aria-hidden="true"
+							/>
+						</div>{" "}
 						{link.name}
 					</Link>
 				</li>

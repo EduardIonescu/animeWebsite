@@ -5,16 +5,19 @@ export default function RecommendationCard({ recommendation }) {
 	return (
 		<li
 			className="relative overflow-hidden cursor-pointer transition
-    duration-300 hover:opacity-80"
+    duration-300 hover:opacity-80 "
 		>
-			<Link href={`/anime/${recommendation.entry.mal_id}`}>
+			<Link
+				href={`/anime/${recommendation.entry.mal_id}`}
+				className="h-[144px] w-24 relative block"
+			>
 				<Image
 					src={recommendation.entry.images.jpg.image_url}
-					width={95}
-					height={144}
+					fill
+					sizes="100%"
 					alt=""
 					aria-hidden="true"
-					className="h-[144px] w-24 object-cover"
+					className="object-cover"
 				/>
 				<p
 					className="absolute top-0 right-0 bg-black text-shadowLightBlue

@@ -28,13 +28,15 @@ export default function Home() {
 						setShowTrending(false);
 					}}
 				>
-					<Image
-						src={popularIcon}
-						width={14}
-						height={14}
-						alt=""
-						aria-hidden="true"
-					/>{" "}
+					<div className="relative shrink-0 w-[16px] h-[16px]">
+						<Image
+							src={popularIcon}
+							fill
+							sizes="100%"
+							alt=""
+							aria-hidden="true"
+						/>
+					</div>{" "}
 					Popular
 				</button>
 				<button
@@ -53,13 +55,16 @@ export default function Home() {
 						setShowTrending(true);
 					}}
 				>
-					<Image
-						src={trendingIcon}
-						width={16}
-						height={16}
-						alt=""
-						aria-hidden="true"
-					/>{" "}
+					{" "}
+					<div className="relative shrink-0 w-4 h-4">
+						<Image
+							src={trendingIcon}
+							fill
+							sizes="100%"
+							alt=""
+							aria-hidden="true"
+						/>
+					</div>{" "}
 					Trending
 				</button>
 			</nav>

@@ -19,45 +19,50 @@ export default function AnimeCard({ animeData }) {
 			hover:-translate-y-[2px] cursor-pointer hover:shadow-xl group rounded-sm 
 			overflow-hidden"
 			>
-				<Image
-					src={imageUrl}
-					width={85}
-					height={120}
-					alt=""
-					aria-hidden="true"
-					className="object-cover h-[120px] w-[85px]"
-				/>
+				<div className="relative h-[120px] w-[85px] shrink-0">
+					<Image
+						src={imageUrl}
+						fill
+						sizes="100%"
+						alt=""
+						aria-hidden="true"
+						className="object-cover "
+					/>
+				</div>
 				{/* Maybe switch whitespace-nowrap to line-clamp */}
 				<div className=" whitespace-nowrap pb-1">
-					<p
+					<div
 						className="absolute top-0 text-[11px] bg-darkBlue/75
 				text-shadowLightBlue flex items-center gap-1 py-[2px] px-1 rounded-b-md
 				"
 					>
-						<Image
-							src={starIcon}
-							width={11}
-							height={11}
-							alt=""
-							aria-hidden="true"
-							className="h-auto"
-						/>
+						<div className="w-[11px] h-[11px] relative shrink-0 mb-[1px]">
+							<Image
+								src={starIcon}
+								fill
+								sizes="100%"
+								alt=""
+								aria-hidden="true"
+							/>
+						</div>
 						{score}
-					</p>
-					<p
+					</div>
+					<div
 						className="absolute top-0 right-0 text-[11px] bg-lighterBlue 
 				text-shadowLightBlue flex items-center gap-1 py-[2px] px-1 rounded-bl-md"
 					>
-						<Image
-							src={calendarIcon}
-							width={10}
-							height={10}
-							alt=""
-							aria-hidden="true"
-							className="h-auto"
-						/>{" "}
+						<div className="h-[10px] w-[10px] relative">
+							<Image
+								src={calendarIcon}
+								fill
+								sizes="100%"
+								alt=""
+								aria-hidden="true"
+								className="h-auto"
+							/>
+						</div>{" "}
 						{year}
-					</p>
+					</div>
 					<h2 className="text-base font-medium ">{title}</h2>
 					<p className="text-sm opacity-60">{titleJapanese}</p>
 				</div>
