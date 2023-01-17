@@ -2,7 +2,10 @@ import { useRef, useState } from "react";
 import RecommendationCard from "./recommendationCard";
 //import { useSwipeable } from "react-swipeable";
 
-export default function SectionRecommendations({ initialRecommendations }) {
+export default function SectionRecommendations({
+	setPage,
+	initialRecommendations,
+}) {
 	const [recommendations, setRecommendations] = useState(
 		initialRecommendations
 	);
@@ -18,7 +21,10 @@ export default function SectionRecommendations({ initialRecommendations }) {
 		trackMouse: true,
 	});
 	*/
-
+	const viewAllRecommendations = () => {
+		setPage("recommendations");
+		window.scrollTo(0, 0);
+	};
 	function handleClickPrevious() {
 		// shenanigans under the hood
 		ulRef.current.style.transition = "all 0.3s";
@@ -38,7 +44,7 @@ export default function SectionRecommendations({ initialRecommendations }) {
 			setRecommendations((r) => [...r.slice(7, 21), ...r.slice(0, 7)]);
 		}, 250);
 	}
-	if (recommendations.lenth >= 1)
+	if (recommendations.length >= 1)
 		return (
 			<section className="mt-6">
 				<h3 className="font-bold">Recommendations</h3>
@@ -92,6 +98,7 @@ export default function SectionRecommendations({ initialRecommendations }) {
 						)}
 					</div>{" "}
 					<button
+						onClick={viewAllRecommendations}
 						type="button"
 						className="h-full w-24 bg-black/10 hover:opacity-80 transition
 						duration-200  right-0 top-0 ml-2 shrink-0"

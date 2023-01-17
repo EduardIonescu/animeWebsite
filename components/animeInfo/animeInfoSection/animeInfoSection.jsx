@@ -26,6 +26,7 @@ export default function AnimeInfoSection({ animeData, animeId }) {
 					<SectionReviews key={animeId} reviews={reviews} />
 					{recommendations && (
 						<SectionRecommendations
+							setPage={setPage}
 							initialRecommendations={recommendations.slice(
 								0,
 								21
