@@ -24,10 +24,14 @@ export default function AnimeInfoSection({ animeData, animeId }) {
 					<SectionTop animeData={animeData} />
 					<SectionCharacters characters={characters} />
 					<SectionReviews key={animeId} reviews={reviews} />
-					<SectionRecommendations
-						recommendations={recommendations}
-						setRecommendations={setRecommendations}
-					/>
+					{recommendations && (
+						<SectionRecommendations
+							initialRecommendations={recommendations.slice(
+								0,
+								21
+							)}
+						/>
+					)}
 				</>
 			)}
 			{page == "characters" && (

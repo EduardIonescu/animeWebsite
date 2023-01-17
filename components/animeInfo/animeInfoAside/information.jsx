@@ -34,15 +34,23 @@ export default function Information({ animeData }) {
 				</li>
 				<li>
 					<span className="font-medium">Broadcast:</span>{" "}
-					{broadcast.string}
+					{broadcast.string || "None"}
 				</li>
 				<li>
 					<span className="font-medium">Producers:</span>{" "}
-					<InlineLinks array={producers} />
+					{producers.length >= 1 ? (
+						<InlineLinks array={producers} />
+					) : (
+						"None"
+					)}
 				</li>
 				<li>
 					<span className="font-medium">Studios:</span>{" "}
-					<InlineLinks array={studios} />
+					{studios.length >= 1 ? (
+						<InlineLinks array={studios} />
+					) : (
+						"None"
+					)}
 				</li>
 				<li>
 					<span className="font-medium">Source:</span> {source}
@@ -53,7 +61,11 @@ export default function Information({ animeData }) {
 				</li>
 				<li>
 					<span className="font-medium">Demographic:</span>{" "}
-					<InlineLinks array={demographics} />
+					{demographics.length >= 1 ? (
+						<InlineLinks array={demographics} />
+					) : (
+						"None"
+					)}
 				</li>
 				<li>
 					<span className="font-medium">Duration:</span> {duration}

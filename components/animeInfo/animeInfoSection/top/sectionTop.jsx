@@ -35,7 +35,10 @@ export default function SectionTop({ animeData }) {
 							{score}
 						</h2>
 						<p className="text-[11px]">
-							{scored_by.toLocaleString("en")} users
+							{scored_by
+								? scored_by.toLocaleString("en")
+								: "None"}{" "}
+							users
 						</p>
 					</div>
 					<div className="flex gap-6 pl-4 text-xl font-medium">
@@ -49,7 +52,9 @@ export default function SectionTop({ animeData }) {
 						<h3>
 							Members{" "}
 							<span className="font-bold">
-								{members.toLocaleString("en")}
+								{members
+									? members.toLocaleString("en")
+									: "None"}
 							</span>
 						</h3>
 					</div>

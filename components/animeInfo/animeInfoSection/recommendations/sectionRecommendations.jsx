@@ -1,11 +1,11 @@
-import { useRef } from "react";
+import { useRef, useState } from "react";
 import RecommendationCard from "./recommendationCard";
 //import { useSwipeable } from "react-swipeable";
 
-export default function SectionRecommendations({
-	recommendations,
-	setRecommendations,
-}) {
+export default function SectionRecommendations({ initialRecommendations }) {
+	const [recommendations, setRecommendations] = useState(
+		initialRecommendations
+	);
 	const ulRef = useRef(null);
 	/*
 	// Maybe implement useSwipeable later
@@ -38,7 +38,7 @@ export default function SectionRecommendations({
 			setRecommendations((r) => [...r.slice(7, 21), ...r.slice(0, 7)]);
 		}, 250);
 	}
-	if (recommendations)
+	if (recommendations.lenth >= 1)
 		return (
 			<section className="mt-6">
 				<h3 className="font-bold">Recommendations</h3>

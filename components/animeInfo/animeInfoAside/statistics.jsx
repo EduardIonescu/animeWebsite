@@ -8,7 +8,9 @@ export default function Statistics({ animeData }) {
 			<ul className="text-[12px] font-light pt-1">
 				<li>
 					<span className="font-medium">Score:</span> {score} (scored
-					by {scored_by.toLocaleString("en")} users)
+					by{" "}
+					{scored_by >= 1 ? scored_by.toLocaleString("en") : "None"}{" "}
+					users)
 				</li>
 				<li>
 					<span className="font-medium">Ranked:</span> #{rank}
@@ -19,11 +21,11 @@ export default function Statistics({ animeData }) {
 				</li>
 				<li>
 					<span className="font-medium">Members:</span>{" "}
-					{members.toLocaleString("en")}
+					{members >= 1 ? members.toLocaleString("en") : "None"}
 				</li>
 				<li>
 					<span className="font-medium">Favorites:</span>{" "}
-					{favorites.toLocaleString("en")}
+					{favorites >= 1 ? favorites.toLocaleString("en") : "None"}
 				</li>
 			</ul>
 		</article>
