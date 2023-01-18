@@ -8,12 +8,11 @@ export default function FilterSelect({
 	placeholder,
 	singleValue = false,
 	setChoice,
+	value,
 }) {
 	return (
 		<Select
-			onChange={(choice) =>
-				setChoice(singleValue ? choice : choice.map((c) => c.value))
-			}
+			onChange={(choice) => setChoice(choice)}
 			className="w-[32.1%]"
 			options={options}
 			closeMenuOnSelect={singleValue && true}
@@ -21,6 +20,7 @@ export default function FilterSelect({
 			isMulti={!singleValue}
 			placeholder={placeholder}
 			instanceId={placeholder}
+			value={value}
 			styles={{
 				control: (baseStyles) => ({
 					...baseStyles,
