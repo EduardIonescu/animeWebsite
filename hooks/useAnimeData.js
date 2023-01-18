@@ -3,11 +3,12 @@ import getData from "../lib/getData";
 
 export function useCharactersData(animeId) {
 	function handleCharacters(data) {
-		return data.data
+		if (data.data)
+			return data.data
 
-			.sort((a, b) => (a.favorites > b.favorites ? 1 : -1))
-			.sort((a, b) => (a.role > b.role ? 1 : -1))
-			.slice(0, 15);
+				.sort((a, b) => (a.favorites > b.favorites ? 1 : -1))
+				.sort((a, b) => (a.role > b.role ? 1 : -1))
+				.slice(0, 15);
 	}
 	return useAnimeData(animeId, "characters", handleCharacters);
 }
@@ -15,16 +16,20 @@ export function useCharactersData(animeId) {
 export function useReviewsData(animeId) {
 	function handleReviews(data) {
 		// Max 15
-		if (data.data.length >= 3) return data.data.slice(0, 15);
-		else return data.data;
+		if (data.data) {
+			if (data.data.length >= 3) return data.data.slice(0, 15);
+			else return data.data;
+		}
 	}
 	return useAnimeData(animeId, "reviews", handleReviews);
 }
 
 export function useRecommendationsData(animeId) {
 	function handleRecommendations(data) {
-		if (data.data.length >= 21) return data.data.slice(0, 40);
-		else return data.data.slice(0, 8);
+		if (data.data) {
+			if (data.data.length >= 21) return data.data.slice(0, 40);
+			else return data.data.slice(0, 8);
+		}
 	}
 	return useAnimeData(
 		animeId,

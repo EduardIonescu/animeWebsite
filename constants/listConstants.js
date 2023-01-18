@@ -75,6 +75,5 @@ export const orderOptions = [
 	{ value: "popularity", label: "Popularity" },
 	{ value: "rank", label: "Rank" },
 	{ value: "title", label: "Title" },
-	{ value: "start_date", label: "Date New -> Old" },
-	{ value: "end_date", label: "Date Old -> New" },
+	{ value: "start_date", label: "Date Old -> New" },
 ];

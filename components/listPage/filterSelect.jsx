@@ -13,7 +13,7 @@ export default function FilterSelect({
 	return (
 		<Select
 			onChange={(choice) => setChoice(choice)}
-			className="w-[32.1%]"
+			className="w-[32.1%] "
 			options={options}
 			closeMenuOnSelect={singleValue && true}
 			components={animatedComponents}
@@ -25,6 +25,10 @@ export default function FilterSelect({
 				control: (baseStyles) => ({
 					...baseStyles,
 					borderRadius: "0.4rem",
+				}),
+				menu: (baseStyles) => ({
+					...baseStyles,
+					zIndex: "10",
 				}),
 			}}
 		/>

@@ -2,8 +2,10 @@ import SelectForm from "../../components/listPage/selectForm";
 import getData from "../../lib/getData";
 import { useState } from "react";
 import { getAllQueriesURL } from "../../lib/listFilter";
+import ResultsSection from "../../components/listPage/resultsSection";
 export default function List() {
-	const [filterData, setFilterData] = useState([]);
+	const [filterData, setFilterData] = useState();
+	const [loading, setLoading] = useState(false);
 	async function fetchFilterData(
 		genres,
 		ratings,
@@ -23,6 +25,7 @@ export default function List() {
 			);
 			console.log(url);
 			const data = await getData(url);
+			setLoading(false);
 			setFilterData(data.data);
 		}
 	}
@@ -30,10 +33,24 @@ export default function List() {
 	return (
 		<main
 			className="w-[75rem] h-[100%] mx-auto py-4 px-4 bg-shadowLightBlue
-	text-shadowDarkBlue"
+	text-shadowDarkBlue min-h-[calc(100vh-64px)]"
 		>
 			{console.log(filterData)}
-			<SelectForm fetchFilterData={fetchFilterData} />
+			<SelectForm
+				fetchFilterData={fetchFilterData}
+				setFilterData={setFilterData}
+				setLoading={setLoading}
+			/>
+			<hr className="mt-2 mb-4" />
+			{loading ? (
+				<section>Loading...</section>
+			) : filterData ? (
+				<ResultsSection resultsData={filterData} />
+			) : (
+				typeof filterData == "array" && (
+					<section>No results found...</section>
+				)
+			)}
 		</main>
 	);
 }

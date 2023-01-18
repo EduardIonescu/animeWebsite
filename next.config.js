@@ -20,6 +20,12 @@ const nextConfig = {
 				port: "",
 				pathname: "/vi/**/*",
 			},
+			{
+				protocol: "https",
+				hostname: "cdn.myanimelist.net",
+				port: "",
+				pathname: "/img/**/*",
+			},
 		],
 	},
 	reactStrictMode: true,

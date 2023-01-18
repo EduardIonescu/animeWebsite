@@ -9,7 +9,11 @@ import {
 	orderOptions,
 } from "../../constants/listConstants";
 
-export default function SelectForm({ fetchFilterData }) {
+export default function SelectForm({
+	fetchFilterData,
+	setFilterData,
+	setLoading,
+}) {
 	const [genres, setGenres] = useState(undefined);
 	const [ratings, setRatings] = useState(undefined);
 	const [year, setYear] = useState(undefined);
@@ -18,19 +22,23 @@ export default function SelectForm({ fetchFilterData }) {
 	const [order, setOrder] = useState(undefined);
 	async function handleSubmit(e) {
 		e.preventDefault();
-		fetchFilterData(genres, ratings, year, status, score, order);
+		if (genres || ratings || year || status || score || order) {
+			setLoading(true);
+			fetchFilterData(genres, ratings, year, status, score, order);
+		}
 	}
 	// This should prolly submit too
 	function resetForm() {
-		setGenres(undefined);
-		setRatings(undefined);
-		setYear(undefined);
-		setStatus(undefined);
-		setScore(undefined);
-		setOrder(undefined);
+		setGenres("");
+		setRatings("");
+		setYear("");
+		setStatus("");
+		setScore("");
+		setOrder("");
+		setFilterData("");
 	}
 	return (
-		<form className="" onSubmit={handleSubmit}>
+		<form onSubmit={handleSubmit}>
 			<fieldset className="flex flex-wrap gap-x-5 gap-y-3">
 				<FilterSelect
 					placeholder="Genre..."
@@ -47,6 +55,7 @@ export default function SelectForm({ fetchFilterData }) {
 				<FilterSelect
 					placeholder="Year..."
 					options={yearOptions}
+					singleValue={true}
 					setChoice={setYear}
 					value={year}
 				/>
@@ -61,6 +70,7 @@ export default function SelectForm({ fetchFilterData }) {
 					placeholder="Score..."
 					options={scoreOptions}
 					setChoice={setScore}
+					singleValue={true}
 					value={score}
 				/>
 				<FilterSelect
