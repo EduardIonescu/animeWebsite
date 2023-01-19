@@ -3,19 +3,15 @@ import { useEffect, useState } from "react";
 export function useAnimeIdData(animeId) {
 	const [animeData, setAnimeData] = useState(false);
 	const url = `https://api.jikan.moe/v4/anime/${animeId}/full`;
-	console.log("asd", url);
 	useEffect(() => {
-		console.log("dsa");
 		let ignore = false;
 
 		async function startFetching() {
 			const data = await getData(url);
-
 			if (!ignore) {
 				setAnimeData(data.data);
 			}
 		}
-
 		if (animeId) {
 			startFetching();
 		}

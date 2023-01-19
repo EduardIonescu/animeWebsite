@@ -1,5 +1,6 @@
 import Link from "next/link";
 import Links from "./links";
+import SearchBar from "./searchBar/searchBar";
 
 export default function Navbar() {
 	return (
@@ -9,11 +10,7 @@ export default function Navbar() {
 					AnimeSun
 				</Link>
 				<Links />
-				<input
-					type="text"
-					placeholder="Search anime..."
-					className="ml-auto"
-				/>
+				<SearchBar />
 			</nav>
 		</header>
 	);
