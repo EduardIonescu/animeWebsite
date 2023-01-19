@@ -6,6 +6,7 @@ import ResultsSection from "../../components/listPage/resultsSection";
 export default function List() {
 	const [filterData, setFilterData] = useState();
 	const [loading, setLoading] = useState(false);
+	const [error, setError] = useState(false);
 	async function fetchFilterData(
 		genres,
 		ratings,
@@ -40,7 +41,17 @@ export default function List() {
 				fetchFilterData={fetchFilterData}
 				setFilterData={setFilterData}
 				setLoading={setLoading}
+				setError={setError}
 			/>
+
+			<p
+				aria-hidden={!error}
+				className={`text-center text-darkRed transition duration-200 select-none
+				ease-out ${error ? "opacity-100" : " opacity-0"}`}
+			>
+				Please select filters...
+			</p>
+
 			<hr className="mt-2 mb-4" />
 			{loading ? (
 				<section>Loading...</section>

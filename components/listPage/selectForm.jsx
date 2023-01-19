@@ -13,6 +13,7 @@ export default function SelectForm({
 	fetchFilterData,
 	setFilterData,
 	setLoading,
+	setError,
 }) {
 	const [genres, setGenres] = useState(undefined);
 	const [ratings, setRatings] = useState(undefined);
@@ -22,9 +23,19 @@ export default function SelectForm({
 	const [order, setOrder] = useState(undefined);
 	async function handleSubmit(e) {
 		e.preventDefault();
-		if (genres || ratings || year || status || score || order) {
+		if (
+			(genres && genres.length >= 1) ||
+			(ratings && genres.length >= 1) ||
+			year ||
+			status ||
+			score ||
+			order
+		) {
+			setError(false);
 			setLoading(true);
 			fetchFilterData(genres, ratings, year, status, score, order);
+		} else {
+			setError(true);
 		}
 	}
 	// This should prolly submit too
@@ -35,6 +46,7 @@ export default function SelectForm({
 		setStatus("");
 		setScore("");
 		setOrder("");
+		setError(false);
 		setFilterData("");
 	}
 	return (
@@ -81,11 +93,29 @@ export default function SelectForm({
 					value={order}
 				/>
 			</fieldset>
-			<fieldset className="flex gap-4 justify-center py-3">
-				<button type="button" onClick={resetForm}>
+			<fieldset
+				className="flex gap-4 justify-center py-3 text-shadowLightBlue
+			font-medium"
+			>
+				<button
+					type="button"
+					onClick={resetForm}
+					className="bg-darkRed px-3 py-1 rounded-md border-[2px] 
+					border-transparent transition duration-300 ease-in shadow-md
+					hover:text-darkRed hover:bg-transparent border-darkRed
+					"
+				>
 					Reset
 				</button>
-				<button type="submit">Filter</button>
+				<button
+					type="submit"
+					className="bg-lighterBlue px-3 py-1 rounded-md border-[2px] 
+					border-transparent transition duration-300 ease-in shadow-md
+					hover:text-lighterBlue hover:bg-transparent border-lighterBlue
+					"
+				>
+					Filter
+				</button>
 			</fieldset>
 		</form>
 	);
