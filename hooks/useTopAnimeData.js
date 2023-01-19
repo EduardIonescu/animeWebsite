@@ -4,20 +4,20 @@ import getData from "../lib/getData";
 // I want 50 items, the limit is 25 per page
 const popularAnimeUrls = [
 	"https://api.jikan.moe/v4/top/anime?tv",
-	"https://api.jikan.moe/v4/top/anime?tv?page=2",
+	"https://api.jikan.moe/v4/top/anime?tv&page=2",
 ];
 const trendingAnimeUrls = [
 	"https://api.jikan.moe/v4/seasons/now",
 	"https://api.jikan.moe/v4/seasons/now?page=2",
 ];
 
-export default function useTopAnimeData(showTrending) {
+export default function useTopAnimeData(type = "popular") {
 	const [animeData, setAnimeData] = useState([]);
 
 	useEffect(() => {
 		let ignore = false;
-		const urls = showTrending ? trendingAnimeUrls : popularAnimeUrls;
-
+		const urls = type == "popular" ? popularAnimeUrls : trendingAnimeUrls;
+		console.log("it fires again?");
 		async function startFetching() {
 			const data = await Promise.all(
 				urls.map(async (url) => {
@@ -29,6 +29,7 @@ export default function useTopAnimeData(showTrending) {
 			);
 
 			if (!ignore) {
+				console.log("wtf?", data);
 				setAnimeData([...data[0].data, ...data[1].data]);
 			}
 		}
@@ -38,7 +39,7 @@ export default function useTopAnimeData(showTrending) {
 		return () => {
 			ignore = true;
 		};
-	}, [showTrending]);
+	}, []);
 
 	return animeData;
 }
