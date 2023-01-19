@@ -25,7 +25,6 @@ export default function InlineLinks({ array, samePage }) {
 					<span key={i}>
 						<Link
 							href={`/anime/${item.mal_id}`}
-							target="_blank"
 							className="text-lighterBlue transition duration-300 
 	hover:opacity-80"
 						>
