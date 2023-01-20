@@ -24,7 +24,8 @@ export default function Information({ animeData }) {
 					<span className="font-medium">Type:</span> {type}
 				</li>
 				<li>
-					<span className="font-medium">Episodes:</span> {episodes}
+					<span className="font-medium">Episodes:</span>{" "}
+					{episodes || "0"}
 				</li>
 				<li>
 					<span className="font-medium">Status:</span> {status}
@@ -57,7 +58,11 @@ export default function Information({ animeData }) {
 				</li>
 				<li>
 					<span className="font-medium">Genres: </span>{" "}
-					<InlineLinks array={genres} />
+					{genres && genres.length >= 1 ? (
+						<InlineLinks array={genres} />
+					) : (
+						"None"
+					)}
 				</li>
 				<li>
 					<span className="font-medium">Demographic:</span>{" "}
@@ -71,7 +76,8 @@ export default function Information({ animeData }) {
 					<span className="font-medium">Duration:</span> {duration}
 				</li>
 				<li>
-					<span className="font-medium">Rating:</span> {rating}
+					<span className="font-medium">Rating:</span>{" "}
+					{rating || "None"}
 				</li>
 				<li>
 					<span className="font-medium"></span>{" "}

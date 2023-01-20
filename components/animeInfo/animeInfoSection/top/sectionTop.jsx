@@ -13,8 +13,13 @@ export default function SectionTop({ animeData }) {
 		trailer,
 	} = animeData;
 
+	const relationsWithoutManga = relations.filter(
+		(relation) =>
+			relation.entry.filter((entry) => entry.type != "manga").length >= 1
+	);
 	return (
 		<section>
+			{console.log("relationsWithoutManga", relationsWithoutManga)}
 			<article className="flex gap-4 mt-2">
 				<div
 					className="bg-blue-200/40 py-4 px-2 flex items-center border-[1px]
@@ -32,12 +37,10 @@ export default function SectionTop({ animeData }) {
 							score
 						</p>
 						<h2 className="text-[32px] leading-[32px] font-bold pt-1">
-							{score}
+							{score || "None"}
 						</h2>
 						<p className="text-[11px]">
-							{scored_by
-								? scored_by.toLocaleString("en")
-								: "None"}{" "}
+							{scored_by ? scored_by.toLocaleString("en") : "0"}{" "}
 							users
 						</p>
 					</div>
@@ -52,9 +55,7 @@ export default function SectionTop({ animeData }) {
 						<h3>
 							Members{" "}
 							<span className="font-bold">
-								{members
-									? members.toLocaleString("en")
-									: "None"}
+								{members ? members.toLocaleString("en") : "0"}
 							</span>
 						</h3>
 					</div>
@@ -81,34 +82,33 @@ export default function SectionTop({ animeData }) {
 					{background || "This title has no background information."}
 				</p>
 			</article>
-			<article className="mt-6">
-				<h3 className="font-bold">Related Anime</h3>
-				<hr className="border-black/20 my-1" />
-				<table>
-					<tbody className="">
-						{relations.map((relation, i) => (
-							<tr
-								key={i}
-								className="text-[12px] border-b-[1px] leading-7"
-							>
-								<td className="a whitespace-pre text-right align-top">
-									{relation.relation}:{" "}
-								</td>
-								<td>
-									<InlineLinks
-										array={relation.entry}
-										samePage={true}
-									/>
-								</td>
-							</tr>
-						))}
-					</tbody>
-				</table>
-			</article>
-			<article className="mt-6">
-				<h3 className="font-bold">Characters & Voice Actors</h3>
-				<hr className="border-black/20 my-1" />
-			</article>
+			{relations && relations.length >= 1 && (
+				<article className="mt-6">
+					<h3 className="font-bold">Related Anime</h3>
+					<hr className="border-black/20 my-1" />
+
+					<table>
+						<tbody className="">
+							{relationsWithoutManga.map((relation, i) => (
+								<tr
+									key={i}
+									className="text-[12px] border-b-[1px] leading-7"
+								>
+									<td className="a whitespace-pre text-right align-top">
+										{relation.relation}:{" "}
+									</td>
+									<td>
+										<InlineLinks
+											array={relation.entry}
+											samePage={true}
+										/>
+									</td>
+								</tr>
+							))}
+						</tbody>
+					</table>
+				</article>
+			)}
 		</section>
 	);
 }

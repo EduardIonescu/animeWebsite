@@ -13,8 +13,7 @@ import AnimeRecommendationsSection from "../animeRecommendationsSection/animeRec
 export default function AnimeInfoSection({ animeData, animeId }) {
 	const characters = useCharactersData(animeId);
 	const reviews = useReviewsData(animeId);
-	const [recommendations, setRecommendations] =
-		useRecommendationsData(animeId);
+	const [recommendations] = useRecommendationsData(animeId);
 	const [page, setPage] = useState("details");
 	return (
 		<section className="w-[75%] px-4">
@@ -22,7 +21,9 @@ export default function AnimeInfoSection({ animeData, animeId }) {
 			{page == "details" && (
 				<>
 					<SectionTop animeData={animeData} />
+
 					<SectionCharacters characters={characters} />
+
 					<SectionReviews key={animeId} reviews={reviews} />
 					{recommendations && (
 						<SectionRecommendations

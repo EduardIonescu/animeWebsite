@@ -7,9 +7,9 @@ export default function Statistics({ animeData }) {
 			<hr className="w-full relative border-black/20" />
 			<ul className="text-[12px] font-light pt-1">
 				<li>
-					<span className="font-medium">Score:</span> {score} (scored
-					by{" "}
-					{scored_by >= 1 ? scored_by.toLocaleString("en") : "None"}{" "}
+					<span className="font-medium">Score:</span>{" "}
+					{score || "None"} (scored by{" "}
+					{scored_by >= 1 ? scored_by.toLocaleString("en") : "0"}{" "}
 					users)
 				</li>
 				<li>

@@ -8,11 +8,14 @@ export default function Anime() {
 
 	if (animeData)
 		return (
-			<AnimeInfo
-				key={`id-${animeId}`}
-				animeData={animeData}
-				animeId={animeId}
-			/>
+			<>
+				<AnimeInfo
+					key={`id-${animeId}`}
+					animeData={animeData}
+					animeId={animeId}
+				/>
+				{console.log(animeData)}
+			</>
 		);
 	/* Add loading page */ else
 		return (
