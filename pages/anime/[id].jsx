@@ -1,6 +1,7 @@
 import { useRouter } from "next/router";
 import AnimeInfo from "../../components/animeInfo/animeInfo";
 import { useAnimeIdData } from "../../hooks/useAnimeIdData";
+import Loading from "../../components/other/loading";
 export default function Anime() {
 	const animeId = useRouter().query.id;
 	const animeData = useAnimeIdData(animeId);
@@ -13,5 +14,10 @@ export default function Anime() {
 				animeId={animeId}
 			/>
 		);
-	/* Add loading page */ else return <main>Loading...</main>;
+	/* Add loading page */ else
+		return (
+			<main className="w-[75vw] mx-auto">
+				<Loading />
+			</main>
+		);
 }

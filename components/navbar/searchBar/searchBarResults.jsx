@@ -1,6 +1,7 @@
 import Link from "next/link";
 import Image from "next/image";
 import { useRef, useEffect } from "react";
+import Loading, { LoadingSpinner } from "../../other/loading";
 export default function SearchBarResults({
 	resultsData,
 	setSearchIsActive,
@@ -24,7 +25,7 @@ export default function SearchBarResults({
 	return (
 		<div
 			onClick={() => setSearchIsActive(false)}
-			className="absolute z-20 text-darkBlue bg-transparent px-4 w-full 
+			className="absolute z-20 text-darkBlue bg-transparent px-4 w-full
 		top-10 "
 			ref={resultsRef}
 		>
@@ -37,7 +38,7 @@ export default function SearchBarResults({
 								href={`/anime/${result.mal_id}`}
 								className="flex items-center gap-2"
 							>
-								<div className="relative w-12 h-14 shrink-0 group-hover:h-20">
+								<div className="relative w-12 h-12 shrink-0 group-hover:h-24">
 									<Image
 										className="object-cover"
 										src={result.images.jpg.image_url}
@@ -47,7 +48,10 @@ export default function SearchBarResults({
 										aria-hidden="true"
 									/>
 								</div>
-								<div className="py-1 text-[10px] ">
+								<div
+									className="py-1 text-[10px] whitespace-pre 
+								group-hover:whitespace-normal"
+								>
 									<p className="text-lighterBlue text-[11px]">
 										{result.title}
 									</p>
@@ -73,7 +77,9 @@ export default function SearchBarResults({
 					))}
 				</ul>
 			) : (
-				<div>Loading...</div>
+				<div className="bg-white overflow-hidden rounded py-8">
+					<LoadingSpinner />
+				</div>
 			)}
 		</div>
 	);

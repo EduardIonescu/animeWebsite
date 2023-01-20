@@ -1,5 +1,6 @@
 import useTopAnimeData from "../../hooks/useTopAnimeData";
 import AnimeCard from "../animeCard";
+import Loading from "../other/loading";
 
 export default function TopAnimeSection({ showTrending }) {
 	// Make 2 separate states for popular / trending and find a way to keep the
@@ -20,6 +21,6 @@ export default function TopAnimeSection({ showTrending }) {
 			</section>
 		);
 	} else {
-		return <section>Loading...</section>;
+		return <Loading />;
 	}
 }
