@@ -26,6 +26,12 @@ const nextConfig = {
 				port: "",
 				pathname: "/img/**/*",
 			},
+			{
+				protocol: "https",
+				hostname: "i.animepahe.com",
+				port: "",
+				pathname: "/posters/**/*",
+			},
 		],
 	},
 	reactStrictMode: true,
