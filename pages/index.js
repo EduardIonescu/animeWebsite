@@ -9,6 +9,7 @@ export default function Home() {
 	return (
 		<main
 			className="w-[75rem] h-[100%] mx-auto py-4 px-4 bg-shadowLightBlue
+			dark:bg-veryDarkBlue dark:text-veryLightGray
     text-shadowDarkBlue"
 		>
 			<nav className="flex gap-5 mb-6 ml-2">
@@ -18,7 +19,7 @@ export default function Home() {
 					before:content-[''] before:absolute before:block before:w-full
               before:-bottom-2 md:before:-bottom-2 before:h-[3px] before:left-0
               before:scale-x-0 before:transition-transform before:duration-300
-							before:bg-lighterBlue
+							before:bg-lighterBlue dark:text-veryLightGray
       ${
 			!showTrending
 				? "text-darkBlue before:scale-x-100"
@@ -28,7 +29,10 @@ export default function Home() {
 						setShowTrending(false);
 					}}
 				>
-					<div className="relative shrink-0 w-[16px] h-[16px]">
+					<div
+						className="relative shrink-0 w-[16px] h-[16px] 
+					"
+					>
 						<Image
 							src={popularIcon}
 							fill
@@ -45,7 +49,7 @@ export default function Home() {
 					before:content-[''] before:absolute before:block before:w-full
               before:-bottom-2 md:before:-bottom-2 before:h-[3px] before:left-0
               before:scale-x-0 before:transition-transform before:duration-300
-							before:bg-lighterBlue
+							before:bg-lighterBlue dark:text-veryLightGray
       ${
 			showTrending
 				? "text-darkBlue before:scale-x-100"

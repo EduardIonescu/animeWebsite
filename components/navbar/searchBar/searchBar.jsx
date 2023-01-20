@@ -11,8 +11,7 @@ export default function SearchBar() {
 		setQuery(e.target.value);
 	}
 	return (
-		<article className="ml-auto relative">
-			{console.log(query)}
+		<article className="relative">
 			<input
 				ref={searchRef}
 				onInput={handleChange}
@@ -21,8 +20,10 @@ export default function SearchBar() {
 				maxLength={32}
 				className="
     h-10 w-80 pl-5 pr-2 border-[2px] border-darkBlue rounded-full 
+		bg-white dark:bg-transparent 
     focus:outline-none transition duration-300 focus:border-lighterBlue
-    hover:border-lighterBlue text-darkBlue text-sm"
+    hover:border-lighterBlue text-darkBlue text-sm dark:text-veryLightGray
+		dark:placeholder:text-veryLightGray"
 			/>
 			{query && searchIsActive && (
 				<SearchBarResults

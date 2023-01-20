@@ -7,7 +7,10 @@ export default function SectionCharacters({ characters }) {
 					<h3 className="font-bold">Characters & Voice Actors</h3>
 					<hr className="border-black/20 my-1" />
 					<div className="flex">
-						<ul className="w-full border-r-[1px] pr-2 border-black/20">
+						<ul
+							className="w-full border-r-[1px] pr-2 border-black/20
+						dark:border-coolBlack"
+						>
 							{characters.slice(0, 5).map((character, i) => (
 								<CharacterCard
 									key={i}

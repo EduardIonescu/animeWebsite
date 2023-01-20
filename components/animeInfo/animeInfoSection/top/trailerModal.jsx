@@ -42,7 +42,7 @@ export default function TrailerModal({ imageSrc, youtubeId }) {
 			<button
 				onClick={openModal}
 				className="h-[102px] w-[240px] relative hover:opacity-80 transition 
-				duration-300 ease-in"
+				duration-300 ease-in rounded overflow-hidden"
 			>
 				<Image
 					src={imageSrc}

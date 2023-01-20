@@ -26,7 +26,6 @@ export default function SectionRecommendations({
 		window.scrollTo(0, 0);
 	};
 	function handleClickPrevious() {
-		// shenanigans under the hood
 		ulRef.current.style.transition = "all 0.3s";
 		ulRef.current.style.transform = "translateX(728px)";
 		setTimeout(() => {
@@ -48,7 +47,7 @@ export default function SectionRecommendations({
 		return (
 			<section className="mt-6">
 				<h3 className="font-bold">Recommendations</h3>
-				<hr className="border-black/20 my-1" />
+				<hr className="border-black/20 my-1 dark:border-coolBlack" />
 				<section className="h-36 flex  ">
 					<div className="overflow-hidden w-full relative group">
 						<ul
@@ -101,7 +100,8 @@ export default function SectionRecommendations({
 						onClick={viewAllRecommendations}
 						type="button"
 						className="h-full w-24 bg-black/10 hover:opacity-80 transition
-						duration-200  right-0 top-0 ml-2 shrink-0"
+						duration-200 right-0 top-0 ml-2 shrink-0 dark:bg-coolBlack/50
+						brightness-100 dark:hover:brightness-125"
 					>
 						View All
 					</button>

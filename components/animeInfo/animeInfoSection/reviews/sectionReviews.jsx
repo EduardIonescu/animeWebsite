@@ -4,7 +4,7 @@ export default function SectionReviews({ reviews }) {
 		return (
 			<section className="mt-6">
 				<h3 className="font-bold">Reviews</h3>
-				<hr className="border-black/20 my-1" />
+				<hr className="border-black/20 my-1 dark:border-coolBlack" />
 				{reviews.length >= 1 ? (
 					<section>
 						{reviews.slice(0, 3).map((review, i) => (

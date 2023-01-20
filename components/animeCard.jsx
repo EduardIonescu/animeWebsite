@@ -16,8 +16,9 @@ export default function AnimeCard({ animeData }) {
 				/* card class for linear-gradient background transition */
 				className="card w-[380px] border-[1px] flex items-center transition 
 			duration-300 gap-4 shadow-md hover:-translate-x-[1px] relative
-			hover:-translate-y-[2px] cursor-pointer hover:shadow-xl group rounded-sm 
-			overflow-hidden"
+			hover:-translate-y-[2px] cursor-pointer hover:shadow-xl group rounded 
+			overflow-hidden dark:bg-darkBlueDark dark:border-darkBlue 
+			dark:hover:shadow-black/30 dark:hover:shadow-lg "
 			>
 				<div className="relative h-[120px] w-[85px] shrink-0">
 					<Image

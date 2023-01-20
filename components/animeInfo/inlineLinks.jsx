@@ -9,7 +9,7 @@ export default function InlineLinks({ array, samePage }) {
 							href={item.url}
 							target="_blank"
 							className="text-lighterBlue transition duration-300 
-      hover:opacity-80"
+      hover:brightness-150"
 						>
 							{item.name}
 						</a>
@@ -26,7 +26,7 @@ export default function InlineLinks({ array, samePage }) {
 						<Link
 							href={`/anime/${item.mal_id}`}
 							className="text-lighterBlue transition duration-300 
-	hover:opacity-80"
+							hover:brightness-150"
 						>
 							{item.name}
 						</Link>

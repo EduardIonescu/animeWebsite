@@ -5,7 +5,7 @@ export default function RecommendationCard({ recommendation }) {
 	return (
 		<li
 			className="relative overflow-hidden cursor-pointer transition
-    duration-300 hover:opacity-80 "
+    duration-300 light:hover:opacity-80 brightness-100 dark:hover:brightness-75"
 		>
 			<Link
 				href={`/anime/${recommendation.entry.mal_id}`}

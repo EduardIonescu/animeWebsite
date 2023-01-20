@@ -7,11 +7,16 @@ export default function CharacterCard({
 	const { character, role, voice_actors } = characterInfo;
 	return (
 		<li
-			className={`flex justify-between ${index % 2 == 1 && "bg-black/5"}
-      py-1 border-b-[1px] border-black/10`}
+			className={`flex justify-between ${
+				index % 2 == 1 && "bg-black/5 dark:bg-coolBlack/40"
+			}
+      py-1 border-b-[1px] border-black/10 dark:border-coolBlack`}
 		>
 			<div className="flex gap-2">
-				<div className="relative w-[44px] h-[67px] border-[1px] border-black/20">
+				<div
+					className="relative w-[44px] h-[67px] border-[1px] border-black/20
+				dark:border-coolBlack"
+				>
 					<Image
 						className="object-cover"
 						src={character.images.jpg.image_url}
@@ -36,7 +41,10 @@ export default function CharacterCard({
 							{voice_actors[0].language}
 						</p>
 					</div>
-					<div className="relative shrink-0 w-[44px] h-[67px] border-[1px] border-black/20">
+					<div
+						className="relative shrink-0 w-[44px] h-[67px] border-[1px] 
+					border-black/20 dark:border-coolBlack"
+					>
 						<Image
 							className="object-cover"
 							src={voice_actors[0].person.images.jpg.image_url}
@@ -60,7 +68,10 @@ export default function CharacterCard({
 									{voiceActor.language}
 								</p>
 							</div>
-							<div className="relative shrink-0 w-[44px] h-[67px] border-[1px] border-black/20">
+							<div
+								className="relative shrink-0 w-[44px] h-[67px] border-[1px]
+							 border-black/20 dark:border-coolBlack"
+							>
 								<Image
 									className="object-cover"
 									src={voiceActor.person.images.jpg.image_url}

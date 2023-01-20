@@ -21,8 +21,11 @@ body {
 body{
   background: url("../public/images/background-image-light.jpg") repeat scroll 
   top #a56622;
+  transition: backdrop-filter 0.3s ease;
 }
-
+.dark body{
+  backdrop-filter: grayscale(100%) brightness(50%);
+}
 #__next{
   min-height:100vh;
 }
@@ -44,6 +47,13 @@ body{
   z-index: -1;
   transition: opacity 0.4s linear;
   opacity: 0;
+}
+.dark .card::before{
+  background-image: linear-gradient(
+    150deg,
+    transparent,
+    #0a57cab0
+  );
 }
 .card:hover::before {
   opacity: 1;

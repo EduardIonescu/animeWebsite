@@ -24,7 +24,6 @@ export default function List() {
 				score,
 				order
 			);
-			console.log(url);
 			const data = await getData(url);
 			setLoading(false);
 			setFilterData(data.data);
@@ -36,7 +35,6 @@ export default function List() {
 			className="w-[75rem] h-[100%] mx-auto py-4 px-4 bg-shadowLightBlue
 	text-shadowDarkBlue min-h-[calc(100vh-64px)]"
 		>
-			{console.log(filterData)}
 			<SelectForm
 				fetchFilterData={fetchFilterData}
 				setFilterData={setFilterData}

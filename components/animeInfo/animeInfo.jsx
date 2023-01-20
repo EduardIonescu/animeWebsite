@@ -7,11 +7,13 @@ export default function AnimeInfo({ animeData, animeId }) {
 	return (
 		<main
 			className="w-[75rem] h-[100%] mx-auto pb-8 bg-shadowLightBlue
-  text-shadowDarkBlue flex flex-wrap"
+  text-shadowDarkBlue flex flex-wrap dark:bg-veryDarkBlue 
+	dark:text-veryLightGray"
 		>
 			<nav
 				className="w-full  bg-[#B0C4DE] px-4 py-2 shadow-sm relative mb-4
-       shadow-blue-400/50 border-b-[1px] border-shadowDarkBlue/50"
+       shadow-blue-400/50 border-b-[1px] border-shadowDarkBlue/50
+			 dark:bg-black/25 dark:shadow-blue-400/20 "
 			>
 				<h1 className="font-bold text-lg">{titleEnglish}</h1>
 				<h2 className="opacity-70 text-base">{title}</h2>
@@ -22,7 +24,6 @@ export default function AnimeInfo({ animeData, animeId }) {
 				animeData={animeData}
 				animeId={animeId}
 			/>
-			{animeData && console.log(animeData)}
 		</main>
 	);
 }

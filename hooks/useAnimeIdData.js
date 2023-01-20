@@ -31,7 +31,6 @@ export function useRandomId() {
 		async function startFetching() {
 			const randomData = await getData(randomURL);
 			if (!ignore) {
-				console.log(randomData.data);
 				setRandomId(randomData.data.mal_id);
 			}
 		}

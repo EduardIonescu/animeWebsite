@@ -14,7 +14,7 @@ export default function SectionNavbar({ page, setPage }) {
 				className={`
 			transition duration-300 px-[6px] pb-[2px] ${
 				page == "details"
-					? "bg-shadowDarkBlue text-shadowLightBlue rounded"
+					? "bg-shadowDarkBlue text-shadowLightBlue rounded dark:bg-coolBlack"
 					: "hover:opacity-80 hover:-translate-y-[1px]"
 			}`}
 			>
@@ -26,8 +26,8 @@ export default function SectionNavbar({ page, setPage }) {
 				className={`
 			transition duration-300 px-[6px] pb-[2px] ${
 				page == "characters"
-					? "bg-shadowDarkBlue text-shadowLightBlue rounded"
-					: "hover:opacity-80 hover:-translate-y-[1px]"
+					? "bg-shadowDarkBlue text-shadowLightBlue rounded dark:bg-coolBlack"
+					: "hover:opacity-80 hover:-translate-y-[1px] "
 			}`}
 			>
 				Characters & Staff
@@ -38,7 +38,7 @@ export default function SectionNavbar({ page, setPage }) {
 				className={`
 			transition duration-300 px-[6px] pb-[2px] ${
 				page == "reviews"
-					? "bg-shadowDarkBlue text-shadowLightBlue rounded"
+					? "bg-shadowDarkBlue text-shadowLightBlue rounded dark:bg-coolBlack"
 					: "hover:opacity-80 hover:-translate-y-[1px]"
 			}`}
 			>
@@ -50,7 +50,7 @@ export default function SectionNavbar({ page, setPage }) {
 				className={`
 			transition duration-300 px-[6px] pb-[2px] ${
 				page == "recommendations"
-					? "bg-shadowDarkBlue text-shadowLightBlue rounded"
+					? "bg-shadowDarkBlue text-shadowLightBlue rounded dark:bg-coolBlack"
 					: "hover:opacity-80 hover:-translate-y-[1px]"
 			}`}
 			>

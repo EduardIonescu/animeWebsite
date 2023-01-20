@@ -13,7 +13,6 @@ export default function SearchBarResults({
 
 	useEffect(() => {
 		function handleClickOutside(e) {
-			console.log(e.target);
 			if (
 				resultsRef.current &&
 				!resultsRef.current.contains(e.target) &&

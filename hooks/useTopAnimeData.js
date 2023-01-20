@@ -17,19 +17,14 @@ export default function useTopAnimeData(type = "popular") {
 	useEffect(() => {
 		let ignore = false;
 		const urls = type == "popular" ? popularAnimeUrls : trendingAnimeUrls;
-		console.log("it fires again?");
 		async function startFetching() {
 			const data = await Promise.all(
 				urls.map(async (url) => {
-					// API allows only 3 requests per second so I have to delay requests
-					// React strict doubles my requests, making them 4 instead of 2
-					// Remove next line on deployment
 					return await getData(url);
 				})
 			);
 
 			if (!ignore) {
-				console.log("wtf?", data);
 				setAnimeData([...data[0].data, ...data[1].data]);
 			}
 		}

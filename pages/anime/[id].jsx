@@ -14,7 +14,6 @@ export default function Anime() {
 					animeData={animeData}
 					animeId={animeId}
 				/>
-				{console.log(animeData)}
 			</>
 		);
 	/* Add loading page */ else

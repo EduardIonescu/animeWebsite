@@ -4,7 +4,6 @@ export default function AnimeCharactersSection({ characters }) {
 		<section>
 			{characters && characters.length >= 1 ? (
 				<ul>
-					{console.log("characters", characters)}
 					{characters.map((character, i) => (
 						<CharacterCard
 							key={i}

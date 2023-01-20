@@ -19,11 +19,10 @@ export default function SectionTop({ animeData }) {
 	);
 	return (
 		<section>
-			{console.log("relationsWithoutManga", relationsWithoutManga)}
 			<article className="flex gap-4 mt-2">
 				<div
 					className="bg-blue-200/40 py-4 px-2 flex items-center border-[1px]
-    shadow w-full"
+    shadow w-full rounded dark:bg-coolBlack/80 dark:border-coolBlack"
 				>
 					<div
 						className="flex flex-col items-center border-r-[1px] border-black/20
@@ -72,12 +71,12 @@ export default function SectionTop({ animeData }) {
 			</article>
 			<article className="mt-6">
 				<h3 className="font-bold">Synopsis</h3>
-				<hr className="border-black/20 my-1" />
+				<hr className="border-black/20 my-1 dark:border-coolBlack" />
 				<p className="text-[12px] whitespace-pre-wrap">{synopsis}</p>
 			</article>
 			<article className="mt-6">
 				<h3 className="font-bold">Background</h3>
-				<hr className="border-black/20 my-1" />
+				<hr className="border-black/20 my-1 dark:border-coolBlack" />
 				<p className="text-[12px] whitespace-pre-wrap">
 					{background || "This title has no background information."}
 				</p>
@@ -85,16 +84,17 @@ export default function SectionTop({ animeData }) {
 			{relations && relations.length >= 1 && (
 				<article className="mt-6">
 					<h3 className="font-bold">Related Anime</h3>
-					<hr className="border-black/20 my-1" />
+					<hr className="border-black/20 my-1 dark:border-coolBlack" />
 
 					<table>
 						<tbody className="">
 							{relationsWithoutManga.map((relation, i) => (
 								<tr
 									key={i}
-									className="text-[12px] border-b-[1px] leading-7"
+									className="text-[12px] border-b-[1px] leading-7 
+									dark:border-coolBlack"
 								>
-									<td className="a whitespace-pre text-right align-top">
+									<td className="whitespace-pre text-right align-top">
 										{relation.relation}:{" "}
 									</td>
 									<td>

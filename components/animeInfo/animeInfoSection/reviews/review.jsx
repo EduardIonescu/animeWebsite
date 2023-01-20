@@ -15,6 +15,7 @@ export default function Review({ review }) {
 	return (
 		<article
 			className="flex py-4 border-b-[1px] border-black/10 items-start
+			dark:border-coolBlack/80
   "
 		>
 			<div className="relative h-16 w-[44px] shrink-0">
@@ -84,7 +85,7 @@ export default function Review({ review }) {
 								sizes="100%"
 								alt=""
 								aria-hidden="true"
-								className={`transition duration-200 mt-[1px]  ${
+								className={`transition duration-200 mt-[1px] dark:invert  ${
 									readMore ? "rotate-180" : ""
 								}`}
 							/>
