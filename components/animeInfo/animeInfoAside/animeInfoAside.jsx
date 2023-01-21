@@ -7,7 +7,7 @@ import StreamingPlatforms from "./streamingPlatforms";
 export default function AnimeInfoAside({ animeData }) {
 	return (
 		<aside className="w-full xl:w-[25%] px-4 border-r-[1px] order-2 xl:order-1">
-			<div className="h-[400px] w-[268px] relative pb-4">
+			<div className="hidden xl:block h-[400px] w-[268px] relative pb-4">
 				<Image
 					src={animeData.images.jpg.large_image_url}
 					fill
