@@ -2,7 +2,7 @@ export default function Loading() {
 	return (
 		<section
 			className="w-full h-[calc(100vh-64px)] mx-auto py-12 px-4 
-    bg-shadowLightBlue"
+    bg-shadowLightBlue dark:bg-veryDarkBlue"
 		>
 			<LoadingSpinner />
 		</section>

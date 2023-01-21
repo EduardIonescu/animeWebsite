@@ -14,7 +14,9 @@ export default function AnimeCard({ animeData }) {
 		<Link href={`/anime/${id}`}>
 			<article
 				/* card class for linear-gradient background transition */
-				className="card w-[380px] border-[1px] flex items-center transition 
+				className="card w-[100%] md:w-[21rem] lg:w-[28.5rem] xl:w-[380px]
+				 border-[1px] flex items-center 
+				transition max-w-[calc(100vw-32px)] sm:max-w-[512px]
 			duration-300 gap-4 shadow-md hover:-translate-x-[1px] relative
 			hover:-translate-y-[2px] cursor-pointer hover:shadow-xl group rounded 
 			overflow-hidden dark:bg-darkBlueDark dark:border-darkBlue 
@@ -31,7 +33,7 @@ export default function AnimeCard({ animeData }) {
 					/>
 				</div>
 				{/* Maybe switch whitespace-nowrap to line-clamp */}
-				<div className=" whitespace-nowrap pb-1">
+				<div className="whitespace-nowrap overflow-hidden pb-1">
 					<div
 						className="absolute top-0 text-[11px] bg-darkBlue/75
 				text-shadowLightBlue flex items-center gap-1 py-[2px] px-1 rounded-b-md
@@ -64,7 +66,7 @@ export default function AnimeCard({ animeData }) {
 						</div>{" "}
 						{year}
 					</div>
-					<h2 className="text-base font-medium ">{title}</h2>
+					<h2 className="text-base font-medium">{title}</h2>
 					<p className="text-sm opacity-60">{titleJapanese}</p>
 				</div>
 			</article>

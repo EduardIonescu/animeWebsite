@@ -8,9 +8,10 @@ export default function Home() {
 	const [showTrending, setShowTrending] = useState(false);
 	return (
 		<main
-			className="w-[75rem] h-[100%] mx-auto py-4 px-4 bg-shadowLightBlue
-			dark:bg-veryDarkBlue dark:text-veryLightGray
-    text-shadowDarkBlue"
+			className="w-[100vw] sm:w-[34rem] md:w-[45rem] lg:w-[60rem]
+			xl:w-[75rem] h-[100%]
+			mx-auto py-4 px-4 bg-shadowLightBlue dark:bg-veryDarkBlue
+			 dark:text-veryLightGray text-shadowDarkBlue"
 		>
 			<nav className="flex gap-5 mb-6 ml-2">
 				<button

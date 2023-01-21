@@ -5,7 +5,7 @@ export default function SectionNavbar({ page, setPage }) {
 	const setPageRecommendations = () => setPage("recommendations");
 	return (
 		<nav
-			className="flex gap-4 text-[14px] text-lighterBlue
+			className="hidden xl:flex gap-4 text-[14px] text-lighterBlue
      w-full border-b-[1px] border-black/20"
 		>
 			<button

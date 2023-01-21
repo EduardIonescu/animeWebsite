@@ -32,7 +32,7 @@ export default function List() {
 
 	return (
 		<main
-			className="w-[75rem] h-[100%] mx-auto py-4 px-4 bg-shadowLightBlue
+			className="xl:w-[75rem] h-[100%] mx-auto py-4 px-4 bg-shadowLightBlue
 	text-shadowDarkBlue min-h-[calc(100vh-64px)]"
 		>
 			<SelectForm

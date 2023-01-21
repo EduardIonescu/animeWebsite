@@ -6,8 +6,10 @@ export default function AnimeInfo({ animeData, animeId }) {
 
 	return (
 		<main
-			className="w-[75rem] h-[100%] mx-auto pb-8 bg-shadowLightBlue
-  text-shadowDarkBlue flex flex-wrap dark:bg-veryDarkBlue 
+			className="w-[100vw] sm:w-[34rem] md:w-[45rem] lg:w-[60rem]
+			xl:w-[75rem] h-[100%] mx-auto pb-8 bg-shadowLightBlue
+  text-shadowDarkBlue flex flex-col xl:flex-row flex-wrap 
+	dark:bg-veryDarkBlue 
 	dark:text-veryLightGray"
 		>
 			<nav
@@ -15,8 +17,14 @@ export default function AnimeInfo({ animeData, animeId }) {
        shadow-blue-400/50 border-b-[1px] border-shadowDarkBlue/50
 			 dark:bg-black/25 dark:shadow-blue-400/20 "
 			>
-				<h1 className="font-bold text-lg">{titleEnglish}</h1>
-				<h2 className="opacity-70 text-base">{title}</h2>
+				{titleEnglish == title ? (
+					<h1 className="font-bold text-lg">{titleEnglish}</h1>
+				) : (
+					<>
+						<h1 className="font-bold text-lg">{titleEnglish}</h1>
+						<h2 className="opacity-70 text-base">{title}</h2>
+					</>
+				)}
 			</nav>
 			<AnimeInfoAside key={`aside-${animeId}`} animeData={animeData} />
 			<AnimeInfoSection

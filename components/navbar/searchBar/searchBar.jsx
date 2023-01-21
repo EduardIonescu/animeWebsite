@@ -11,7 +11,7 @@ export default function SearchBar() {
 		setQuery(e.target.value);
 	}
 	return (
-		<article className="relative">
+		<article className=" w-full lg:w-80">
 			<input
 				ref={searchRef}
 				onInput={handleChange}
@@ -19,8 +19,8 @@ export default function SearchBar() {
 				placeholder="Search anime..."
 				maxLength={32}
 				className="
-    h-10 w-80 pl-5 pr-2 border-[2px] border-darkBlue rounded-full 
-		bg-white dark:bg-transparent 
+    h-12 lg:h-10  w-full pl-5 pr-2 border-[2px] border-darkBlue rounded-full 
+		bg-white dark:bg-transparent
     focus:outline-none transition duration-300 focus:border-lighterBlue
     hover:border-lighterBlue text-darkBlue text-sm dark:text-veryLightGray
 		dark:placeholder:text-veryLightGray"

@@ -17,7 +17,7 @@ export default function DarkModeButton() {
 			<button
 				type="button"
 				onClick={() => setTheme(theme == "light" ? "dark" : "light")}
-				className="ml-auto mr-4 w-6 h-6 relative"
+				className="w-6 h-6 relative"
 			>
 				<Image
 					src={theme == "light" ? MoonIcon : SunIcon}

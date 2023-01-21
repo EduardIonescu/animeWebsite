@@ -1,5 +1,8 @@
 import InlineLinks from "../../inlineLinks";
 import TrailerModal from "./trailerModal";
+import Image from "next/image";
+import Synopsis from "./topInfo/synopsis";
+import starIcon from "../../../../public/icons/star-icon.svg";
 export default function SectionTop({ animeData }) {
 	const {
 		score,
@@ -11,6 +14,10 @@ export default function SectionTop({ animeData }) {
 		background,
 		relations,
 		trailer,
+		images,
+		type,
+		aired,
+		studios,
 	} = animeData;
 
 	const relationsWithoutManga = relations.filter(
@@ -19,7 +26,59 @@ export default function SectionTop({ animeData }) {
 	);
 	return (
 		<section>
-			<article className="flex gap-4 mt-2">
+			<article className="flex xl:hidden gap-2 text-xs text-darkGray">
+				<div className="relative w-28 h-40 shrink-0 rounded overflow-hidden">
+					<Image
+						src={images.jpg.image_url}
+						fill
+						sizes="100%"
+						alt=""
+						aria-hidden="true"
+						className="object-cover"
+					/>
+				</div>
+				<div className="">
+					<div className="  flex items-center gap-1">
+						<div className="relative w-4 h-4">
+							<Image
+								src={starIcon}
+								fill
+								sizes="100%"
+								alt=""
+								aria-hidden="true"
+							/>
+						</div>
+						<p>
+							<span className="text-veryLightGray text-lg ">
+								{score || None}
+							</span>{" "}
+							(
+							{(scored_by && scored_by.toLocaleString("en")) || 0}{" "}
+							users)
+						</p>
+					</div>
+					<p className="text-sm text-veryLightGray">
+						Ranked #{rank || None}
+					</p>
+					<p className="text-base mt-4 mb-1 text-veryLightGray">
+						{type}
+					</p>
+					<p>Aired</p>
+					{console.log(studios)}
+					<p className=" text-veryLightGray">
+						{aired && aired.string}
+					</p>
+					<p>Studios</p>
+					{studios && studios.length >= 1 ? (
+						<p className="text-sm">
+							<InlineLinks array={studios} />
+						</p>
+					) : (
+						<p>None</p>
+					)}
+				</div>
+			</article>
+			<article className="hidden xl:flex gap-4 mt-2">
 				<div
 					className="bg-blue-200/40 py-4 px-2 flex items-center border-[1px]
     shadow w-full rounded dark:bg-coolBlack/80 dark:border-coolBlack"
@@ -69,18 +128,7 @@ export default function SectionTop({ animeData }) {
 					</>
 				)}
 			</article>
-			<article className="mt-6">
-				<h3 className="font-bold">Synopsis</h3>
-				<hr className="border-black/20 my-1 dark:border-coolBlack" />
-				<p className="text-[12px] whitespace-pre-wrap">{synopsis}</p>
-			</article>
-			<article className="mt-6">
-				<h3 className="font-bold">Background</h3>
-				<hr className="border-black/20 my-1 dark:border-coolBlack" />
-				<p className="text-[12px] whitespace-pre-wrap">
-					{background || "This title has no background information."}
-				</p>
-			</article>
+			<Synopsis synopsis={synopsis} background={background} />
 			{relations && relations.length >= 1 && (
 				<article className="mt-6">
 					<h3 className="font-bold">Related Anime</h3>

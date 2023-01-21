@@ -16,7 +16,7 @@ export default function Links() {
 	const router = useRouter();
 	return (
 		<ul
-			className="flex gap-6 ml-32 font-medium text-[18px]
+			className="flex gap-6 lg:ml-32 font-medium text-base lg:text-[18px]
   h-[18px]"
 		>
 			{links.map((link, i) => (
@@ -27,9 +27,9 @@ export default function Links() {
 							link.address == "/"
 								? "leading-[16px]"
 								: "leading-[18px]"
-						} relative before:-bottom-[21px]
+						} relative before:-bottom-2 lg:before:-bottom-[21px]
             before:content-[''] before:absolute before:block before:w-full
-             before:h-[4px] before:left-0 before:bg-[#ffc43d]
+            before:h-[2px] lg:before:h-[4px] before:left-0 before:bg-[#ffc43d]
             before:scale-x-0 before:transition-transform before:duration-300
              ${
 					router.pathname == link.address // underline on focus
@@ -38,7 +38,7 @@ export default function Links() {
 				}`}
 					>
 						{" "}
-						<div className="relative w-5 h-5">
+						<div className="relative w-4 h-4 mb-[1px] lg:mb-0 lg:w-5 lg:h-5">
 							<Image
 								src={link.src}
 								fill

@@ -16,7 +16,7 @@ export default function AnimeInfoSection({ animeData, animeId }) {
 	const [recommendations] = useRecommendationsData(animeId);
 	const [page, setPage] = useState("details");
 	return (
-		<section className="w-[75%] px-4">
+		<section className="w-full xl:w-[75%] px-4 order-1 xl:order-2">
 			<SectionNavbar page={page} setPage={setPage} />
 			{page == "details" && (
 				<>
