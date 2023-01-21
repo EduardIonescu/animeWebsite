@@ -2,7 +2,6 @@ import { useRef, useState } from "react";
 import RecommendationCard from "./recommendationCard";
 import ReadMoreButton from "../../../readMoreButton";
 import Slider from "react-slick";
-//import { useSwipeable } from "react-swipeable";
 
 export default function SectionRecommendations({
 	setPage,
@@ -11,27 +10,45 @@ export default function SectionRecommendations({
 	const settings = {
 		dots: false,
 		infinite: true,
-		speed: 500,
-		slidesToShow: 3,
-		slidesToScroll: 3,
+		speed: 300,
+		slidesToShow: 8,
+		swipeToSlide: true,
 		slide: "ul",
+		nextArrow: <NextArrow />,
+		prevArrow: <PrevArrow />,
+		responsive: [
+			{
+				breakpoint: 1024,
+				settings: {
+					slidesToShow: 6,
+				},
+			},
+			{
+				breakpoint: 768,
+				settings: {
+					slidesToShow: 5,
+				},
+			},
+			{
+				breakpoint: 600,
+				settings: {
+					slidesToShow: 4,
+				},
+			},
+			{
+				breakpoint: 480,
+				settings: {
+					slidesToShow: 3,
+				},
+			},
+		],
 	};
 	const [recommendations, setRecommendations] = useState(
 		initialRecommendations
 	);
 	const [readMore, setReadMore] = useState(true);
 	const ulRef = useRef(null);
-	/*
-	// Maybe implement useSwipeable later
-	const handlers = useSwipeable({
-		onSwipedLeft: handleClickNext,
-		onSwipedRight: handleClickPrevious,
-		delta: 50,
-		swipeDuration: 1000,
-		preventScrollOnSwipe: true,
-		trackMouse: true,
-	});
-	*/
+
 	const viewAllRecommendations = () => {
 		setPage("recommendations");
 		window.scrollTo(0, 0);
@@ -58,11 +75,13 @@ export default function SectionRecommendations({
 		return (
 			<section className="mt-6 order-1">
 				<h3 className="font-bold hidden xl:block">Recommendations</h3>
-				<ReadMoreButton
-					readMore={readMore}
-					setReadMore={setReadMore}
-					name="Recommendations"
-				/>
+				<div className="xl:hidden">
+					<ReadMoreButton
+						readMore={readMore}
+						setReadMore={setReadMore}
+						name="Recommendations"
+					/>
+				</div>
 				<hr className="border-black/20 my-1 dark:border-coolBlack" />
 				<section className="h-36 hidden xl:flex">
 					<div className="overflow-hidden w-full relative group">
@@ -122,16 +141,41 @@ export default function SectionRecommendations({
 						View All
 					</button>
 				</section>
-				<section className="xl:hidden">
-					<Slider {...settings}>
-						{recommendations.map((recommendation, i) => (
-							<RecommendationCard
-								key={i}
-								recommendation={recommendation}
-							/>
-						))}
-					</Slider>
+				<section className="xl:hidden list-none">
+					{recommendations && recommendations.length >= 1 && (
+						<Slider
+							{...settings}
+							className="w-[90%] sm:w-[98%] md:w-[95%] mx-auto px-1"
+						>
+							{recommendations.map((recommendation, i) => (
+								<RecommendationCard
+									key={i}
+									recommendation={recommendation}
+								/>
+							))}
+						</Slider>
+					)}
 				</section>
 			</section>
 		);
+}
+
+function NextArrow({ className, style, onClick }) {
+	return (
+		<div
+			className={className}
+			style={{ ...style, marginRight: "0.3rem" }}
+			onClick={onClick}
+		></div>
+	);
+}
+
+function PrevArrow({ className, style, onClick }) {
+	return (
+		<div
+			className={className}
+			style={{ ...style, marginLeft: "0.3rem" }}
+			onClick={onClick}
+		></div>
+	);
 }

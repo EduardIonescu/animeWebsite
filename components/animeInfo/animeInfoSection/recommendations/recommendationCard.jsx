@@ -28,7 +28,7 @@ export default function RecommendationCard({ recommendation }) {
 				<p
 					className="absolute bottom-0 left-0 text-white text-[12px] 
         bg-gradient-to-t from-black to-transparent pt-1 pb-[1px] px-1 
-        break-words
+        break-words w-full max-h-10
      "
 				>
 					{recommendation.entry.title}
