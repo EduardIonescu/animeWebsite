@@ -23,7 +23,7 @@ export default function SearchBarResults({
 		document.addEventListener("mousedown", handleClickOutside);
 		return () =>
 			document.removeEventListener("mousedown", handleClickOutside);
-	}, [resultsRef]);
+	}, [resultsRef, searchRef, setSearchIsActive]);
 
 	return (
 		<div

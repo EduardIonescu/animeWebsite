@@ -51,7 +51,7 @@ export default function Review({ review }) {
 				</p>
 				{readMore && (
 					<p className="my-4">
-						Reviewer's Rating: <strong>{review.score}</strong>
+						Reviewer&apos;s Rating: <strong>{review.score}</strong>
 					</p>
 				)}
 				<div className="flex px-3 mt-2 items-center gap-16">

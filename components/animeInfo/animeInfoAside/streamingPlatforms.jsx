@@ -24,6 +24,7 @@ export default function StreamingPlatforms({ streaming }) {
 						<a
 							href={platform.url}
 							target="_blank"
+							rel="noreferrer"
 							className="text-lighterBlue transition duration-300 
       hover:opacity-80"
 						>
@@ -38,6 +39,7 @@ export default function StreamingPlatforms({ streaming }) {
 						<a
 							href={platform.url}
 							target="_blank"
+							rel="noreferrer"
 							className="text-lighterBlue transition duration-300 
       hover:opacity-80"
 						>

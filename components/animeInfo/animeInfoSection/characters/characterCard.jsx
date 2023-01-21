@@ -58,8 +58,8 @@ export default function CharacterCard({
 			)}
 			{voice_actors.length >= 1 && isPage && (
 				<ul className="flex flex-col items-end">
-					{voice_actors.map((voiceActor) => (
-						<li className="flex gap-2">
+					{voice_actors.map((voiceActor, i) => (
+						<li key={i} className="flex gap-2">
 							<div className="text-end">
 								<h4 className="text-[14px] mb-1">
 									{voiceActor.person.name}
