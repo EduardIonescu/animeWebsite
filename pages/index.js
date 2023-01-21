@@ -3,8 +3,37 @@ import { useState } from "react";
 import Image from "next/image";
 import popularIcon from "../public/icons/popular-icon.svg";
 import trendingIcon from "../public/icons/trending-icon.svg";
+import getData from "../lib/getData";
+import { popularAnimeUrls, trendingAnimeUrls } from "../constants/urls";
 
-export default function Home() {
+export async function getStaticProps() {
+	// I want 50 items, the limit is 25 per page
+
+	const popularAnimeData = await Promise.all(
+		popularAnimeUrls.map(async (url) => {
+			return await getData(url);
+		})
+	);
+	const trendingAnimeData = await Promise.all(
+		trendingAnimeUrls.map(async (url) => {
+			return await getData(url);
+		})
+	);
+	return {
+		props: {
+			popularAnimeData: [
+				...popularAnimeData[0].data,
+				...popularAnimeData[1].data,
+			],
+			trendingAnimeData: [
+				...trendingAnimeData[0].data,
+				...trendingAnimeData[1].data,
+			],
+		},
+	};
+}
+
+export default function Home({ popularAnimeData, trendingAnimeData }) {
 	const [showTrending, setShowTrending] = useState(false);
 	return (
 		<main
@@ -74,7 +103,11 @@ export default function Home() {
 				</button>
 			</nav>
 
-			<TopAnimeSection showTrending={showTrending} />
+			<TopAnimeSection
+				showTrending={showTrending}
+				popularAnimeData={popularAnimeData}
+				trendingAnimeData={trendingAnimeData}
+			/>
 		</main>
 	);
 }

@@ -2,47 +2,12 @@ import { useRef, useState } from "react";
 import RecommendationCard from "./recommendationCard";
 import ReadMoreButton from "../../../readMoreButton";
 import Slider from "react-slick";
+import sliderSettings from "../../../../constants/sliderSettings";
 
 export default function SectionRecommendations({
 	setPage,
 	initialRecommendations,
 }) {
-	const settings = {
-		dots: false,
-		infinite: true,
-		speed: 300,
-		slidesToShow: 8,
-		swipeToSlide: true,
-		slide: "ul",
-		nextArrow: <NextArrow />,
-		prevArrow: <PrevArrow />,
-		responsive: [
-			{
-				breakpoint: 1024,
-				settings: {
-					slidesToShow: 6,
-				},
-			},
-			{
-				breakpoint: 768,
-				settings: {
-					slidesToShow: 5,
-				},
-			},
-			{
-				breakpoint: 600,
-				settings: {
-					slidesToShow: 4,
-				},
-			},
-			{
-				breakpoint: 480,
-				settings: {
-					slidesToShow: 3,
-				},
-			},
-		],
-	};
 	const [recommendations, setRecommendations] = useState(
 		initialRecommendations
 	);
@@ -86,7 +51,6 @@ export default function SectionRecommendations({
 				<section className="h-36 hidden xl:flex">
 					<div className="overflow-hidden w-full relative group">
 						<ul
-							//{...handlers}
 							ref={ulRef}
 							className={`flex gap-2 max-h-full w-[3000px] relative select-none ${
 								recommendations.length > 8 && "-left-[728px]"
@@ -144,7 +108,9 @@ export default function SectionRecommendations({
 				<section className="xl:hidden list-none">
 					{recommendations && recommendations.length >= 3 ? (
 						<Slider
-							{...settings}
+							{...sliderSettings}
+							nextArrow={<NextArrow />}
+							prevArrow={<PrevArrow />}
 							className="w-[90%] sm:w-[98%] md:w-[95%] mx-auto px-1"
 						>
 							{recommendations.map((recommendation, i) => (
