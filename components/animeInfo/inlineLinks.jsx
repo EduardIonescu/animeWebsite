@@ -8,7 +8,7 @@ export default function InlineLinks({ array, samePage }) {
 						<a
 							href={item.url}
 							target="_blank"
-							rel="norefferer"
+							rel="noreferrer"
 							className="text-lighterBlue transition duration-300 
       hover:brightness-150"
 						>
