@@ -10,8 +10,8 @@ export default function ReadMoreButton({ readMore, setReadMore, name }) {
 			className={`pt-[2px] 
 transition duration-300 ${
 				name
-					? "text-base text-veryLightGray font-bold"
-					: "hover:text-lighterBlue opacity-75 "
+					? "text-base text-darkBlue dark:text-veryLightGray font-bold"
+					: "hover:text-lighterBlue opacity-75"
 			}`}
 		>
 			<div className="w-3 h-3 relative inline-block mr-[1px]">

@@ -142,7 +142,7 @@ export default function SectionRecommendations({
 					</button>
 				</section>
 				<section className="xl:hidden list-none">
-					{recommendations && recommendations.length >= 1 && (
+					{recommendations && recommendations.length >= 3 ? (
 						<Slider
 							{...settings}
 							className="w-[90%] sm:w-[98%] md:w-[95%] mx-auto px-1"
@@ -154,6 +154,15 @@ export default function SectionRecommendations({
 								/>
 							))}
 						</Slider>
+					) : (
+						<ul>
+							{recommendations.map((recommendation, i) => (
+								<RecommendationCard
+									key={i}
+									recommendation={recommendation}
+								/>
+							))}
+						</ul>
 					)}
 				</section>
 			</section>
@@ -163,7 +172,7 @@ export default function SectionRecommendations({
 function NextArrow({ className, style, onClick }) {
 	return (
 		<div
-			className={className}
+			className={`${className} invert dark:invert-0`}
 			style={{ ...style, marginRight: "0.3rem" }}
 			onClick={onClick}
 		></div>
@@ -173,7 +182,7 @@ function NextArrow({ className, style, onClick }) {
 function PrevArrow({ className, style, onClick }) {
 	return (
 		<div
-			className={className}
+			className={`${className} invert dark:invert-0`}
 			style={{ ...style, marginLeft: "0.3rem" }}
 			onClick={onClick}
 		></div>

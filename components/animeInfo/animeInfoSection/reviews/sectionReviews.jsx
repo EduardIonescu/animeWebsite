@@ -27,7 +27,11 @@ export default function SectionReviews({ reviews }) {
 							))}
 						</section>
 					) : (
-						<section className="text-xs">
+						<section
+							className={`text-xs transition-all duration-500 
+						xl:transition-none ${readMore ? "max-h-8" : "max-h-0"} 
+						overflow-hidden`}
+						>
 							No reviews have been submitted for this title.
 						</section>
 					)}

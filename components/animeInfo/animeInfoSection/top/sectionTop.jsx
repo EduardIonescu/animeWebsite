@@ -27,7 +27,10 @@ export default function SectionTop({ animeData }) {
 	);
 	return (
 		<section className="order-0">
-			<article className="flex xl:hidden gap-2 text-xs text-darkGray">
+			<article
+				className="flex xl:hidden gap-2 text-xs text-darkBlue 
+			dark:text-darkGray"
+			>
 				<div className="relative w-28 h-40 shrink-0 rounded overflow-hidden">
 					<Image
 						src={images.jpg.image_url}
@@ -50,23 +53,29 @@ export default function SectionTop({ animeData }) {
 							/>
 						</div>
 						<p>
-							<span className="text-veryLightGray text-lg ">
-								{score || None}
+							<span
+								className="text-darkBlue dark:text-veryLightGray 
+							text-lg font-medium"
+							>
+								{score || "None"}
 							</span>{" "}
 							(
 							{(scored_by && scored_by.toLocaleString("en")) || 0}{" "}
 							users)
 						</p>
 					</div>
-					<p className="text-sm text-veryLightGray">
-						Ranked #{rank || None}
+					<p className="text-sm text-darkBlue dark:text-veryLightGray">
+						Ranked #{rank || "None"}
 					</p>
-					<p className="text-base mt-4 mb-1 text-veryLightGray">
+					<p
+						className="text-base mt-4 mb-1 text-darkBlue 
+					dark:text-veryLightGray"
+					>
 						{type}
 					</p>
 					<p>Aired</p>
 					{console.log(studios)}
-					<p className=" text-veryLightGray">
+					<p className="text-darkBlue dark:text-veryLightGray">
 						{aired && aired.string}
 					</p>
 					<p>Studios</p>

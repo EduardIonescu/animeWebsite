@@ -34,16 +34,21 @@ export default function Synopsis({ synopsis, background }) {
 				<p className="text-sm whitespace-pre-wrap">
 					{background || "This title has no background information."}
 				</p>
-				{!readMore && (
+				{!readMore && (synopsis || background) && (
 					<div
-						className="absolute bottom-0 w-full z-10  h-8
-          bg-gradient-to-t from-veryDarkBlue to-transparent"
+						className="absolute bottom-0 w-full z-10  h-8 bg-gradient-to-t 
+						from-shadowLightBlue dark:from-veryDarkBlue to-transparent"
 					></div>
 				)}
 			</article>
-			<div className="w-full block text-right xl:hidden">
-				<ReadMoreButton readMore={readMore} setReadMore={setReadMore} />
-			</div>
+			{(synopsis || background) && (
+				<div className="w-full block text-right xl:hidden pr-1">
+					<ReadMoreButton
+						readMore={readMore}
+						setReadMore={setReadMore}
+					/>
+				</div>
+			)}
 		</>
 	);
 }

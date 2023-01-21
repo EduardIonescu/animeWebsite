@@ -28,12 +28,12 @@ export default function SearchBarResults({
 	return (
 		<div
 			onClick={() => setSearchIsActive(false)}
-			className="absolute z-20 text-darkBlue bg-transparent px-4 w-full
-		top-10 "
+			className="absolute z-20 text-darkBlue bg-transparent dark:text-veryLightGray
+			px-4 w-full top-12 xl:top-10 "
 			ref={resultsRef}
 		>
 			{resultsData ? (
-				<ul className="bg-white overflow-hidden rounded">
+				<ul className="bg-white dark:bg-darkBlueDark overflow-hidden rounded">
 					{resultsData.map((result, i) => (
 						<li
 							key={result.id}
@@ -70,12 +70,6 @@ export default function SearchBarResults({
 								<p className="hidden group-hover:block opacity-50">
 									Score: {result.rating}
 								</p>
-								{/*<p className="hidden group-hover:block opacity-50">
-										Status:{" "}
-										{result.airing
-											? "Finished Airing"
-											: "Ongoing"}
-									</p>*/}
 							</div>
 						</li>
 					))}

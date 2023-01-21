@@ -11,7 +11,7 @@ export default function SearchBar() {
 		setQuery(e.target.value);
 	}
 	return (
-		<article className=" w-full lg:w-80">
+		<article className=" w-full lg:w-80 relative">
 			<input
 				ref={searchRef}
 				onInput={handleChange}
