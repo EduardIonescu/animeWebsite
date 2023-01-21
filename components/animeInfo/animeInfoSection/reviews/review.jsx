@@ -17,7 +17,7 @@ export default function Review({ review }) {
 		>
 			<div className="relative h-16 w-[44px] shrink-0">
 				<Image
-					src={review.user.images.jpg.image_url}
+					src={review.user.images.webp.image_url}
 					fill
 					sizes="100%"
 					alt=""

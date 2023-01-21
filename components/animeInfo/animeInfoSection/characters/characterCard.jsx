@@ -19,7 +19,7 @@ export default function CharacterCard({
 				>
 					<Image
 						className="object-cover"
-						src={character.images.jpg.image_url}
+						src={character.images.webp.image_url}
 						fill
 						sizes="100%"
 						alt=""

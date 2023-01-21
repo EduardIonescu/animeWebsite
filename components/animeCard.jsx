@@ -4,7 +4,7 @@ import calendarIcon from "../public/icons/calendar-icon.svg";
 import Link from "next/link";
 
 export default function AnimeCard({ animeData }) {
-	const imageUrl = animeData.images.jpg.image_url;
+	const imageUrl = animeData.images.webp.image_url;
 	const title = animeData.title_english;
 	const titleJapanese = animeData.title;
 	const score = animeData.score;

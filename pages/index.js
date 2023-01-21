@@ -8,7 +8,6 @@ import { popularAnimeUrls, trendingAnimeUrls } from "../constants/urls";
 
 export async function getStaticProps() {
 	// I want 50 items, the limit is 25 per page
-
 	const popularAnimeData = await Promise.all(
 		popularAnimeUrls.map(async (url) => {
 			return await getData(url);

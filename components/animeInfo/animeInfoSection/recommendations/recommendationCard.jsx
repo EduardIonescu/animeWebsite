@@ -12,7 +12,7 @@ export default function RecommendationCard({ recommendation }) {
 				className="h-[144px] w-24 relative block"
 			>
 				<Image
-					src={recommendation.entry.images.jpg.image_url}
+					src={recommendation.entry.images.webp.image_url}
 					fill
 					sizes="100%"
 					alt=""

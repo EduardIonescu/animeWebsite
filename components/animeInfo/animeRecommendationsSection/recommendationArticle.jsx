@@ -12,7 +12,7 @@ export default function RecommendationArticle({ recommendation, index }) {
          hover:rotate-2 hover:shadow-xl hover:-translate-y-1 group"
 			>
 				<Image
-					src={images.jpg.large_image_url}
+					src={images.webp.large_image_url}
 					fill
 					sizes="100%"
 					alt=""
