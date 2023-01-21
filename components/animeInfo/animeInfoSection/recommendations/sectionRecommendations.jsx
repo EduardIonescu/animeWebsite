@@ -1,14 +1,25 @@
 import { useRef, useState } from "react";
 import RecommendationCard from "./recommendationCard";
+import ReadMoreButton from "../../../readMoreButton";
+import Slider from "react-slick";
 //import { useSwipeable } from "react-swipeable";
 
 export default function SectionRecommendations({
 	setPage,
 	initialRecommendations,
 }) {
+	const settings = {
+		dots: false,
+		infinite: true,
+		speed: 500,
+		slidesToShow: 3,
+		slidesToScroll: 3,
+		slide: "ul",
+	};
 	const [recommendations, setRecommendations] = useState(
 		initialRecommendations
 	);
+	const [readMore, setReadMore] = useState(true);
 	const ulRef = useRef(null);
 	/*
 	// Maybe implement useSwipeable later
@@ -45,10 +56,15 @@ export default function SectionRecommendations({
 	}
 	if (recommendations.length >= 1)
 		return (
-			<section className="mt-6">
-				<h3 className="font-bold">Recommendations</h3>
+			<section className="mt-6 order-1">
+				<h3 className="font-bold hidden xl:block">Recommendations</h3>
+				<ReadMoreButton
+					readMore={readMore}
+					setReadMore={setReadMore}
+					name="Recommendations"
+				/>
 				<hr className="border-black/20 my-1 dark:border-coolBlack" />
-				<section className="h-36 flex  ">
+				<section className="h-36 hidden xl:flex">
 					<div className="overflow-hidden w-full relative group">
 						<ul
 							//{...handlers}
@@ -101,10 +117,20 @@ export default function SectionRecommendations({
 						type="button"
 						className="h-full w-24 bg-black/10 hover:opacity-80 transition
 						duration-200 right-0 top-0 ml-2 shrink-0 dark:bg-coolBlack/50
-						brightness-100 dark:hover:brightness-125"
+						brightness-100 dark:hover:brightness-125 hidden xl:block"
 					>
 						View All
 					</button>
+				</section>
+				<section className="xl:hidden">
+					<Slider {...settings}>
+						{recommendations.map((recommendation, i) => (
+							<RecommendationCard
+								key={i}
+								recommendation={recommendation}
+							/>
+						))}
+					</Slider>
 				</section>
 			</section>
 		);

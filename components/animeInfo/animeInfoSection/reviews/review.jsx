@@ -13,8 +13,7 @@ export default function Review({ review }) {
 	return (
 		<article
 			className="flex py-4 border-b-[1px] border-black/10 items-start
-			dark:border-coolBlack/80
-  "
+			dark:border-coolBlack/80"
 		>
 			<div className="relative h-16 w-[44px] shrink-0">
 				<Image
@@ -46,7 +45,7 @@ export default function Review({ review }) {
 				</button>
 				<p
 					className={`whitespace-pre-wrap leading-[1.5em] 
-    ${readMore ? "" : "line-clamp-4"}`}
+    ${readMore ? "" : "line-clamp-4"} `}
 				>
 					{review.review}
 				</p>

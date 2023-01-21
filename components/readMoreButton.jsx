@@ -1,5 +1,5 @@
 import Image from "next/image";
-export default function ReadMoreButton({ readMore, setReadMore }) {
+export default function ReadMoreButton({ readMore, setReadMore, name }) {
 	function toggleReadMore() {
 		setReadMore((rm) => !rm);
 	}
@@ -7,8 +7,12 @@ export default function ReadMoreButton({ readMore, setReadMore }) {
 		<button
 			onClick={toggleReadMore}
 			type="button"
-			className="pt-[2px] opacity-75 hover:text-lighterBlue
-transition duration-300"
+			className={`pt-[2px] 
+transition duration-300 ${
+				name
+					? "text-base text-veryLightGray font-bold"
+					: "hover:text-lighterBlue opacity-75 "
+			}`}
 		>
 			<div className="w-3 h-3 relative inline-block mr-[1px]">
 				<Image
@@ -22,7 +26,7 @@ transition duration-300"
 					}`}
 				/>
 			</div>{" "}
-			{readMore ? "Show less" : "Read more"}
+			{name ? name : readMore ? "Show less" : "Read more"}
 		</button>
 	);
 }

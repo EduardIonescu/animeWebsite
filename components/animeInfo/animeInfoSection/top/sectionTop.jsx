@@ -2,6 +2,7 @@ import InlineLinks from "../../inlineLinks";
 import TrailerModal from "./trailerModal";
 import Image from "next/image";
 import Synopsis from "./topInfo/synopsis";
+import RelatedAnime from "./topInfo/relatedAnime";
 import starIcon from "../../../../public/icons/star-icon.svg";
 export default function SectionTop({ animeData }) {
 	const {
@@ -25,7 +26,7 @@ export default function SectionTop({ animeData }) {
 			relation.entry.filter((entry) => entry.type != "manga").length >= 1
 	);
 	return (
-		<section>
+		<section className="order-0">
 			<article className="flex xl:hidden gap-2 text-xs text-darkGray">
 				<div className="relative w-28 h-40 shrink-0 rounded overflow-hidden">
 					<Image
@@ -130,32 +131,7 @@ export default function SectionTop({ animeData }) {
 			</article>
 			<Synopsis synopsis={synopsis} background={background} />
 			{relations && relations.length >= 1 && (
-				<article className="mt-6">
-					<h3 className="font-bold">Related Anime</h3>
-					<hr className="border-black/20 my-1 dark:border-coolBlack" />
-
-					<table>
-						<tbody className="">
-							{relationsWithoutManga.map((relation, i) => (
-								<tr
-									key={i}
-									className="text-[12px] border-b-[1px] leading-7 
-									dark:border-coolBlack"
-								>
-									<td className="whitespace-pre text-right align-top">
-										{relation.relation}:{" "}
-									</td>
-									<td>
-										<InlineLinks
-											array={relation.entry}
-											samePage={true}
-										/>
-									</td>
-								</tr>
-							))}
-						</tbody>
-					</table>
-				</article>
+				<RelatedAnime relationsWithoutManga={relationsWithoutManga} />
 			)}
 		</section>
 	);
