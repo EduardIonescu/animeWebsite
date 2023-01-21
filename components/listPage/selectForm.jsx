@@ -51,18 +51,23 @@ export default function SelectForm({
 	}
 	return (
 		<form onSubmit={handleSubmit}>
-			<fieldset className="flex flex-wrap gap-x-5 gap-y-3">
+			<fieldset
+				className="flex flex-wrap gap-x-[4%] lg:gap-x-[2%] xl:gap-x-5 gap-y-2
+			 xl:gap-y-3"
+			>
 				<FilterSelect
 					placeholder="Genre..."
 					options={genreOptions}
 					setChoice={setGenres}
 					value={genres}
+					classes="w-full lg:w-[49%]"
 				/>
 				<FilterSelect
 					placeholder="Rating..."
 					options={ratingOptions}
 					setChoice={setRatings}
 					value={ratings}
+					classes="w-full lg:w-[49%]"
 				/>
 				<FilterSelect
 					placeholder="Year..."
@@ -70,6 +75,7 @@ export default function SelectForm({
 					singleValue={true}
 					setChoice={setYear}
 					value={year}
+					classes="w-[48%] lg:w-[23.5%]"
 				/>
 				<FilterSelect
 					placeholder="Status..."
@@ -77,6 +83,7 @@ export default function SelectForm({
 					options={statusOptions}
 					setChoice={setStatus}
 					value={status}
+					classes="w-[48%] lg:w-[23.5%]"
 				/>
 				<FilterSelect
 					placeholder="Score..."
@@ -84,6 +91,7 @@ export default function SelectForm({
 					setChoice={setScore}
 					singleValue={true}
 					value={score}
+					classes="w-[48%] lg:w-[23.5%]"
 				/>
 				<FilterSelect
 					placeholder="Order..."
@@ -91,11 +99,12 @@ export default function SelectForm({
 					singleValue={true}
 					setChoice={setOrder}
 					value={order}
+					classes="w-[48%] lg:w-[23.5%]"
 				/>
 			</fieldset>
 			<fieldset
 				className="flex gap-4 justify-center py-3 text-shadowLightBlue
-			font-medium"
+			font-medium mt-1"
 			>
 				<button
 					type="button"

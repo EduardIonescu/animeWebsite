@@ -3,6 +3,7 @@ import getData from "../../lib/getData";
 import { useState } from "react";
 import { getAllQueriesURL } from "../../lib/listFilter";
 import ResultsSection from "../../components/listPage/resultsSection";
+import { LoadingSpinner } from "../../components/other/loading";
 export default function List() {
 	const [filterData, setFilterData] = useState();
 	const [loading, setLoading] = useState(false);
@@ -32,8 +33,10 @@ export default function List() {
 
 	return (
 		<main
-			className="xl:w-[75rem] h-[100%] mx-auto py-4 px-4 bg-shadowLightBlue
-	text-shadowDarkBlue min-h-[calc(100vh-64px)]"
+			className="w-[100vw] sm:w-[34rem] md:w-[45rem] lg:w-[60rem]
+			xl:w-[75rem] h-[100%] mx-auto py-4 px-4 bg-shadowLightBlue 
+			dark:bg-veryDarkBlue
+			dark:text-veryLightGray text-shadowDarkBlue min-h-[calc(100vh-64px)]"
 		>
 			<SelectForm
 				fetchFilterData={fetchFilterData}
@@ -49,15 +52,17 @@ export default function List() {
 			>
 				Please select filters...
 			</p>
-
-			<hr className="mt-2 mb-4" />
+			{console.log(filterData)}
+			<hr className="mt-2 mb-4 dark:border-coolBlack" />
 			{loading ? (
-				<section>Loading...</section>
-			) : filterData ? (
+				<LoadingSpinner />
+			) : filterData && filterData.length >= 1 ? (
 				<ResultsSection resultsData={filterData} />
 			) : (
-				typeof filterData == "array" && (
-					<section>No results found...</section>
+				typeof filterData == "object" && (
+					<section className="text-center text-lg xl:text-xl font-medium">
+						No results found...
+					</section>
 				)
 			)}
 		</main>
