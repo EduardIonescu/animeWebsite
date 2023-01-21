@@ -33,7 +33,7 @@ export default function SectionTop({ animeData }) {
 			>
 				<div className="relative w-28 h-40 shrink-0 rounded overflow-hidden">
 					<Image
-						src={images.jpg.image_url}
+						src={images.webp.image_url}
 						fill
 						sizes="100%"
 						alt=""
