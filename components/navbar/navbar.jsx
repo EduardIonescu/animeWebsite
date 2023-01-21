@@ -6,6 +6,7 @@ import DarkModeButton from "./darkMode";
 export default function Navbar() {
 	return (
 		<header
+			id="top"
 			className="w-full lg:h-16 bg-darkBlue dark:bg-darkBlueDark
 		 text-shadowLightBlue py-2 lg:py-0"
 		>

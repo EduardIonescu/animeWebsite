@@ -1,5 +1,6 @@
 import Head from "next/head";
 import Navbar from "./navbar/navbar";
+import BackToTopButton from "./other/backToTopButton";
 
 export default function Layout({ children }) {
 	return (
@@ -18,6 +19,7 @@ export default function Layout({ children }) {
 			</Head>
 			<Navbar />
 			{children}
+			<BackToTopButton />
 		</>
 	);
 }
