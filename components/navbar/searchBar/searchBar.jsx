@@ -20,7 +20,7 @@ export default function SearchBar() {
 				maxLength={32}
 				className="
     h-12 lg:h-10  w-full pl-5 pr-2 border-[2px] border-darkBlue rounded-full 
-		bg-white dark:bg-transparent
+		bg-white dark:bg-transparent dark:border-shadowLightBlue/90
     focus:outline-none transition duration-300 focus:border-lighterBlue
     hover:border-lighterBlue text-darkBlue text-sm dark:text-veryLightGray
 		dark:placeholder:text-veryLightGray"

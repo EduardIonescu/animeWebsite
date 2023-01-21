@@ -74,7 +74,6 @@ export default function SectionTop({ animeData }) {
 						{type}
 					</p>
 					<p>Aired</p>
-					{console.log(studios)}
 					<p className="text-darkBlue dark:text-veryLightGray">
 						{aired && aired.string}
 					</p>

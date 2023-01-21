@@ -20,7 +20,7 @@ body {
 }
 
 body{
-  background: url("../public/images/background-image-light.jpg") repeat scroll 
+  background: url("/images/background-image-light.jpg") repeat scroll 
   top #a56622;
   transition: backdrop-filter 0.3s ease;
   overflow-x: hidden;

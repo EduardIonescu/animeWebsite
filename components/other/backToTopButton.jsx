@@ -18,9 +18,9 @@ export default function BackToTopButton() {
 	if (showButton)
 		return (
 			<button
-				className="fixed bottom-5 left-[80vw] sm:left-[75vw] md:left-[80vw]
+				className="sticky bottom-5 left-[80vw] sm:left-[75vw] md:left-[80vw]
         xl:left-[calc(500px+50vw)] z-50 transition-[background]
-        duration-300
+        duration-300 
   cursor-pointer p-4 rounded-full bg-black/30 hover:bg-black/40"
 				onClick={handleScrollToTop}
 			>

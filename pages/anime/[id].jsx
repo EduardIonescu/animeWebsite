@@ -16,11 +16,11 @@ export default function Anime() {
 				/>
 			</>
 		);
-	/* Add loading page */ else
+	else
 		return (
 			<main
 				className="w-[100vw] sm:w-[34rem] md:w-[45rem] lg:w-[60rem]
-			xl:w-[75rem] mx-auto"
+			xl:w-[75rem] mx-auto -mb-14"
 			>
 				<Loading />
 			</main>

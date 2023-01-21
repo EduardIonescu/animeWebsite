@@ -35,7 +35,7 @@ export default function List() {
 		<main
 			className="w-[100vw] sm:w-[34rem] md:w-[45rem] lg:w-[60rem]
 			xl:w-[75rem] h-[100%] mx-auto py-4 px-4 bg-shadowLightBlue 
-			dark:bg-veryDarkBlue
+			dark:bg-veryDarkBlue -mb-14
 			dark:text-veryLightGray text-shadowDarkBlue min-h-[calc(100vh-64px)]"
 		>
 			<SelectForm
@@ -52,7 +52,6 @@ export default function List() {
 			>
 				Please select filters...
 			</p>
-			{console.log(filterData)}
 			<hr className="mt-2 mb-4 dark:border-coolBlack" />
 			{loading ? (
 				<LoadingSpinner />

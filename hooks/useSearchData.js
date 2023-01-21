@@ -17,8 +17,6 @@ export function useSearchData(setSearchIsActive) {
 			if (query && !ignore) {
 				const data = await getData(animepaheURL);
 				const results = data.results;
-				//.sort((a, b) => a.rating > b.rating ? -1 : 1)
-
 				setResultsData(results);
 			}
 		}

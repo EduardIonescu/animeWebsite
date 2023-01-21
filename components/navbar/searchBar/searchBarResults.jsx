@@ -75,7 +75,10 @@ export default function SearchBarResults({
 					))}
 				</ul>
 			) : (
-				<div className="bg-white overflow-hidden rounded py-8">
+				<div
+					className="bg-white dark:bg-darkBlueDark overflow-hidden
+				rounded py-8"
+				>
 					<LoadingSpinner />
 				</div>
 			)}

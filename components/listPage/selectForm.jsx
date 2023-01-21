@@ -38,7 +38,7 @@ export default function SelectForm({
 			setError(true);
 		}
 	}
-	// This should prolly submit too
+
 	function resetForm() {
 		setGenres("");
 		setRatings("");

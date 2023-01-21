@@ -38,7 +38,7 @@ export default function Home({ popularAnimeData, trendingAnimeData }) {
 	return (
 		<main
 			className="w-[100vw] sm:w-[34rem] md:w-[45rem] lg:w-[60rem]
-			xl:w-[75rem] h-[100%]
+			xl:w-[75rem] h-[100%] -mb-14
 			mx-auto py-4 px-4 bg-shadowLightBlue dark:bg-veryDarkBlue
 			 dark:text-veryLightGray text-shadowDarkBlue"
 		>

@@ -11,7 +11,6 @@ export default function TopAnimeSection({
 	// data between rerenders
 	//const topAnimeData = useTopAnimeData();
 	//const trendingAnimeData = useTopAnimeData("trending");
-	console.log("asd", popularAnimeData);
 	if (popularAnimeData.length >= 1) {
 		return (
 			<section
