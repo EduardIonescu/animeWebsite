@@ -1,4 +1,3 @@
-//import useTopAnimeData from "../../hooks/useTopAnimeData";
 import AnimeCard from "../animeCard";
 import Loading from "../other/loading";
 
@@ -7,10 +6,6 @@ export default function TopAnimeSection({
 	popularAnimeData,
 	trendingAnimeData,
 }) {
-	// Make 2 separate states for popular / trending and find a way to keep the
-	// data between rerenders
-	//const topAnimeData = useTopAnimeData();
-	//const trendingAnimeData = useTopAnimeData("trending");
 	if (popularAnimeData.length >= 1) {
 		return (
 			<section
