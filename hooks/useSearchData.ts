@@ -2,7 +2,7 @@ import { useEffect, useState } from "react";
 import { parseQuery } from "../lib/search";
 import getData from "../lib/getData";
 
-export function useSearchData(setSearchIsActive) {
+export function useSearchData(setSearchIsActive: Function) {
 	const [query, setQuery] = useState("");
 	const [resultsData, setResultsData] = useState(false);
 
@@ -17,6 +17,7 @@ export function useSearchData(setSearchIsActive) {
 			if (query && !ignore) {
 				const data = await getData(animepaheURL);
 				const results = data.results;
+
 				setResultsData(results);
 			}
 		}

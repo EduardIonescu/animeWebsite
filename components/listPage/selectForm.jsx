@@ -15,12 +15,12 @@ export default function SelectForm({
 	setLoading,
 	setError,
 }) {
-	const [genres, setGenres] = useState(undefined);
-	const [ratings, setRatings] = useState(undefined);
-	const [year, setYear] = useState(undefined);
-	const [status, setStatus] = useState();
-	const [score, setScore] = useState(undefined);
-	const [order, setOrder] = useState(undefined);
+	const [genres, setGenres] = useState("");
+	const [ratings, setRatings] = useState("");
+	const [year, setYear] = useState("");
+	const [status, setStatus] = useState("");
+	const [score, setScore] = useState("");
+	const [order, setOrder] = useState("");
 	async function handleSubmit(e) {
 		e.preventDefault();
 		if (

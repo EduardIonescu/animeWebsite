@@ -1,9 +1,10 @@
+import { NextRouter } from "next/router";
 import getData from "./getData";
 
 import { parseQuery } from "./search";
 
-export async function sendToPage(router, title) {
-	function redirectToAnime(id) {
+export async function sendToPage(router: NextRouter, title: string) {
+	function redirectToAnime(id: number) {
 		router.push(`/anime/${id}`);
 	}
 

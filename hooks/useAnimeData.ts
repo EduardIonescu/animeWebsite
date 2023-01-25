@@ -1,8 +1,16 @@
 import { useEffect, useState } from "react";
 import getData from "../lib/getData";
 
-export function useCharactersData(animeId) {
-	function handleCharacters(data) {
+interface CharactersObject {
+	data: {
+		favorites: number;
+		role: string;
+		character: any;
+		voice_actors: any;
+	}[];
+}
+export function useCharactersData(animeId: number) {
+	function handleCharacters(data: CharactersObject) {
 		if (data.data)
 			return data.data
 
@@ -13,8 +21,8 @@ export function useCharactersData(animeId) {
 	return useAnimeData(animeId, "characters", handleCharacters);
 }
 
-export function useReviewsData(animeId) {
-	function handleReviews(data) {
+export function useReviewsData(animeId: number) {
+	function handleReviews(data: { data: object[] }) {
 		// Max 15
 		if (data.data) {
 			if (data.data.length >= 3) return data.data.slice(0, 15);
@@ -24,8 +32,8 @@ export function useReviewsData(animeId) {
 	return useAnimeData(animeId, "reviews", handleReviews);
 }
 
-export function useRecommendationsData(animeId) {
-	function handleRecommendations(data) {
+export function useRecommendationsData(animeId: number) {
+	function handleRecommendations(data: { data: object[] }) {
 		if (data.data) {
 			if (data.data.length >= 21) return data.data.slice(0, 40);
 			else return data.data.slice(0, 8);
@@ -39,7 +47,12 @@ export function useRecommendationsData(animeId) {
 	);
 }
 
-export function useAnimeData(animeId, section, callback, setter = false) {
+export function useAnimeData(
+	animeId: number,
+	section: string,
+	callback: Function,
+	setter = false
+) {
 	const [data, setData] = useState(false);
 	useEffect(() => {
 		let ignore = false;

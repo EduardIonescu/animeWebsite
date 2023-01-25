@@ -1,6 +1,6 @@
 import getData from "../lib/getData";
 import { useEffect, useState } from "react";
-export function useAnimeIdData(animeId) {
+export function useAnimeIdData(animeId: number) {
 	const [animeData, setAnimeData] = useState(false);
 	const url = `https://api.jikan.moe/v4/anime/${animeId}/full`;
 	useEffect(() => {
@@ -25,7 +25,7 @@ export function useAnimeIdData(animeId) {
 
 const randomURL = `https://api.jikan.moe/v4/random/anime`;
 export function useRandomId() {
-	const [randomId, setRandomId] = useState(false);
+	const [randomId, setRandomId] = useState<number | boolean>(false);
 	useEffect(() => {
 		let ignore = false;
 		async function startFetching() {
@@ -36,7 +36,9 @@ export function useRandomId() {
 		}
 
 		startFetching();
-		return () => (ignore = true);
+		return () => {
+			ignore = true;
+		};
 	}, []);
-	return randomId;
+	if (typeof randomId === "number") return randomId;
 }
