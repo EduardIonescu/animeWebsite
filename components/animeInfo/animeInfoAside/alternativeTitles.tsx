@@ -1,6 +1,11 @@
 import ReadMoreButton from "../../readMoreButton";
 import { useState } from "react";
-export default function AlternativeTitles({ animeData }) {
+import { AnimeDataAll } from "../../../constants/interfacesAndTypes";
+export default function AlternativeTitles({
+	animeData,
+}: {
+	animeData: AnimeDataAll;
+}) {
 	const [readMore, setReadMore] = useState(false);
 	const titleJapanese = animeData.title_japanese,
 		titleSynonyms = animeData.title_synonyms.join(", ");

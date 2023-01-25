@@ -1,9 +1,15 @@
 import Link from "next/link";
-export default function InlineLinks({ array, samePage }) {
+export default function InlineLinks({
+	array,
+	samePage,
+}: {
+	array: any;
+	samePage?: boolean;
+}) {
 	if (!samePage)
 		return (
 			<>
-				{array.map((item, i) => (
+				{array.map((item, i: number) => (
 					<span key={i}>
 						<a
 							href={item.url}

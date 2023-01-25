@@ -6,3 +6,8 @@ export interface AnimeDataType {
 	aired: { prop: { from: { year: number } } };
 	mal_id: number;
 }
+
+export interface AnimeDataAll extends AnimeDataType {
+	title_japanese: string;
+	title_synonyms: string[];
+}
