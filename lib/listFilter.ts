@@ -3,18 +3,15 @@ export function mapQuery(
 	queryName: string,
 	queryArray: Array<QueryObject> | QueryObject
 ) {
-	console.log(queryArray);
-	let array: (string | number)[];
-	if (queryArray !== null && queryArray !== undefined) {
-		if (typeof queryArray === "object" && "value" in queryArray) {
-			return `${queryName}=${queryArray.value}&`;
-		}
-		if (Array.isArray(queryArray) && queryArray.length >= 1) {
-			array = queryArray.map((q) => q.value);
-			const string = `${queryName}=${array.join(",")}&`;
-			return string;
-		}
+	if (typeof queryArray === "object" && "value" in queryArray) {
+		return `${queryName}=${queryArray.value}&`;
 	}
+	if (Array.isArray(queryArray) && queryArray.length >= 1) {
+		let array = queryArray.map((q) => q.value);
+		const string = `${queryName}=${array.join(",")}&`;
+		return string;
+	}
+
 	return "";
 }
 
@@ -32,7 +29,7 @@ export function mapAllQueries(
 		ratings && mapQuery("rating", ratings)
 	}${year && mapQuery("start_date", year)}${
 		status && mapQuery("status", status)
-	}&${score && mapQuery("min_score", score)}${
+	}${score && mapQuery("min_score", score)}${
 		order && mapQuery("order_by", order)
 	}`;
 }
@@ -52,6 +49,5 @@ export function getAllQueriesURL(
 		score,
 		order
 	)}`;
-
 	return url;
 }
