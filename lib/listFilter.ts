@@ -15,7 +15,7 @@ export function mapQuery(
 	return "";
 }
 
-type Query = QueryObject | null | undefined;
+type Query = QueryObject | QueryObject[] | null | undefined;
 // makes the url clean
 export function mapAllQueries(
 	genres: Query,
@@ -25,6 +25,7 @@ export function mapAllQueries(
 	score: Query,
 	order: Query
 ): string {
+	console.log(genres);
 	return `sfw=true&type=tv&${genres && mapQuery("genres", genres)}${
 		ratings && mapQuery("rating", ratings)
 	}${year && mapQuery("start_date", year)}${

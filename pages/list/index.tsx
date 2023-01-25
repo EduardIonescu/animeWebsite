@@ -4,17 +4,21 @@ import { useState } from "react";
 import { getAllQueriesURL } from "../../lib/listFilter";
 import ResultsSection from "../../components/listPage/resultsSection";
 import { LoadingSpinner } from "../../components/other/loading";
+
+type QueryObject = { value: number | string; label?: string | number };
+type Query = QueryObject | QueryObject[] | null | undefined;
+
 export default function List() {
-	const [filterData, setFilterData] = useState();
+	const [filterData, setFilterData] = useState<object[]>();
 	const [loading, setLoading] = useState(false);
 	const [error, setError] = useState(false);
 	async function fetchFilterData(
-		genres,
-		ratings,
-		year,
-		status,
-		score,
-		order
+		genres: Query,
+		ratings: Query,
+		year: Query,
+		status: Query,
+		score: Query,
+		order: Query
 	) {
 		if (genres || ratings || year || status || score || order) {
 			const url = getAllQueriesURL(

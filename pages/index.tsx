@@ -5,9 +5,10 @@ import popularIcon from "../public/icons/popular-icon.svg";
 import trendingIcon from "../public/icons/trending-icon.svg";
 import getData from "../lib/getData";
 import { popularAnimeUrls, trendingAnimeUrls } from "../constants/urls";
+import { GetStaticProps } from "next";
 
-export async function getStaticProps() {
-	// I want 50 items, the limit is 25 per page
+export const getStaticProps: GetStaticProps = async () => {
+	// I want 40 items, the limit is 25 per page
 	const popularAnimeData = await Promise.all(
 		popularAnimeUrls.map(async (url) => {
 			return await getData(url);
@@ -30,10 +31,10 @@ export async function getStaticProps() {
 			],
 		},
 	};
-}
+};
 
 export default function Home({ popularAnimeData, trendingAnimeData }) {
-	const [showTrending, setShowTrending] = useState(false);
+	const [showTrending, setShowTrending] = useState<boolean>(false);
 	return (
 		<main
 			className="w-[100vw] sm:w-[34rem] md:w-[45rem] lg:w-[60rem]

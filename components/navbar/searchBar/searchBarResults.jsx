@@ -34,7 +34,7 @@ export default function SearchBarResults({
 		>
 			{resultsData ? (
 				<ul className="bg-white dark:bg-darkBlueDark overflow-hidden rounded">
-					{resultsData.map((result, i) => (
+					{resultsData.map((result) => (
 						<li
 							key={result.id}
 							onClick={() => sendToPage(router, result.title)}

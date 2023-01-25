@@ -4,17 +4,17 @@ import { useAnimeIdData } from "../../hooks/useAnimeIdData";
 import Loading from "../../components/other/loading";
 export default function Anime() {
 	const animeId = useRouter().query.id;
-	const animeData = useAnimeIdData(animeId);
+	let animeData: object | undefined;
+	if (typeof animeId === "string")
+		animeData = useAnimeIdData(parseInt(animeId));
 
 	if (animeData)
 		return (
-			<>
-				<AnimeInfo
-					key={`id-${animeId}`}
-					animeData={animeData}
-					animeId={animeId}
-				/>
-			</>
+			<AnimeInfo
+				key={`id-${animeId}`}
+				animeData={animeData}
+				animeId={animeId}
+			/>
 		);
 	else
 		return (

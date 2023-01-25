@@ -1,7 +1,15 @@
 import Image from "next/image";
-export default function ReadMoreButton({ readMore, setReadMore, name }) {
+export default function ReadMoreButton({
+	readMore,
+	setReadMore,
+	name,
+}: {
+	readMore: boolean;
+	setReadMore: Function;
+	name: string;
+}) {
 	function toggleReadMore() {
-		setReadMore((rm) => !rm);
+		setReadMore((rm: boolean) => !rm);
 	}
 	return (
 		<button

@@ -1,4 +1,4 @@
-import FilterSelect from "../../components/listPage/filterSelect";
+import FilterSelect from "./filterSelect";
 import { useState } from "react";
 import {
 	genreOptions,
@@ -21,7 +21,7 @@ export default function SelectForm({
 	const [status, setStatus] = useState("");
 	const [score, setScore] = useState("");
 	const [order, setOrder] = useState("");
-	async function handleSubmit(e) {
+	async function handleSubmit(e: React.FormEvent<EventTarget>) {
 		e.preventDefault();
 		if (
 			(genres && genres.length >= 1) ||

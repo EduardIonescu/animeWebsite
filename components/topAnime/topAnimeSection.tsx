@@ -1,10 +1,15 @@
 import AnimeCard from "../animeCard";
 import Loading from "../other/loading";
+import { AnimeDataType } from "../../constants/interfacesAndTypes";
 
 export default function TopAnimeSection({
 	showTrending,
 	popularAnimeData,
 	trendingAnimeData,
+}: {
+	showTrending: boolean;
+	popularAnimeData: AnimeDataType[];
+	trendingAnimeData: AnimeDataType[];
 }) {
 	if (popularAnimeData.length >= 1) {
 		return (
