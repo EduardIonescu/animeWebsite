@@ -1,8 +1,13 @@
 import InlineLinks from "../../../inlineLinks";
 import ReadMoreButton from "../../../../readMoreButton";
 import { useState } from "react";
-export default function RelatedAnime({ relationsWithoutManga }) {
-	const [readMore, setReadMore] = useState(false);
+import { RelationsEntity } from "../../../../../constants/interfacesAndTypes";
+export default function RelatedAnime({
+	relationsWithoutManga,
+}: {
+	relationsWithoutManga: RelationsEntity[];
+}) {
+	const [readMore, setReadMore] = useState<boolean>(false);
 	return (
 		<>
 			<article className="hidden xl:block mt-6">
@@ -21,10 +26,12 @@ export default function RelatedAnime({ relationsWithoutManga }) {
 									{relation.relation}:{" "}
 								</td>
 								<td>
-									<InlineLinks
-										array={relation.entry}
-										samePage={true}
-									/>
+									{relation.entry && (
+										<InlineLinks
+											array={relation.entry}
+											samePage={true}
+										/>
+									)}
 								</td>
 							</tr>
 						))}
@@ -55,10 +62,12 @@ export default function RelatedAnime({ relationsWithoutManga }) {
 										{relation.relation}:{" "}
 									</td>
 									<td>
-										<InlineLinks
-											array={relation.entry}
-											samePage={true}
-										/>
+										{relation.entry && (
+											<InlineLinks
+												array={relation.entry}
+												samePage={true}
+											/>
+										)}
 									</td>
 								</tr>
 							))}

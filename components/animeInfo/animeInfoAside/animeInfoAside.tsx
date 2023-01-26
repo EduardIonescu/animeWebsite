@@ -1,10 +1,15 @@
 import Image from "next/image";
+import { AnimeDataInterface } from "../../../constants/interfacesAndTypes";
 import AlternativeTitles from "./alternativeTitles";
 import Information from "./information";
 import Statistics from "./statistics";
 import StreamingPlatforms from "./streamingPlatforms";
 
-export default function AnimeInfoAside({ animeData }) {
+export default function AnimeInfoAside({
+	animeData,
+}: {
+	animeData: AnimeDataInterface;
+}) {
 	return (
 		<aside className="w-full xl:w-[25%] px-4 border-r-[1px] order-2 xl:order-1">
 			<div className="hidden xl:block h-[400px] w-[268px] relative pb-4">
@@ -19,7 +24,7 @@ export default function AnimeInfoAside({ animeData }) {
 			<AlternativeTitles animeData={animeData} />
 			<Information animeData={animeData} />
 			<Statistics animeData={animeData} />
-			{animeData.streaming.length >= 1 && (
+			{animeData.streaming && animeData.streaming.length >= 1 && (
 				<StreamingPlatforms streaming={animeData.streaming} />
 			)}
 		</aside>

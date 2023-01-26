@@ -3,36 +3,51 @@ import RecommendationCard from "./recommendationCard";
 import ReadMoreButton from "../../../readMoreButton";
 import Slider from "react-slick";
 import sliderSettings from "../../../../constants/sliderSettings";
+import { RecommendationsInterface } from "../../../../constants/sectionInterfaces/recommendationsInterface";
 
 export default function SectionRecommendations({
 	setPage,
 	initialRecommendations,
+}: {
+	setPage: Function;
+	initialRecommendations: RecommendationsInterface[];
 }) {
 	const [recommendations, setRecommendations] = useState(
 		initialRecommendations
 	);
 	const [readMore, setReadMore] = useState(true);
-	const ulRef = useRef(null);
+	const ulRef = useRef<HTMLUListElement>(null);
 
 	const viewAllRecommendations = () => {
 		setPage("recommendations");
 		window.scrollTo(0, 0);
 	};
 	function handleClickPrevious() {
-		ulRef.current.style.transition = "all 0.3s";
-		ulRef.current.style.transform = "translateX(728px)";
+		if (ulRef.current) {
+			ulRef.current.style.transition = "all 0.3s";
+			ulRef.current.style.transform = "translateX(728px)";
+		}
+
 		setTimeout(() => {
-			ulRef.current.style.transition = "none";
-			ulRef.current.style.transform = "translateX(0)";
+			if (ulRef.current) {
+				ulRef.current.style.transition = "none";
+				ulRef.current.style.transform = "translateX(0)";
+			}
+
 			setRecommendations((r) => [...r.slice(14, 21), ...r.slice(0, 14)]);
 		}, 250);
 	}
 	function handleClickNext() {
-		ulRef.current.style.transition = "all 0.3s";
-		ulRef.current.style.transform = "translateX(-728px)";
+		if (ulRef.current) {
+			ulRef.current.style.transition = "all 0.3s";
+			ulRef.current.style.transform = "translateX(-728px)";
+		}
+
 		setTimeout(() => {
-			ulRef.current.style.transition = "none";
-			ulRef.current.style.transform = "translateX(0)";
+			if (ulRef.current) {
+				ulRef.current.style.transition = "none";
+				ulRef.current.style.transform = "translateX(0)";
+			}
 			setRecommendations((r) => [...r.slice(7, 21), ...r.slice(0, 7)]);
 		}, 250);
 	}
@@ -135,7 +150,15 @@ export default function SectionRecommendations({
 		);
 }
 
-function NextArrow({ className, style, onClick }) {
+function NextArrow({
+	className,
+	style,
+	onClick,
+}: {
+	className?: string;
+	style?: any;
+	onClick?: any;
+}) {
 	return (
 		<div
 			className={`${className} invert dark:invert-0`}
@@ -145,7 +168,15 @@ function NextArrow({ className, style, onClick }) {
 	);
 }
 
-function PrevArrow({ className, style, onClick }) {
+function PrevArrow({
+	className,
+	style,
+	onClick,
+}: {
+	className?: string;
+	style?: any;
+	onClick?: any;
+}) {
 	return (
 		<div
 			className={`${className} invert dark:invert-0`}

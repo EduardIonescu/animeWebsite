@@ -3,7 +3,7 @@ export default function InlineLinks({
 	array,
 	samePage,
 }: {
-	array: any;
+	array: any[];
 	samePage?: boolean;
 }) {
 	if (!samePage)

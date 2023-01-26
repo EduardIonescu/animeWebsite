@@ -1,5 +1,10 @@
+import { CharactersInterface } from "../../../constants/sectionInterfaces/charactersInterface";
 import CharacterCard from "../animeInfoSection/characters/characterCard";
-export default function AnimeCharactersSection({ characters }) {
+export default function AnimeCharactersSection({
+	characters,
+}: {
+	characters: CharactersInterface[];
+}) {
 	return (
 		<section>
 			{characters && characters.length >= 1 ? (

@@ -1,7 +1,13 @@
 import { useState } from "react";
 import ReadMoreButton from "../../../../readMoreButton";
-export default function Synopsis({ synopsis, background }) {
-	const [readMore, setReadMore] = useState(false);
+export default function Synopsis({
+	synopsis,
+	background,
+}: {
+	synopsis?: string;
+	background?: string;
+}) {
+	const [readMore, setReadMore] = useState<boolean>(false);
 	return (
 		<>
 			<article className="hidden xl:block mt-6">

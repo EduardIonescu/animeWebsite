@@ -1,11 +1,11 @@
 import AnimeInfoAside from "./animeInfoAside/animeInfoAside";
 import AnimeInfoSection from "./animeInfoSection/animeInfoSection";
-import { AnimeDataAll } from "../../constants/interfacesAndTypes";
+import { AnimeDataInterface } from "../../constants/interfacesAndTypes";
 export default function AnimeInfo({
 	animeData,
 	animeId,
 }: {
-	animeData: AnimeDataAll;
+	animeData: AnimeDataInterface;
 	animeId: number | string;
 }) {
 	const titleEnglish = animeData && animeData.title_english,

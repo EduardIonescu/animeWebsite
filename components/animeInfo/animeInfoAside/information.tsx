@@ -1,7 +1,12 @@
 import InlineLinks from "../inlineLinks";
 import ReadMoreButton from "../../readMoreButton";
 import { useState } from "react";
-export default function Information({ animeData }) {
+import { AnimeDataInterface } from "../../../constants/interfacesAndTypes";
+export default function Information({
+	animeData,
+}: {
+	animeData: AnimeDataInterface;
+}) {
 	const [readMore, setReadMore] = useState(false);
 	const {
 		type,
@@ -52,7 +57,7 @@ export default function Information({ animeData }) {
 				</li>
 				<li>
 					<span className="font-medium">Producers:</span>{" "}
-					{producers.length >= 1 ? (
+					{producers && producers.length >= 1 ? (
 						<InlineLinks array={producers} />
 					) : (
 						"None"
@@ -60,7 +65,7 @@ export default function Information({ animeData }) {
 				</li>
 				<li>
 					<span className="font-medium">Studios:</span>{" "}
-					{studios.length >= 1 ? (
+					{studios && studios.length >= 1 ? (
 						<InlineLinks array={studios} />
 					) : (
 						"None"
@@ -79,7 +84,7 @@ export default function Information({ animeData }) {
 				</li>
 				<li>
 					<span className="font-medium">Demographic:</span>{" "}
-					{demographics.length >= 1 ? (
+					{demographics && demographics.length >= 1 ? (
 						<InlineLinks array={demographics} />
 					) : (
 						"None"
@@ -117,7 +122,7 @@ export default function Information({ animeData }) {
 				</li>
 				<li>
 					<span className="font-medium">Producers:</span>{" "}
-					{producers.length >= 1 ? (
+					{producers && producers.length >= 1 ? (
 						<InlineLinks array={producers} />
 					) : (
 						"None"
@@ -125,7 +130,7 @@ export default function Information({ animeData }) {
 				</li>
 				<li>
 					<span className="font-medium">Studios:</span>{" "}
-					{studios.length >= 1 ? (
+					{studios && studios.length >= 1 ? (
 						<InlineLinks array={studios} />
 					) : (
 						"None"
@@ -144,7 +149,7 @@ export default function Information({ animeData }) {
 				</li>
 				<li>
 					<span className="font-medium">Demographic:</span>{" "}
-					{demographics.length >= 1 ? (
+					{demographics && demographics.length >= 1 ? (
 						<InlineLinks array={demographics} />
 					) : (
 						"None"

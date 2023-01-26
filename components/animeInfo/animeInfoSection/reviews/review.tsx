@@ -1,7 +1,8 @@
 import Image from "next/image";
 import { useState } from "react";
+import { ReviewsInterface } from "../../../../constants/sectionInterfaces/reviewsInterface";
 import ReadMoreButton from "../../../readMoreButton";
-export default function Review({ review }) {
+export default function Review({ review }: { review: ReviewsInterface }) {
 	const [readMore, setReadMore] = useState(false);
 
 	const date = new Date(review.date).toLocaleDateString("en-UK", {
@@ -30,9 +31,10 @@ export default function Review({ review }) {
 				<p className="absolute right-0 top-0 text-[12px] opacity-60">
 					{date}
 				</p>
-				<button
-					type="button"
-					className={`px-2 py-[2px] rounded-sm shadow-md font-bold my-2
+				{review.tags && (
+					<button
+						type="button"
+						className={`px-2 py-[2px] rounded-sm shadow-md font-bold my-2
       ${
 			review.tags[0] == "Recommended"
 				? "bg-green-100 text-green-800"
@@ -40,9 +42,11 @@ export default function Review({ review }) {
 				? "bg-black/10"
 				: "bg-red-100 text-darkRed"
 		}`}
-				>
-					{review.tags[0]}
-				</button>
+					>
+						{review.tags[0]}
+					</button>
+				)}
+
 				<p
 					className={`whitespace-pre-wrap leading-[1.5em] 
     ${readMore ? "" : "line-clamp-4"} `}

@@ -1,7 +1,12 @@
 import Image from "next/image";
 import Link from "next/link";
+import { RecommendationsInterface } from "../../../../constants/sectionInterfaces/recommendationsInterface";
 
-export default function RecommendationCard({ recommendation }) {
+export default function RecommendationCard({
+	recommendation,
+}: {
+	recommendation: RecommendationsInterface;
+}) {
 	return (
 		<li
 			className="relative overflow-hidden cursor-pointer transition

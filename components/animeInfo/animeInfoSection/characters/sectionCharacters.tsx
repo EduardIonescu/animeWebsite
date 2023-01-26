@@ -1,8 +1,13 @@
 import CharacterCard from "./characterCard";
 import ReadMoreButton from "../../../readMoreButton";
 import { useState } from "react";
-export default function SectionCharacters({ characters }) {
-	const [readMore, setReadMore] = useState(false);
+import { CharactersInterface } from "../../../../constants/sectionInterfaces/charactersInterface";
+export default function SectionCharacters({
+	characters,
+}: {
+	characters: CharactersInterface[];
+}) {
+	const [readMore, setReadMore] = useState<boolean>(false);
 	if (characters) {
 		if (characters.length >= 1)
 			return (
@@ -57,7 +62,7 @@ export default function SectionCharacters({ characters }) {
 					</div>
 				</section>
 			);
-	} else
+	} else {
 		return (
 			<section className="mt-6">
 				<h3 className="font-bold">Characters & Voice Actors</h3>
@@ -67,4 +72,5 @@ export default function SectionCharacters({ characters }) {
 				</p>
 			</section>
 		);
+	}
 }

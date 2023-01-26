@@ -1,8 +1,13 @@
 import Image from "next/image";
+import { CharactersInterface } from "../../../../constants/sectionInterfaces/charactersInterface";
 export default function CharacterCard({
 	characterInfo,
 	index,
 	isPage = false,
+}: {
+	characterInfo: CharactersInterface;
+	index: number;
+	isPage?: boolean;
 }) {
 	const { character, role, voice_actors } = characterInfo;
 	return (
@@ -31,7 +36,7 @@ export default function CharacterCard({
 					<p className="text-[11px]">{role}</p>
 				</div>
 			</div>
-			{voice_actors.length >= 1 && !isPage && (
+			{voice_actors && voice_actors.length >= 1 && !isPage && (
 				<div className="flex gap-2">
 					<div className="text-end">
 						<h4 className="text-[14px] mb-1">
@@ -56,7 +61,7 @@ export default function CharacterCard({
 					</div>
 				</div>
 			)}
-			{voice_actors.length >= 1 && isPage && (
+			{voice_actors && voice_actors.length >= 1 && isPage && (
 				<ul className="flex flex-col items-end">
 					{voice_actors.map((voiceActor, i) => (
 						<li key={i} className="flex gap-2">

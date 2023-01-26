@@ -9,7 +9,7 @@ interface CharactersObject {
 		voice_actors: any;
 	}[];
 }
-export function useCharactersData(animeId: number) {
+export function useCharactersData(animeId: number | string) {
 	function handleCharacters(data: CharactersObject) {
 		if (data.data)
 			return data.data
@@ -21,7 +21,7 @@ export function useCharactersData(animeId: number) {
 	return useAnimeData(animeId, "characters", handleCharacters);
 }
 
-export function useReviewsData(animeId: number) {
+export function useReviewsData(animeId: number | string) {
 	function handleReviews(data: { data: object[] }) {
 		// Max 15
 		if (data.data) {
@@ -32,7 +32,7 @@ export function useReviewsData(animeId: number) {
 	return useAnimeData(animeId, "reviews", handleReviews);
 }
 
-export function useRecommendationsData(animeId: number) {
+export function useRecommendationsData(animeId: number | string) {
 	function handleRecommendations(data: { data: object[] }) {
 		if (data.data) {
 			if (data.data.length >= 21) return data.data.slice(0, 40);
@@ -48,7 +48,7 @@ export function useRecommendationsData(animeId: number) {
 }
 
 export function useAnimeData(
-	animeId: number,
+	animeId: number | string,
 	section: string,
 	callback: Function,
 	setter = false

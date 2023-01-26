@@ -1,7 +1,12 @@
 import ReadMoreButton from "../../readMoreButton";
 import { useState } from "react";
-export default function StreamingPlatforms({ streaming }) {
-	const [readMore, setReadMore] = useState(false);
+import { StreamingEntity } from "../../../constants/interfacesAndTypes";
+export default function StreamingPlatforms({
+	streaming,
+}: {
+	streaming: StreamingEntity[];
+}) {
+	const [readMore, setReadMore] = useState<boolean>(false);
 	return (
 		<article className="pt-6">
 			<h3 className="pb-1 font-bold hidden xl:block">

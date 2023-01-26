@@ -4,7 +4,12 @@ import Image from "next/image";
 import Synopsis from "./topInfo/synopsis";
 import RelatedAnime from "./topInfo/relatedAnime";
 import starIcon from "../../../../public/icons/star-icon.svg";
-export default function SectionTop({ animeData }) {
+import { AnimeDataInterface } from "../../../../constants/interfacesAndTypes";
+export default function SectionTop({
+	animeData,
+}: {
+	animeData: AnimeDataInterface;
+}) {
 	const {
 		score,
 		scored_by,
@@ -21,10 +26,15 @@ export default function SectionTop({ animeData }) {
 		studios,
 	} = animeData;
 
-	const relationsWithoutManga = relations.filter(
-		(relation) =>
-			relation.entry.filter((entry) => entry.type != "manga").length >= 1
-	);
+	const relationsWithoutManga =
+		relations &&
+		relations.filter((relation) => {
+			if (relation.entry)
+				return (
+					relation.entry.filter((entry) => entry.type != "manga")
+						.length >= 1
+				);
+		});
 	return (
 		<section className="order-0">
 			<article
@@ -138,7 +148,7 @@ export default function SectionTop({ animeData }) {
 				)}
 			</article>
 			<Synopsis synopsis={synopsis} background={background} />
-			{relations && relations.length >= 1 && (
+			{relationsWithoutManga && relationsWithoutManga.length >= 1 && (
 				<RelatedAnime relationsWithoutManga={relationsWithoutManga} />
 			)}
 		</section>

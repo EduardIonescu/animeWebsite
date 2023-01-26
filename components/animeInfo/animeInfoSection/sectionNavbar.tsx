@@ -1,4 +1,10 @@
-export default function SectionNavbar({ page, setPage }) {
+export default function SectionNavbar({
+	page,
+	setPage,
+}: {
+	page: "details" | "characters" | "reviews" | "recommendations";
+	setPage: any;
+}) {
 	const setPageDetails = () => setPage("details");
 	const setPageCharacters = () => setPage("characters");
 	const setPageReviews = () => setPage("reviews");

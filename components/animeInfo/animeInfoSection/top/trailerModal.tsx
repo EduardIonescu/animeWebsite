@@ -2,25 +2,7 @@ import Modal from "react-modal";
 import YouTube from "react-youtube";
 import { useState } from "react";
 import Image from "next/image";
-const modalStyles = {
-	overlay: {
-		backgroundColor: "rgba(0, 0, 0, 0.75)",
-	},
-	content: {
-		top: "50%",
-		left: "50%",
-		right: "auto",
-		bottom: "auto",
-		marginRight: "-50%",
-		transform: "translate(-50%, -50%)",
-		width: "660px",
-		padding: 0,
-		margin: 0,
-		backgroundColor: "transparent",
-		border: "none",
-		overflow: "visible",
-	},
-};
+import { modalStyles } from "../../../../styles/trailerModalStyles";
 const youtubeOptions = {
 	height: "425",
 	width: "750",
@@ -29,8 +11,14 @@ const youtubeOptions = {
 		autoplay: 1,
 	},
 };
-export default function TrailerModal({ imageSrc, youtubeId }) {
-	const [modalIsOpen, setModalIsOpen] = useState(false);
+export default function TrailerModal({
+	imageSrc,
+	youtubeId,
+}: {
+	imageSrc: string;
+	youtubeId: string;
+}) {
+	const [modalIsOpen, setModalIsOpen] = useState<boolean>(false);
 	function openModal() {
 		setModalIsOpen(true);
 	}

@@ -6,7 +6,7 @@ export default function ReadMoreButton({
 }: {
 	readMore: boolean;
 	setReadMore: Function;
-	name: string;
+	name?: string;
 }) {
 	function toggleReadMore() {
 		setReadMore((rm: boolean) => !rm);
