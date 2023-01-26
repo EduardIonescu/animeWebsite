@@ -1,13 +1,9 @@
 import Review from "./review";
 import ReadMoreButton from "../../../readMoreButton";
 import { useState } from "react";
-import { ReviewsInterface } from "../../../../constants/sectionInterfaces/reviewsInterface";
+import { IReviews } from "../../../../constants/sectionInterfaces/IReviews";
 
-export default function SectionReviews({
-	reviews,
-}: {
-	reviews: ReviewsInterface[];
-}) {
+export default function SectionReviews({ reviews }: { reviews: IReviews[] }) {
 	const [readMore, setReadMore] = useState<boolean>(true);
 	if (reviews)
 		return (

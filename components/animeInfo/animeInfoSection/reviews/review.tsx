@@ -1,8 +1,8 @@
 import Image from "next/image";
 import { useState } from "react";
-import { ReviewsInterface } from "../../../../constants/sectionInterfaces/reviewsInterface";
+import { IReviews } from "../../../../constants/sectionInterfaces/IReviews";
 import ReadMoreButton from "../../../readMoreButton";
-export default function Review({ review }: { review: ReviewsInterface }) {
+export default function Review({ review }: { review: IReviews }) {
 	const [readMore, setReadMore] = useState(false);
 
 	const date = new Date(review.date).toLocaleDateString("en-UK", {

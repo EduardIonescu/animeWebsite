@@ -2,11 +2,11 @@ import { useRouter } from "next/router";
 import AnimeInfo from "../../components/animeInfo/animeInfo";
 import { useAnimeIdData } from "../../hooks/useAnimeIdData";
 import Loading from "../../components/other/loading";
-import { AnimeDataInterface } from "../../constants/interfacesAndTypes";
+import { IsAnimeData } from "../../constants/interfacesAndTypes";
 export default function Anime() {
 	const animeId = useRouter().query.id;
 
-	const animeData: AnimeDataInterface | undefined = useAnimeIdData(
+	const animeData: IsAnimeData | undefined = useAnimeIdData(
 		animeId?.toString()
 	);
 

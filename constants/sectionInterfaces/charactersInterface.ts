@@ -1,4 +1,4 @@
-export interface CharactersInterface {
+export interface ICharacters {
 	character: Character;
 	role: string;
 	favorites: number;

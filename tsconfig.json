@@ -25,7 +25,7 @@
     "next-env.d.ts",
     "**/*.ts",
     "**/*.tsx"
-, "components/listPage/resultsSection.jsx", "components/navbar/searchBar/searchBarResults.jsx", "components/animeInfo/animeInfoSection/animeInfoSection.tsx"  ],
+, "components/listPage/resultsSection.tsx", "components/navbar/searchBar/searchBarResults.tsx", "components/animeInfo/animeInfoSection/animeInfoSection.tsx", "components/listPage/filterSelect.jsx"  ],
   "exclude": [
     "node_modules"
   ]

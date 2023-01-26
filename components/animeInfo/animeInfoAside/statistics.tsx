@@ -1,11 +1,7 @@
 import ReadMoreButton from "../../readMoreButton";
 import { useState } from "react";
-import { AnimeDataInterface } from "../../../constants/interfacesAndTypes";
-export default function Statistics({
-	animeData,
-}: {
-	animeData: AnimeDataInterface;
-}) {
+import { IsAnimeData } from "../../../constants/interfacesAndTypes";
+export default function Statistics({ animeData }: { animeData: IsAnimeData }) {
 	const [readMore, setReadMore] = useState<boolean>(false);
 	const { score, scored_by, rank, popularity, members, favorites } =
 		animeData;

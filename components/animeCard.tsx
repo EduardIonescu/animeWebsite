@@ -2,9 +2,9 @@ import Image from "next/image";
 import starIcon from "../public/icons/star-icon.svg";
 import calendarIcon from "../public/icons/calendar-icon.svg";
 import Link from "next/link";
-import { AnimeDataType } from "../constants/interfacesAndTypes";
+import { IsAnimeData } from "../constants/interfacesAndTypes";
 
-export default function AnimeCard({ animeData }: { animeData: AnimeDataType }) {
+export default function AnimeCard({ animeData }: { animeData: IsAnimeData }) {
 	const imageUrl = animeData.images.webp.image_url;
 	const title = animeData.title_english;
 	const titleJapanese = animeData.title;

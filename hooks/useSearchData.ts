@@ -1,10 +1,13 @@
 import { useEffect, useState } from "react";
 import { parseQuery } from "../lib/search";
 import getData from "../lib/getData";
+import { IQuery } from "../constants/searchInterfaces/IQuery";
 
 export function useSearchData(setSearchIsActive: Function) {
 	const [query, setQuery] = useState("");
-	const [resultsData, setResultsData] = useState(false);
+	const [resultsData, setResultsData] = useState<IQuery | undefined>(
+		undefined
+	);
 
 	useEffect(() => {
 		setSearchIsActive(true);
@@ -31,5 +34,5 @@ export function useSearchData(setSearchIsActive: Function) {
 		};
 	}, [query]);
 
-	return [query, setQuery, resultsData];
+	return { query, setQuery, resultsData };
 }

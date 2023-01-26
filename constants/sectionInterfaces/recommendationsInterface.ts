@@ -1,4 +1,4 @@
-export interface RecommendationsInterface {
+export interface IRecommendations {
 	entry: Entry;
 	url: string;
 	votes: number;

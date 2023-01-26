@@ -1,14 +1,15 @@
 import SearchBarResults from "./searchBarResults";
-import { useState, useRef } from "react";
+import React, { useState, useRef, ReactNodeArray } from "react";
 import { useSearchData } from "../../../hooks/useSearchData";
 
 export default function SearchBar() {
-	const [searchIsActive, setSearchIsActive] = useState(false);
-	const [query, setQuery, resultsData] = useSearchData(setSearchIsActive);
-	const searchRef = useRef(null);
+	const [searchIsActive, setSearchIsActive] = useState<boolean>(false);
+	const { query, setQuery, resultsData } = useSearchData(setSearchIsActive);
+	const searchRef = useRef<HTMLInputElement>(null);
 
-	function handleChange(e) {
-		setQuery(e.target.value);
+	function handleChange(e: React.FormEvent<EventTarget>) {
+		const target = e.target as HTMLInputElement;
+		setQuery(target.value);
 	}
 	return (
 		<article className=" w-full lg:w-80 relative">

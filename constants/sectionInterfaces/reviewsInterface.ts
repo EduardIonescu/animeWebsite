@@ -1,4 +1,4 @@
-export interface ReviewsInterface {
+export interface IReviews {
 	mal_id: number;
 	url: string;
 	type: string;

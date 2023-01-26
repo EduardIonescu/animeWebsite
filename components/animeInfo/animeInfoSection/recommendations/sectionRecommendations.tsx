@@ -3,14 +3,14 @@ import RecommendationCard from "./recommendationCard";
 import ReadMoreButton from "../../../readMoreButton";
 import Slider from "react-slick";
 import sliderSettings from "../../../../constants/sliderSettings";
-import { RecommendationsInterface } from "../../../../constants/sectionInterfaces/recommendationsInterface";
+import { IRecommendations } from "../../../../constants/sectionInterfaces/IRecommendations";
 
 export default function SectionRecommendations({
 	setPage,
 	initialRecommendations,
 }: {
 	setPage: Function;
-	initialRecommendations: RecommendationsInterface[];
+	initialRecommendations: IRecommendations[];
 }) {
 	const [recommendations, setRecommendations] = useState(
 		initialRecommendations

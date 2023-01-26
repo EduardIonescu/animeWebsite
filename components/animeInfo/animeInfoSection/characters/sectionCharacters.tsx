@@ -1,11 +1,11 @@
 import CharacterCard from "./characterCard";
 import ReadMoreButton from "../../../readMoreButton";
 import { useState } from "react";
-import { CharactersInterface } from "../../../../constants/sectionInterfaces/charactersInterface";
+import { ICharacters } from "../../../../constants/sectionInterfaces/ICharacters";
 export default function SectionCharacters({
 	characters,
 }: {
-	characters: CharactersInterface[];
+	characters: ICharacters[];
 }) {
 	const [readMore, setReadMore] = useState<boolean>(false);
 	if (characters) {

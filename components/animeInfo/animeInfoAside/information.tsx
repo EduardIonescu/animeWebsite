@@ -1,12 +1,8 @@
 import InlineLinks from "../inlineLinks";
 import ReadMoreButton from "../../readMoreButton";
 import { useState } from "react";
-import { AnimeDataInterface } from "../../../constants/interfacesAndTypes";
-export default function Information({
-	animeData,
-}: {
-	animeData: AnimeDataInterface;
-}) {
+import { IsAnimeData } from "../../../constants/interfacesAndTypes";
+export default function Information({ animeData }: { animeData: IsAnimeData }) {
 	const [readMore, setReadMore] = useState(false);
 	const {
 		type,

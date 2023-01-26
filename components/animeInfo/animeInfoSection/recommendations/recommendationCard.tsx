@@ -1,11 +1,11 @@
 import Image from "next/image";
 import Link from "next/link";
-import { RecommendationsInterface } from "../../../../constants/sectionInterfaces/recommendationsInterface";
+import { IRecommendations } from "../../../../constants/sectionInterfaces/IRecommendations";
 
 export default function RecommendationCard({
 	recommendation,
 }: {
-	recommendation: RecommendationsInterface;
+	recommendation: IRecommendations;
 }) {
 	return (
 		<li

@@ -1,5 +1,5 @@
 import Image from "next/image";
-import { AnimeDataInterface } from "../../../constants/interfacesAndTypes";
+import { IsAnimeData } from "../../../constants/interfacesAndTypes";
 import AlternativeTitles from "./alternativeTitles";
 import Information from "./information";
 import Statistics from "./statistics";
@@ -8,7 +8,7 @@ import StreamingPlatforms from "./streamingPlatforms";
 export default function AnimeInfoAside({
 	animeData,
 }: {
-	animeData: AnimeDataInterface;
+	animeData: IsAnimeData;
 }) {
 	return (
 		<aside className="w-full xl:w-[25%] px-4 border-r-[1px] order-2 xl:order-1">

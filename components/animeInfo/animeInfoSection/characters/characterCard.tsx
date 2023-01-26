@@ -1,11 +1,11 @@
 import Image from "next/image";
-import { CharactersInterface } from "../../../../constants/sectionInterfaces/charactersInterface";
+import { ICharacters } from "../../../../constants/sectionInterfaces/ICharacters";
 export default function CharacterCard({
 	characterInfo,
 	index,
 	isPage = false,
 }: {
-	characterInfo: CharactersInterface;
+	characterInfo: ICharacters;
 	index: number;
 	isPage?: boolean;
 }) {

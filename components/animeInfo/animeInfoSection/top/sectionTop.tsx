@@ -4,12 +4,8 @@ import Image from "next/image";
 import Synopsis from "./topInfo/synopsis";
 import RelatedAnime from "./topInfo/relatedAnime";
 import starIcon from "../../../../public/icons/star-icon.svg";
-import { AnimeDataInterface } from "../../../../constants/interfacesAndTypes";
-export default function SectionTop({
-	animeData,
-}: {
-	animeData: AnimeDataInterface;
-}) {
+import { IsAnimeData } from "../../../../constants/interfacesAndTypes";
+export default function SectionTop({ animeData }: { animeData: IsAnimeData }) {
 	const {
 		score,
 		scored_by,

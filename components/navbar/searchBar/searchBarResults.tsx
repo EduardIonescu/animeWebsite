@@ -8,7 +8,7 @@ export default function SearchBarResults({
 	setSearchIsActive,
 	searchRef,
 }) {
-	const resultsRef = useRef(null);
+	const resultsRef = useRef<HTMLDivElement>(null);
 	const router = useRouter();
 
 	useEffect(() => {

@@ -1,9 +1,9 @@
-import { CharactersInterface } from "../../../constants/sectionInterfaces/charactersInterface";
+import { ICharacters } from "../../../constants/sectionInterfaces/ICharacters";
 import CharacterCard from "../animeInfoSection/characters/characterCard";
 export default function AnimeCharactersSection({
 	characters,
 }: {
-	characters: CharactersInterface[];
+	characters: ICharacters[];
 }) {
 	return (
 		<section>

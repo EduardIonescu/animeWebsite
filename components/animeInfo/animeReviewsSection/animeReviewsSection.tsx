@@ -1,9 +1,9 @@
-import { ReviewsInterface } from "../../../constants/sectionInterfaces/reviewsInterface";
+import { IReviews } from "../../../constants/sectionInterfaces/IReviews";
 import Review from "../animeInfoSection/reviews/review";
 export default function AnimeReviewsSection({
 	reviews,
 }: {
-	reviews: ReviewsInterface[];
+	reviews: IReviews[];
 }) {
 	return (
 		<section>

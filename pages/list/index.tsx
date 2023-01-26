@@ -4,12 +4,13 @@ import { useState } from "react";
 import { getAllQueriesURL } from "../../lib/listFilter";
 import ResultsSection from "../../components/listPage/resultsSection";
 import { LoadingSpinner } from "../../components/other/loading";
+import { IsAnimeData } from "../../constants/interfacesAndTypes";
 
 type QueryObject = { value: number | string; label?: string | number };
 type Query = QueryObject | QueryObject[] | null | undefined;
 
 export default function List() {
-	const [filterData, setFilterData] = useState<object[]>();
+	const [filterData, setFilterData] = useState<IsAnimeData[]>();
 	const [loading, setLoading] = useState(false);
 	const [error, setError] = useState(false);
 	async function fetchFilterData(

@@ -1,10 +1,10 @@
-import { RecommendationsInterface } from "../../../constants/sectionInterfaces/recommendationsInterface";
+import { IRecommendations } from "../../../constants/sectionInterfaces/IRecommendations";
 import RecommendationArticle from "./recommendationArticle";
 
 export default function AnimeRecommendationsSection({
 	recommendations,
 }: {
-	recommendations: RecommendationsInterface[];
+	recommendations: IRecommendations[];
 }) {
 	return (
 		<section className="mt-2 flex flex-wrap gap-3">

@@ -1,5 +1,10 @@
+import { IsAnimeData } from "../../constants/interfacesAndTypes";
 import AnimeCard from "../animeCard";
-export default function ResultsSection({ resultsData }) {
+export default function ResultsSection({
+	resultsData,
+}: {
+	resultsData: IsAnimeData[];
+}) {
 	return (
 		<section
 			className="flex flex-wrap flex-col md:flex-row md:gap-4

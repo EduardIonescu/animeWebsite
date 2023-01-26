@@ -1,10 +1,10 @@
 import Image from "next/image";
 import Link from "next/link";
-import { RecommendationsInterface } from "../../../constants/sectionInterfaces/recommendationsInterface";
+import { IRecommendations } from "../../../constants/sectionInterfaces/IRecommendations";
 export default function RecommendationArticle({
 	recommendation,
 }: {
-	recommendation: RecommendationsInterface;
+	recommendation: IRecommendations;
 }) {
 	const { entry } = recommendation;
 	const { mal_id, title, images } = entry;
