@@ -25,7 +25,6 @@ export function mapAllQueries(
 	score: Query,
 	order: Query
 ): string {
-	console.log(genres);
 	return `sfw=true&type=tv&${genres && mapQuery("genres", genres)}${
 		ratings && mapQuery("rating", ratings)
 	}${year && mapQuery("start_date", year)}${
