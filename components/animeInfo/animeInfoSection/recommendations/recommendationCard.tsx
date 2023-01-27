@@ -1,6 +1,6 @@
 import Image from "next/image";
 import Link from "next/link";
-import { IRecommendations } from "../../../../constants/sectionInterfaces/IRecommendations";
+import { IRecommendations } from "../../../../constants/sectionInterfaces/recommendationsInterface";
 
 export default function RecommendationCard({
 	recommendation,

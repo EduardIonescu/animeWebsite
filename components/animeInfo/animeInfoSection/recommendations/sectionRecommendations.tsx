@@ -3,7 +3,7 @@ import RecommendationCard from "./recommendationCard";
 import ReadMoreButton from "../../../readMoreButton";
 import Slider from "react-slick";
 import sliderSettings from "../../../../constants/sliderSettings";
-import { IRecommendations } from "../../../../constants/sectionInterfaces/IRecommendations";
+import { IRecommendations } from "../../../../constants/sectionInterfaces/recommendationsInterface";
 
 export default function SectionRecommendations({
 	setPage,

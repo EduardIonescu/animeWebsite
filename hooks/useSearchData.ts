@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import { parseQuery } from "../lib/search";
 import getData from "../lib/getData";
-import { IQuery } from "../constants/searchInterfaces/IQuery";
+import { IQuery } from "../constants/searchInterfaces/queryInterface";
 
 export function useSearchData(setSearchIsActive: Function) {
 	const [query, setQuery] = useState("");

@@ -1,8 +1,8 @@
 import getData from "../lib/getData";
 import { useEffect, useState } from "react";
-import { AnimeDataAll } from "../constants/interfacesAndTypes";
+import { IsAnimeData } from "../constants/interfacesAndTypes";
 export function useAnimeIdData(animeId: number | string | undefined) {
-	const [animeData, setAnimeData] = useState<boolean | AnimeDataAll>(false);
+	const [animeData, setAnimeData] = useState<boolean | IsAnimeData>(false);
 	const url = `https://api.jikan.moe/v4/anime/${animeId}/full`;
 	useEffect(() => {
 		let ignore = false;
