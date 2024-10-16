@@ -29,7 +29,7 @@ export function useSearchData(setSearchIsActive: Function) {
 
     // Only fetches if the query hasn't changed for x ms
     // Might be worth increasing if users are slow typers
-    const timeoutId = setTimeout(getSearchTerms, 500);
+    const timeoutId = setTimeout(getSearchTerms, 400);
     return () => {
       ignore = true;
       clearTimeout(timeoutId);
