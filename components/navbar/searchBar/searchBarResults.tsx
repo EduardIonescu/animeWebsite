@@ -1,6 +1,5 @@
 import Image from "next/image";
 import Link from "next/link";
-import { useRouter } from "next/router";
 import { Dispatch, RefObject, SetStateAction, useEffect, useRef } from "react";
 import { IsAnimeData } from "../../../constants/interfacesAndTypes";
 import { LoadingSpinner } from "../../other/loading";
@@ -9,15 +8,16 @@ type SearchBarResultsProps = {
   resultsData: IsAnimeData[] | undefined;
   setSearchIsActive: Dispatch<SetStateAction<boolean>>;
   searchRef: RefObject<HTMLInputElement>;
+  isLoading: boolean;
 };
 
 export default function SearchBarResults({
   resultsData,
   setSearchIsActive,
   searchRef,
+  isLoading,
 }: SearchBarResultsProps) {
   const resultsRef = useRef<HTMLDivElement>(null);
-  const router = useRouter();
 
   useEffect(() => {
     function handleClickOutside(e) {
@@ -39,7 +39,7 @@ export default function SearchBarResults({
 			px-4 w-full top-12 xl:top-10 "
       ref={resultsRef}
     >
-      {resultsData ? (
+      {resultsData && !isLoading ? (
         <ul className="bg-white dark:bg-darkBlueDark overflow-hidden rounded">
           {resultsData.map((result, index) => (
             <Link

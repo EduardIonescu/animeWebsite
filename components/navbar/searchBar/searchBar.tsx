@@ -4,7 +4,8 @@ import SearchBarResults from "./searchBarResults";
 
 export default function SearchBar() {
   const [searchIsActive, setSearchIsActive] = useState<boolean>(false);
-  const { query, setQuery, resultsData } = useSearchData(setSearchIsActive);
+  const { query, setQuery, resultsData, isLoading } =
+    useSearchData(setSearchIsActive);
   const searchRef = useRef<HTMLInputElement>(null);
 
   function handleChange(e: React.FormEvent<EventTarget>) {
@@ -32,6 +33,7 @@ export default function SearchBar() {
           resultsData={resultsData}
           setSearchIsActive={setSearchIsActive}
           searchRef={searchRef}
+          isLoading={isLoading}
         />
       )}
     </article>

@@ -10,31 +10,33 @@ export function useSearchData(setSearchIsActive: Function) {
   const [resultsData, setResultsData] = useState<IsAnimeData[] | undefined>(
     undefined
   );
+  const [isLoading, setIsLoading] = useState(false);
 
   useEffect(() => {
     setSearchIsActive(true);
+    setIsLoading(true);
     let ignore = false;
 
     async function getSearchTerms() {
-      const animepaheURL = `${ENDPOINT}?q=${parseQuery(
-        query
-      )}&limit=8&sfw=true`;
+      const URL = `${ENDPOINT}?q=${parseQuery(query)}&limit=6&sfw=true`;
       if (query && !ignore) {
-        const data = await getData(animepaheURL);
+        const data = await getData(URL);
         const results = data.data;
-        console.log("results", results);
         setResultsData(results);
+        setIsLoading(false);
       }
     }
 
     // Only fetches if the query hasn't changed for x ms
     // Might be worth increasing if users are slow typers
-    const timeoutId = setTimeout(getSearchTerms, 300);
+    const timeoutId = setTimeout(getSearchTerms, 500);
     return () => {
       ignore = true;
       clearTimeout(timeoutId);
     };
   }, [query]);
 
-  return { query, setQuery, resultsData };
+  console.log("isLoading", isLoading);
+
+  return { query, setQuery, resultsData, isLoading };
 }
