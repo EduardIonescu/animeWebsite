@@ -1,0 +1,39 @@
+"use client";
+
+import MoonIcon from "@/../public/icons/moon-icon.svg";
+import SunIcon from "@/../public/icons/sun-icon.svg";
+import { useTheme } from "next-themes";
+import Image from "next/image";
+import { useEffect, useState } from "react";
+
+export default function DarkModeButton() {
+  const [mounted, setMounted] = useState<boolean>(false);
+  const { theme, setTheme } = useTheme();
+
+  useEffect(() => {
+    setMounted(true);
+  }, []);
+
+  return (
+    <>
+      {mounted && (
+        <button
+          type="button"
+          onClick={() => setTheme(theme == "light" ? "dark" : "light")}
+          className="w-6 h-6 relative"
+        >
+          <Image
+            src={theme == "light" ? MoonIcon : SunIcon}
+            fill
+            sizes="100%"
+            alt=""
+            aria-hidden="true"
+            className="invert-[.75] dark:invert hover:invert-[.50] 
+					dark:hover:invert-[.50] transition duration-300"
+          />
+          <span className="sr-only">Dark Mode</span>
+        </button>
+      )}
+    </>
+  );
+}
