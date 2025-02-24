@@ -7,7 +7,7 @@ import { LoadingSpinner } from "../../other/loading";
 type SearchBarResultsProps = {
   resultsData: IsAnimeData[] | undefined;
   setSearchIsActive: Dispatch<SetStateAction<boolean>>;
-  searchRef: RefObject<HTMLInputElement>;
+  searchRef: RefObject<HTMLInputElement | null>;
   isLoading: boolean;
 };
 
@@ -24,7 +24,7 @@ export default function SearchBarResults({
       if (
         resultsRef.current &&
         !resultsRef.current.contains(e.target) &&
-        !searchRef.current?.contains(e.target)
+        !searchRef?.current?.contains(e.target)
       )
         setSearchIsActive(false);
     }

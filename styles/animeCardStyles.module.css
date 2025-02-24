@@ -1,10 +1,6 @@
 .card {
   position: relative;
-  background-image: linear-gradient(
-    to right,
-    transparent,
-    transparent
-  );
+  background-image: linear-gradient(to right, transparent, transparent);
   z-index: 1;
 }
 

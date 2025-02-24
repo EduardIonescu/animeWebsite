@@ -29,7 +29,6 @@ export default function SearchBar() {
       />
       {query && searchIsActive && (
         <SearchBarResults
-          key={query}
           resultsData={resultsData}
           setSearchIsActive={setSearchIsActive}
           searchRef={searchRef}

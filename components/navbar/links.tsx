@@ -1,6 +1,8 @@
+"use client";
+
 import Image from "next/image";
 import Link from "next/link";
-import { useRouter } from "next/router";
+import { usePathname } from "next/navigation";
 
 const links = [
   { name: "Home", address: "/", src: "/icons/house-icon.svg" },
@@ -13,7 +15,8 @@ const links = [
 ];
 
 export default function Links() {
-  const router = useRouter();
+  const pathname = usePathname();
+
   return (
     <ul
       className="flex gap-6 lg:ml-32 font-medium text-base lg:text-[18px]
@@ -31,7 +34,7 @@ export default function Links() {
             before:h-[2px] lg:before:h-[4px] before:left-0 before:bg-[#ffc43d]
             before:scale-x-0 before:transition-transform before:duration-300
              ${
-               router.pathname == link.address // underline on focus
+               pathname == link.address // underline on focus
                  ? "before:scale-x-100"
                  : "before:opacity-80 hover:before:scale-x-100  "
              }`}
