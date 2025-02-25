@@ -19,7 +19,7 @@ export default function ReadMoreButton({
       className={`pt-[2px] 
 transition duration-300 ${
         name
-          ? "text-base text-darkBlue dark:text-veryLightGray font-bold"
+          ? "text-base text-darkBlue dark:text-gray-200 font-bold"
           : "hover:text-lighterBlue opacity-75"
       }`}
     >
