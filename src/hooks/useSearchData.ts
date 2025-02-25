@@ -1,6 +1,6 @@
 import { parseQuery } from "@/lib/common";
 import { getData } from "@/lib/getData";
-import { IsAnimeData } from "@/types";
+import { IsAnimeData } from "@/types/types";
 import { useEffect, useState } from "react";
 
 const ENDPOINT = "https://api.jikan.moe/v4/anime";

@@ -2,7 +2,7 @@
 
 import calendarIcon from "@/../public/icons/calendar-icon.svg";
 import starIcon from "@/../public/icons/trending-icon.svg";
-import { IsAnimeData } from "@/types";
+import { IsAnimeData } from "@/types/types";
 import Image from "next/image";
 import Link from "next/link";
 

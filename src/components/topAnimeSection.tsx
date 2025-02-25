@@ -1,6 +1,6 @@
 "use client";
 
-import { IsAnimeData } from "@/types";
+import { IsAnimeData } from "@/types/types";
 import AnimeCard from "./animeCard";
 import Loading from "./other/loading";
 

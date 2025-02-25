@@ -1,5 +1,5 @@
 import { LoadingSpinner } from "@/components/other/loading";
-import { IsAnimeData } from "@/types";
+import { IsAnimeData } from "@/types/types";
 import Image from "next/image";
 import Link from "next/link";
 import { Dispatch, RefObject, SetStateAction, useEffect, useRef } from "react";

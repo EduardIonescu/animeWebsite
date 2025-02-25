@@ -1,3 +1,5 @@
+"use client";
+
 import { getData } from "@/lib/getData";
 import { useEffect, useState } from "react";
 

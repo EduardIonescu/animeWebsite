@@ -1,5 +1,5 @@
 import { getData } from "@/lib/getData";
-import { IsAnimeData } from "@/types";
+import { IsAnimeData } from "@/types/types";
 import { useEffect, useState } from "react";
 export function useAnimeIdData(animeId: number | string | undefined) {
   const [animeData, setAnimeData] = useState<boolean | IsAnimeData>(false);
