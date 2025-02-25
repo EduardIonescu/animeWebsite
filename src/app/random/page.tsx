@@ -1,6 +1,6 @@
 import AnimeInfo from "@/components/animeInfo/animeInfo";
 import Loading from "@/components/other/loading";
-import { getData } from "@/lib/getData";
+import { getData, getDataById } from "@/lib/getData";
 
 const randomURL = `https://api.jikan.moe/v4/random/anime`;
 
@@ -9,10 +9,19 @@ export default async function Random() {
     | number
     | undefined;
 
-  const url = `https://api.jikan.moe/v4/anime/${randomId}/full`;
-  const randomData = (await getData(url))?.data;
+  if (!randomId) {
+    return (
+      <main
+        className="w-[100vw] sm:w-[34rem] md:w-[45rem] lg:w-[60rem]
+			xl:w-[75rem] mx-auto -mb-14"
+      >
+        Not Found
+      </main>
+    );
+  }
 
-  console.log("randomData", randomId);
+  const randomData = await getDataById(randomId);
+
   if (randomData && randomId)
     return <AnimeInfo animeData={randomData} animeId={randomId} />;
   else

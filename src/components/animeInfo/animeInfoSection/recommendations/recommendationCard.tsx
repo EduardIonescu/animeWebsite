@@ -1,12 +1,17 @@
+"use client";
+
 import { IRecommendations } from "@/types/sectionInterfaces/recommendationsInterface";
 import Image from "next/image";
 import Link from "next/link";
+import { useRef } from "react";
 
 export default function RecommendationCard({
   recommendation,
 }: {
   recommendation: IRecommendations;
 }) {
+  const onMouseDownX = useRef<number>(undefined);
+
   return (
     <li
       className="relative overflow-hidden cursor-pointer transition
@@ -14,6 +19,14 @@ export default function RecommendationCard({
     >
       <Link
         href={`/anime/${recommendation.entry.mal_id}`}
+        onMouseDown={(e) => {
+          onMouseDownX.current = e.clientX;
+        }}
+        onClick={(e) => {
+          if (Math.abs(e.clientX - (onMouseDownX.current ?? e.clientX)) > 10) {
+            e.preventDefault();
+          }
+        }}
         className="h-[144px] w-24 relative block"
       >
         <Image

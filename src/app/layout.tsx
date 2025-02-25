@@ -1,7 +1,9 @@
 import Navbar from "@/components/navbar/navbar";
 import BackToTopButton from "@/components/other/backToTopButton";
+import Loading from "@/components/other/loading";
 import { ThemeProvider } from "@/components/other/themeProvider";
 import type { Metadata } from "next";
+import { Suspense } from "react";
 import "./globals.css";
 
 export const metadata: Metadata = {
@@ -24,8 +26,10 @@ export default function RootLayout({
           disableTransitionOnChange
         >
           <Navbar />
-          {children}
-          <BackToTopButton />
+          <Suspense fallback={<Loading />}>
+            {children}
+            <BackToTopButton />
+          </Suspense>
         </ThemeProvider>
       </body>
     </html>

@@ -1,3 +1,5 @@
+import { IsAnimeData } from "@/types/types";
+
 function delay(t: number) {
   return new Promise((resolve) => {
     setTimeout(resolve, t);
@@ -19,7 +21,7 @@ export async function getData(url: string, retries = REFETECH.RETRIES) {
       // limited requests per second
       await delay(REFETECH.DELAY);
       return await getData(url, retries - 1);
-    } else throw error;
+    }
   }
 }
 
@@ -54,4 +56,11 @@ export async function getHomeData() {
   ];
 
   return { popularAnimeData, trendingAnimeData };
+}
+
+export async function getDataById(id: number) {
+  const url = `https://api.jikan.moe/v4/anime/${id}/full`;
+  const data = (await getData(url))?.data as IsAnimeData | undefined;
+
+  return data;
 }

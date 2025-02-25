@@ -1,6 +1,7 @@
 import { IsAnimeData } from "@/types/types";
 import AnimeInfoAside from "./animeInfoAside/animeInfoAside";
 import AnimeInfoSection from "./animeInfoSection/animeInfoSection";
+
 export default function AnimeInfo({
   animeData,
   animeId,

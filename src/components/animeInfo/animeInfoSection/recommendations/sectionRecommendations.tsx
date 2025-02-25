@@ -1,7 +1,11 @@
+"use client";
+
 import ReadMoreButton from "@/components/other/readMoreButton";
 import { IRecommendations } from "@/types/sectionInterfaces/recommendationsInterface";
 import { useRef, useState } from "react";
 import Slider from "react-slick";
+import "slick-carousel/slick/slick-theme.css";
+import "slick-carousel/slick/slick.css";
 import RecommendationCard from "./recommendationCard";
 
 export default function SectionRecommendations({
@@ -49,6 +53,10 @@ export default function SectionRecommendations({
       }
       setRecommendations((r) => [...r.slice(7, 21), ...r.slice(0, 7)]);
     }, 250);
+  }
+
+  function handleClick(e: Event) {
+    e.preventDefault();
   }
   if (recommendations.length >= 1)
     return (
