@@ -1,4 +1,4 @@
-import { LoadingSpinner } from "@/components/loading";
+import { LoadingSpinner } from "@/components/other/loading";
 import { IsAnimeData } from "@/types";
 import Image from "next/image";
 import Link from "next/link";

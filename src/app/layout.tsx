@@ -1,6 +1,6 @@
-import BackToTopButton from "@/components/backToTopButton";
 import Navbar from "@/components/navbar/navbar";
-import { ThemeProvider } from "@/components/theme-provider";
+import BackToTopButton from "@/components/other/backToTopButton";
+import { ThemeProvider } from "@/components/other/themeProvider";
 import type { Metadata } from "next";
 import "./globals.css";
 

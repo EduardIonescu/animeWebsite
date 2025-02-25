@@ -1,8 +1,8 @@
 "use client";
 
+import arrowUp from "@/../public/icons/arrow-up.svg";
 import Image from "next/image";
 import { useEffect, useState } from "react";
-import arrowUp from "../../public/icons/arrow-up.svg";
 
 export default function BackToTopButton() {
   const [showButton, setShowButton] = useState<boolean>(false);

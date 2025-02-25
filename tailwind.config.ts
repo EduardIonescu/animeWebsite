@@ -6,6 +6,7 @@ export default {
     "./src/components/**/*.{js,ts,jsx,tsx,mdx}",
     "./src/app/**/*.{js,ts,jsx,tsx,mdx}",
   ],
+  darkMode: "class",
   theme: {
     extend: {
       fontFamily: { mPlus: ["M PLUS 1p, sans-serif"] },
@@ -16,7 +17,6 @@ export default {
         shadowLightBlue: "#EEFBFB",
         darkRed: "#dc3545",
         darkYellow: "#ffc43d",
-
         darkBlueDark: "hsl(209, 23%, 22%)",
         veryDarkBlue: "hsl(207, 26%, 17%)",
         veryDarkBlueLightMode: "hsl(200, 15%, 8%)",

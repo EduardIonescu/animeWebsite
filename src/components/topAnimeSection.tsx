@@ -2,7 +2,7 @@
 
 import { IsAnimeData } from "@/types";
 import AnimeCard from "./animeCard";
-import Loading from "./loading";
+import Loading from "./other/loading";
 
 export default function TopAnimeSection({
   showTrending,
