@@ -1,4 +1,4 @@
-import { IRecommendations } from "../../../constants/sectionInterfaces/recommendationsInterface";
+import { IRecommendations } from "@/types/sectionInterfaces/recommendationsInterface";
 import RecommendationArticle from "./recommendationArticle";
 
 export default function AnimeRecommendationsSection({

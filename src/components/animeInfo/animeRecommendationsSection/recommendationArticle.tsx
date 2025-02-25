@@ -1,6 +1,7 @@
+import { IRecommendations } from "@/types/sectionInterfaces/recommendationsInterface";
 import Image from "next/image";
 import Link from "next/link";
-import { IRecommendations } from "../../../constants/sectionInterfaces/recommendationsInterface";
+
 export default function RecommendationArticle({
   recommendation,
 }: {
