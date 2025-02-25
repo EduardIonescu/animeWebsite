@@ -1,3 +1,5 @@
+"use client";
+
 import { IsAnimeData } from "@/types/types";
 import AnimeCard from "../animeCard";
 export default function ResultsSection({

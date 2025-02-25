@@ -1,4 +1,6 @@
-export const genreOptions = [
+import { QueryObject } from "@/types/list";
+
+export const genreOptions: QueryObject[] = [
   { value: 1, label: "Action" },
   { value: 2, label: "Adventure" },
   { value: 5, label: "Avant Garde" },
@@ -16,7 +18,7 @@ export const genreOptions = [
   { value: 41, label: "Suspense" },
 ];
 
-export const scoreOptions = [
+export const scoreOptions: QueryObject[] = [
   { value: 9, label: "(9+) Outstanding" },
   { value: 8, label: "(8+) Excellent" },
   { value: 7, label: "(7+) Very Good" },
@@ -27,7 +29,7 @@ export const scoreOptions = [
   { value: 2, label: "(2+) Horrible" },
 ];
 
-export const yearOptions = [
+export const yearOptions: QueryObject[] = [
   { value: "2023-01-01", label: "2023" },
   { value: "2022-01-01", label: "2022" },
   { value: "2021-01-01", label: "2021" },
@@ -58,19 +60,19 @@ export const yearOptions = [
   { value: "1960-01-01", label: "1960 - 1969" },
 ];
 
-export const ratingOptions = [
+export const ratingOptions: QueryObject[] = [
   { value: "g", label: "G - All Ages" },
   { value: "pg", label: "PG - Children" },
   { value: "pg13", label: "PG-13 - Teens 13 or older" },
   { value: "r17", label: "R - 17+ (violence & profanity)" },
 ];
 
-export const statusOptions = [
+export const statusOptions: QueryObject[] = [
   { value: "complete", label: "Completed" },
   { value: "airing", label: "Ongoing" },
 ];
 
-export const orderOptions = [
+export const orderOptions: QueryObject[] = [
   { value: "score", label: "Score" },
   { value: "popularity", label: "Popularity" },
   { value: "rank", label: "Rank" },

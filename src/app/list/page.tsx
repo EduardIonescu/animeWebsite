@@ -4,11 +4,9 @@ import ResultsSection from "@/components/listPage/resultsSection";
 import SelectForm from "@/components/listPage/selectForm";
 import { LoadingSpinner } from "@/components/other/loading";
 import { getData } from "@/lib/getData";
+import { Query, QueryObject } from "@/types/list";
 import { IsAnimeData } from "@/types/types";
 import { useState } from "react";
-
-type QueryObject = { value: number | string; label?: string | number };
-type Query = QueryObject | QueryObject[] | null | undefined;
 
 export default function List() {
   const [filterData, setFilterData] = useState<IsAnimeData[]>();
@@ -67,10 +65,7 @@ export default function List() {
   );
 }
 
-export function mapQuery(
-  queryName: string,
-  queryArray: Array<QueryObject> | QueryObject
-) {
+function mapQuery(queryName: string, queryArray: QueryObject[] | QueryObject) {
   if (typeof queryArray === "object" && "value" in queryArray) {
     return `${queryName}=${queryArray.value}&`;
   }
@@ -84,7 +79,7 @@ export function mapQuery(
 }
 
 // makes the url clean
-export function mapAllQueries(
+function mapAllQueries(
   genres: Query,
   ratings: Query,
   year: Query,
@@ -100,7 +95,7 @@ export function mapAllQueries(
     order && mapQuery("order_by", order)
   }`;
 }
-export function getAllQueriesURL(
+function getAllQueriesURL(
   genres: Query,
   ratings: Query,
   year: Query,
