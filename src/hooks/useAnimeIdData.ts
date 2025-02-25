@@ -25,7 +25,7 @@ export function useAnimeIdData(animeId: number | string | undefined) {
       setAnimeData(false);
     };
   }, [animeId]);
-  if (typeof animeData === "object") return animeData;
+  return animeData;
 }
 
 const randomURL = `https://api.jikan.moe/v4/random/anime`;

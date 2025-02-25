@@ -1,3 +1,5 @@
+"use client";
+
 import starIcon from "@/../public/icons/star-icon.svg";
 import { IsAnimeData } from "@/types/types";
 import Image from "next/image";
@@ -29,6 +31,8 @@ export default function SectionTop({ animeData }: { animeData: IsAnimeData }) {
         return (
           relation.entry.filter((entry) => entry.type != "manga").length >= 1
         );
+
+      return false;
     });
   return (
     <section className="order-0">

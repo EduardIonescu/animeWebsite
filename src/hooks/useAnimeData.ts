@@ -13,12 +13,12 @@ interface CharactersObject {
 }
 export function useCharactersData(animeId: number | string) {
   function handleCharacters(data: CharactersObject) {
-    if (data.data)
-      return data.data
+    if (!data.data) return;
 
-        .sort((a, b) => (a.favorites > b.favorites ? 1 : -1))
-        .sort((a, b) => (a.role > b.role ? 1 : -1))
-        .slice(0, 15);
+    return data.data
+      .sort((a, b) => (a.favorites > b.favorites ? 1 : -1))
+      .sort((a, b) => (a.role > b.role ? 1 : -1))
+      .slice(0, 15);
   }
   return useAnimeData(animeId, "characters", handleCharacters);
 }
@@ -26,20 +26,20 @@ export function useCharactersData(animeId: number | string) {
 export function useReviewsData(animeId: number | string) {
   function handleReviews(data: { data: object[] }) {
     // Max 15
-    if (data.data) {
-      if (data.data.length >= 3) return data.data.slice(0, 15);
-      else return data.data;
-    }
+    if (!data.data) return;
+
+    if (data.data.length >= 3) return data.data.slice(0, 15);
+    else return data.data;
   }
   return useAnimeData(animeId, "reviews", handleReviews);
 }
 
 export function useRecommendationsData(animeId: number | string) {
   function handleRecommendations(data: { data: object[] }) {
-    if (data.data) {
-      if (data.data.length >= 21) return data.data.slice(0, 40);
-      else return data.data.slice(0, 8);
-    }
+    if (!data.data) return;
+
+    if (data.data.length >= 21) return data.data.slice(0, 40);
+    else return data.data.slice(0, 8);
   }
   return useAnimeData(animeId, "recommendations", handleRecommendations, true);
 }
