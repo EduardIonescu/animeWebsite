@@ -8,14 +8,22 @@ function delay(t: number) {
 
 const REFETECH = {
   DELAY: 200,
-  RETRIES: 100,
+  RETRIES: 40,
 };
-export async function getData(url: string, retries = REFETECH.RETRIES) {
+export async function getData(
+  url: string,
+  shouldCache: boolean = true,
+  retries = REFETECH.RETRIES
+) {
   try {
-    const res = await fetch(url, {
-      cache: "force-cache",
-      next: { revalidate: 43200 },
-    });
+    const options: RequestInit = shouldCache
+      ? {
+          cache: "force-cache",
+          next: { revalidate: 43200 },
+        }
+      : {};
+
+    const res = await fetch(url, options);
 
     if (res.ok || res.status === 404) return res.json();
 
@@ -24,7 +32,7 @@ export async function getData(url: string, retries = REFETECH.RETRIES) {
     if (retries > 0) {
       // limited requests per second
       await delay(REFETECH.DELAY);
-      return await getData(url, retries - 1);
+      return await getData(url, shouldCache, retries - 1);
     }
   }
 }
@@ -65,10 +73,27 @@ export async function getHomeData() {
 export async function getDataById(id: number) {
   const url = `https://api.jikan.moe/v4/anime/${id}/full`;
   const res = await getData(url);
-  if ("status" in res && res.status === 404) {
+  if (res && "status" in res && res.status === 404) {
     return { error: 404, data: undefined };
   }
 
   const data = res?.data as IsAnimeData | undefined;
+  return { error: undefined, data };
+}
+
+export async function getDataRandom() {
+  const randomURL = `https://api.jikan.moe/v4/random/anime`;
+  const randomId = (await getData(randomURL, false))?.data.mal_id as
+    | number
+    | undefined;
+  if (!randomId) {
+    return { error: 404, data: undefined };
+  }
+
+  const { data, error } = await getDataById(randomId);
+  if (error) {
+    return { error: error ?? 404, data: undefined };
+  }
+
   return { error: undefined, data };
 }

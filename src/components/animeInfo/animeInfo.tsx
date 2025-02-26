@@ -2,13 +2,7 @@ import { IsAnimeData } from "@/types/types";
 import AnimeInfoAside from "./animeInfoAside/animeInfoAside";
 import AnimeInfoSection from "./animeInfoSection/animeInfoSection";
 
-export default function AnimeInfo({
-  animeData,
-  animeId,
-}: {
-  animeData: IsAnimeData;
-  animeId: number | string;
-}) {
+export default function AnimeInfo({ animeData }: { animeData: IsAnimeData }) {
   const titleEnglish = animeData && animeData.title_english,
     title = animeData && animeData.title;
 
@@ -33,11 +27,11 @@ export default function AnimeInfo({
           </>
         )}
       </nav>
-      <AnimeInfoAside key={`aside-${animeId}`} animeData={animeData} />
+      <AnimeInfoAside key={`aside-${animeData.mal_id}`} animeData={animeData} />
       <AnimeInfoSection
-        key={`section-${animeId}`}
+        key={`section-${animeData.mal_id}`}
         animeData={animeData}
-        animeId={animeId}
+        animeId={animeData.mal_id}
       />
     </main>
   );

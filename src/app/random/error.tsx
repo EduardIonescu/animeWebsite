@@ -4,10 +4,8 @@ import { useEffect } from "react";
 
 export default function Error({
   error,
-  reset,
 }: {
   error: Error & { digest?: string };
-  reset: () => void;
 }) {
   useEffect(() => {
     console.error(error);
@@ -24,7 +22,7 @@ export default function Error({
       <button
         className="text-lighterBlue transition duration-300 
       hover:brightness-150"
-        onClick={() => reset()}
+        onClick={() => window.location.reload()}
       >
         Try again
       </button>

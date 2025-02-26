@@ -1,36 +1,19 @@
 import AnimeInfo from "@/components/animeInfo/animeInfo";
-import Loading from "@/components/other/loading";
-import { getData, getDataById } from "@/lib/getData";
+import { getDataRandom } from "@/lib/getData";
+import { notFound } from "next/navigation";
 
-const randomURL = `https://api.jikan.moe/v4/random/anime`;
+export const dynamic = "force-dynamic";
 
 export default async function Random() {
-  const randomId = (await getData(randomURL))?.data.mal_id as
-    | number
-    | undefined;
+  const { data, error } = await getDataRandom();
 
-  if (!randomId) {
-    return (
-      <main
-        className="w-[100vw] sm:w-[34rem] md:w-[45rem] lg:w-[60rem]
-			xl:w-[75rem] mx-auto -mb-14"
-      >
-        Not Found
-      </main>
-    );
+  if (error === 404) {
+    notFound();
   }
 
-  const { data, error } = await getDataById(randomId);
+  if (!data) {
+    throw new Error("Too many requests");
+  }
 
-  if (data && randomId)
-    return <AnimeInfo animeData={data} animeId={randomId} />;
-  else
-    return (
-      <main
-        className="w-[100vw] sm:w-[34rem] md:w-[45rem] lg:w-[60rem]
-			xl:w-[75rem] mx-auto -mb-14"
-      >
-        <Loading />
-      </main>
-    );
+  return <AnimeInfo animeData={data} />;
 }
