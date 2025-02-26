@@ -8,12 +8,16 @@ function delay(t: number) {
 
 const REFETECH = {
   DELAY: 200,
-  RETRIES: 40,
+  RETRIES: 100,
 };
 export async function getData(url: string, retries = REFETECH.RETRIES) {
   try {
-    const res = await fetch(url);
-    if (res.ok) return res.json();
+    const res = await fetch(url, {
+      cache: "force-cache",
+      next: { revalidate: 43200 },
+    });
+
+    if (res.ok || res.status === 404) return res.json();
 
     throw new Error(`${res.status}`);
   } catch (error) {
@@ -60,7 +64,11 @@ export async function getHomeData() {
 
 export async function getDataById(id: number) {
   const url = `https://api.jikan.moe/v4/anime/${id}/full`;
-  const data = (await getData(url))?.data as IsAnimeData | undefined;
+  const res = await getData(url);
+  if ("status" in res && res.status === 404) {
+    return { error: 404, data: undefined };
+  }
 
-  return data;
+  const data = res?.data as IsAnimeData | undefined;
+  return { error: undefined, data };
 }

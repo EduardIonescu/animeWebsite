@@ -1,15 +1,6 @@
 import AnimeInfo from "@/components/animeInfo/animeInfo";
 import { getDataById } from "@/lib/getData";
-import { setTimeout } from "node:timers/promises";
-
-// export const revalidate = 86400;
-
-// // Need generateStaticParams and dynamicParams for caching to work on dynamic pages
-// export const dynamicParams = true;
-// export async function generateStaticParams(asd: any) {
-//   console.log(await asd);
-//   return [];
-// }
+import { notFound } from "next/navigation";
 
 export default async function Page({
   params,
@@ -17,30 +8,16 @@ export default async function Page({
   params: Promise<{ id: string }>;
 }) {
   const id = (await params).id;
-  await setTimeout(1000);
-  console.log("id", id);
   if (!id || !Number(id)) {
-    return (
-      <main
-        className="w-[100vw] sm:w-[34rem] md:w-[45rem] lg:w-[60rem]
-			xl:w-[75rem] mx-auto -mb-14"
-      >
-        Not Found
-      </main>
-    );
+    notFound();
   }
 
-  const data = await getDataById(Number(id));
-
+  const { data, error } = await getDataById(Number(id));
+  if (error === 404) {
+    notFound();
+  }
   if (!data) {
-    return (
-      <main
-        className="w-[100vw] sm:w-[34rem] md:w-[45rem] lg:w-[60rem]
-			xl:w-[75rem] mx-auto -mb-14"
-      >
-        Not Found
-      </main>
-    );
+    throw new Error("Too many requests");
   }
 
   return <AnimeInfo animeData={data} animeId={id} />;

@@ -20,10 +20,10 @@ export default async function Random() {
     );
   }
 
-  const randomData = await getDataById(randomId);
+  const { data, error } = await getDataById(randomId);
 
-  if (randomData && randomId)
-    return <AnimeInfo animeData={randomData} animeId={randomId} />;
+  if (data && randomId)
+    return <AnimeInfo animeData={data} animeId={randomId} />;
   else
     return (
       <main
