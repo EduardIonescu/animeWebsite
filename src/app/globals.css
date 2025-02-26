@@ -18,8 +18,10 @@ body {
 }
 
 body {
+  scrollbar-gutter: stable;
   background: url("/images/background-image-light.jpg") repeat scroll top
     #a56622;
+  width: 100vw;
   transition: backdrop-filter 0.3s ease;
   overflow-x: hidden;
 }
