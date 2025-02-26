@@ -36,7 +36,5 @@ export function useSearchData(setSearchIsActive: Function) {
     };
   }, [query]);
 
-  console.log("isLoading", isLoading);
-
   return { query, setQuery, resultsData, isLoading };
 }

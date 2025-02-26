@@ -1,5 +1,4 @@
 export default function Loading() {
-  console.log("we here");
   return (
     <section
       className="w-full h-[calc(100vh-64px)] mx-auto py-12 px-4 

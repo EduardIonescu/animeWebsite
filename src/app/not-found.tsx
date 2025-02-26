@@ -1,7 +1,6 @@
 import Link from "next/link";
 
-export default function NotFound(params: any) {
-  console.log(params);
+export default function NotFound() {
   return (
     <main
       className="w-[100vw] sm:w-[34rem] md:w-[45rem] lg:w-[60rem]
