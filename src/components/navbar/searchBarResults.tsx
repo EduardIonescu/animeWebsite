@@ -20,7 +20,6 @@ export default function SearchBarResults({
   const resultsRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
-    // @typescript-eslint/no-explicit-any
     function handleClickOutside(e: any) {
       if (
         resultsRef.current &&
@@ -36,12 +35,16 @@ export default function SearchBarResults({
   return (
     <div
       onClick={() => setSearchIsActive(false)}
-      className="absolute z-20 text-darkBlue bg-transparent dark:text-veryLightGray
-			px-4 w-full top-12 xl:top-10 "
+      className={`${
+        searchRef.current && "md:absolute md:top-12 xl:top-10"
+      } z-20 text-darkBlue bg-transparent dark:text-veryLightGray px-4 w-full `}
       ref={resultsRef}
     >
       {resultsData && !isLoading ? (
-        <ul className="bg-white dark:bg-darkBlueDark overflow-hidden rounded">
+        <ul
+          className="bg-white dark:bg-darkBlueDark shadow-md border-[1px] 
+        border-slate-500/20 overflow-hidden rounded"
+        >
           {resultsData.map((result, index) => (
             <Link
               href={`/anime/${result.mal_id}`}

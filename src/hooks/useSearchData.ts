@@ -12,6 +12,11 @@ export function useSearchData(setSearchIsActive: Function) {
   );
   const [isLoading, setIsLoading] = useState(false);
 
+  function handleChange(e: React.FormEvent<EventTarget>) {
+    const target = e.target as HTMLInputElement;
+    setQuery(target.value);
+  }
+
   useEffect(() => {
     setSearchIsActive(true);
     setIsLoading(true);
@@ -36,5 +41,5 @@ export function useSearchData(setSearchIsActive: Function) {
     };
   }, [query]);
 
-  return { query, setQuery, resultsData, isLoading };
+  return { query, handleChange, resultsData, isLoading };
 }

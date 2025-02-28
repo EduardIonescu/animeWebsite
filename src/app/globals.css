@@ -25,13 +25,6 @@ body {
   transition: backdrop-filter 0.3s ease;
   overflow-x: hidden;
 }
-.dark body {
-  backdrop-filter: grayscale(100%) brightness(50%);
-}
-#__next {
-  min-height: 100vh;
-  width: 100vw;
-}
 
 .card {
   position: relative;
