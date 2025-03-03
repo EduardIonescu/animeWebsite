@@ -23,12 +23,25 @@ export default function Navbar() {
     setMenuOpen(false);
   }
 
+  const navbarRef = useRef<HTMLElement | null>(null);
+
+  useEffect(() => {
+    function handleClickOutside(e: MouseEvent) {
+      if (navbarRef.current && !navbarRef.current.contains(e.target as Node)) {
+        setMenuOpen(false);
+        setSearchOpen(false);
+      }
+    }
+    document.addEventListener("mousedown", handleClickOutside);
+    return () => document.removeEventListener("mousedown", handleClickOutside);
+  }, [navbarRef, setSearchOpen, setMenuOpen]);
+
   return (
     <header
       id="top"
       className="fixed top-0 h-16 w-full bg-darkBlue dark:bg-slate-900 shadow-md z-50"
     >
-      <nav className={`z-50 `}>
+      <nav className={`z-50 `} ref={navbarRef}>
         <div
           className="sm:w-[34rem] md:w-[45rem] lg:w-[60rem] xl:w-[75rem] flex 
         items-center justify-between h-16 mx-auto px-4 sm:px-6 lg:px-8"
@@ -83,7 +96,7 @@ export default function Navbar() {
         <SearchBar open={searchOpen} />
 
         {/* Mobile menu */}
-        <Links menuOpen={menuOpen} />
+        <Links menuOpen={menuOpen} toggleMenuOpen={toggleMenuOpen} />
       </nav>
     </header>
   );
@@ -112,10 +125,12 @@ const links = [
 function Links({
   pathname,
   menuOpen,
+  toggleMenuOpen,
   mobile = true,
 }: {
   pathname?: string;
   menuOpen?: boolean;
+  toggleMenuOpen?: () => void;
   mobile?: boolean;
 }) {
   if (mobile) {
@@ -131,6 +146,9 @@ function Links({
             <Link
               href={link.href}
               key={link.href}
+              onClick={() => {
+                toggleMenuOpen && toggleMenuOpen();
+              }}
               className="text-gray-300 hover:text-white px-3 py-2 
       rounded-md text-base font-medium border-l-4 border-transparent 
       hover:border-yellow-400 transition-all flex gap-2 items-center"
@@ -227,10 +245,14 @@ function SearchBar({
 
   if (mobile) {
     return (
-      <div className={`md:hidden ${open ? "block" : "hidden"} bg-slate-800`}>
+      <div
+        className={`md:hidden ${open ? "block" : "hidden"} bg-slate-800 ${
+          query && searchIsActive ? "pb-4" : ""
+        }`}
+      >
         <div
-          className="px-4 py-3 sm:w-[34rem] md:w-[45rem] 
-          lg:w-[60rem] xl:w-[75rem] mx-auto sm:px-6 lg:px-8"
+          className="px-4 sm:w-[34rem] md:w-[45rem] lg:w-[60rem] xl:w-[75rem] 
+          mx-auto sm:px-6 lg:px-8"
         >
           <div className="relative">
             <div className="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
@@ -245,7 +267,8 @@ function SearchBar({
                 if (inputs.current) inputs.current.push(ref);
               }}
               className="bg-white text-slate-800 pl-10 pr-4 py-2 rounded-md cursor-pointer
-                text-sm focus:outline-none focus:ring-2 focus:ring-yellow-400 w-full transition-all"
+                text-sm focus:outline-none focus:ring-2 focus:ring-yellow-400 
+                w-full transition-all mt-3 mb-4"
               autoFocus
             />
           </div>
