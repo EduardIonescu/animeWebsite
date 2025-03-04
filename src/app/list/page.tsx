@@ -24,7 +24,15 @@ export default function List() {
       const url = getAllQueriesURL(genres, ratings, year, status, score, order);
       const data = await getData(url);
       setLoading(false);
-      setFilterData(data.data);
+
+      const uniqueData = (data.data as IsAnimeData[]).reduce((acc, cur) => {
+        if (!acc.find((item) => item?.mal_id === cur.mal_id)) {
+          return [...acc, cur];
+        }
+        return acc;
+      }, [] as IsAnimeData[]);
+
+      setFilterData(uniqueData);
     }
   }
 
