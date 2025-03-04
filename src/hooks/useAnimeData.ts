@@ -36,7 +36,7 @@ export function useReviewsData(animeId: number | string) {
 
 export function useRecommendationsData(animeId: number | string) {
   function handleRecommendations(data: { data: object[] }) {
-    if (!data.data) return;
+    if (!data?.data) return;
 
     if (data.data.length >= 21) return data.data.slice(0, 40);
     else return data.data.slice(0, 8);
