@@ -25,7 +25,6 @@ export default function FilterSelect({
       classNames={{
         control: () => "dark:bg-coolBlack border-black",
         menuList: () => "dark:bg-coolBlack",
-
         menuPortal: () => "dark:bg-gray-200",
         multiValue: () => "dark:bg-veryDarkBlue/80",
         multiValueLabel: () => "dark:bg-veryDarkBlue dark:text-shadowLightBlue",
@@ -38,6 +37,7 @@ export default function FilterSelect({
           ...baseStyles,
           borderRadius: "0.4rem",
           borderColor: "coolBlack",
+          cursor: "pointer",
         }),
         menu: (baseStyles) => ({
           ...baseStyles,
@@ -46,6 +46,7 @@ export default function FilterSelect({
         option: (baseStyles, { isFocused }) => ({
           ...baseStyles,
           backgroundColor: isFocused ? "rgba(120,120,120,0.2)" : "",
+          cursor: "pointer",
         }),
       }}
     />

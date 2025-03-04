@@ -120,18 +120,18 @@ export default function SelectForm({
         <button
           type="button"
           onClick={resetForm}
-          className="bg-darkRed px-3 py-1 rounded-md border-[2px] 
-					border-transparent transition duration-300 ease-in shadow-md
-					hover:text-darkRed hover:bg-transparent border-darkRed
+          className="bg-darkRed px-3 py-1 rounded-md border-[2px] font-semibold
+					border-transparent transition duration-200 ease-out shadow-md
+					border-darkRed hover:brightness-125 hover:shadow-lg
 					"
         >
           Reset
         </button>
         <button
           type="submit"
-          className="bg-lighterBlue px-3 py-1 rounded-md border-[2px] 
-					border-transparent transition duration-300 ease-in shadow-md
-					hover:text-lighterBlue hover:bg-transparent border-lighterBlue
+          className="bg-lighterBlue px-3 py-1 rounded-md border-[2px] font-semibold
+					border-transparent transition duration-200 ease shadow-md
+					 border-lighterBlue hover:brightness-125 hover:shadow-lg
 					"
         >
           Filter
