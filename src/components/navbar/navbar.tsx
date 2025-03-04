@@ -49,7 +49,16 @@ export default function Navbar() {
           {/* Logo */}
           <div className="flex-shrink-0 flex items-center">
             <Link href="/" className="flex items-center">
-              <span className="ml-2 text-white font-bold text-xl">
+              <div className="relative w-5 h-5 mt-0.5">
+                <Image
+                  src="/images/animesun-logo.webp"
+                  fill
+                  sizes="100%"
+                  alt=""
+                  aria-hidden
+                />
+              </div>{" "}
+              <span className="ml-1.5 text-white font-bold text-xl">
                 AnimeSun
               </span>
             </Link>
