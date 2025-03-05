@@ -17,7 +17,7 @@ export default function EpisodeCard({ episode }: { episode: Episode }) {
   const date =
     aired.getDate().toString().padStart(2, "0") +
     "/" +
-    aired.getMonth().toString().padStart(2, "0");
+    (aired.getMonth() + 1).toString().padStart(2, "0");
 
   const lastEpisode =
     episode.mal_id.toString().padStart(2, "0") +

@@ -172,6 +172,7 @@ function Links({
     );
   }
 
+  const onHomePage = pathname && ["/trending", "/airing"].includes(pathname);
   return (
     <div className="hidden md:flex items-center justify-center flex-1 gap-2 xl:gap-4">
       {links.map((link) => (
@@ -184,7 +185,9 @@ function Links({
           {link.name}
           <span
             className={`absolute bottom-0 left-0 w-full h-0.5 bg-yellow-400 ${
-              pathname === link.href ? "scale-x-100" : "scale-x-0"
+              (onHomePage && link.href === "/") || pathname === link.href
+                ? "scale-x-100"
+                : "scale-x-0"
             } 
     group-hover:scale-x-100 transition-transform duration-200 transform`}
           />

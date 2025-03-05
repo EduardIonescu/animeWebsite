@@ -16,6 +16,10 @@ export async function getData(
   shouldCache: boolean = true,
   retries = REFETECH.RETRIES
 ) {
+  if (retries === 10) {
+    await delay(500);
+  }
+
   try {
     const options: RequestInit = shouldCache
       ? {
@@ -76,7 +80,7 @@ export async function getAiring(trendingData: IsAnimeData[]) {
     trendingData.map(async (item) => {
       const url = `https://api.jikan.moe/v4/anime/${item.mal_id}/episodes`;
 
-      const res = (await getData(url)) as Episodes;
+      const res = (await getData(url, true, 80)) as Episodes;
 
       if (!res || !("data" in res) || !res.data) {
         return;
@@ -88,7 +92,7 @@ export async function getAiring(trendingData: IsAnimeData[]) {
           const difference = now - new Date(episode.aired).getTime();
           const TWO_WEEKS_IN_MS = 14 * 24 * 60 * 60 * 1000;
 
-          return difference <= TWO_WEEKS_IN_MS && difference <= now;
+          return difference <= TWO_WEEKS_IN_MS;
         })
         .map(
           (episode) =>
