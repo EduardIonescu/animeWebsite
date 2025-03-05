@@ -57,22 +57,31 @@ export async function getHomeData() {
       return await getData(url);
     })
   );
-  const popularAnimeData = [
+  const popularAnimeData = filterUniqueAnimeData([
     ...popularAnimeDataTemp[0].data,
     ...popularAnimeDataTemp[1].data,
-  ] as IsAnimeData[];
+  ] as IsAnimeData[]);
 
   const trendingAnimeDataTemp = await Promise.all(
     trendingAnimeUrls.map(async (url) => {
       return await getData(url);
     })
   );
-  const trendingAnimeData = [
+  const trendingAnimeData = filterUniqueAnimeData([
     ...trendingAnimeDataTemp[0].data,
     ...trendingAnimeDataTemp[1].data,
-  ] as IsAnimeData[];
+  ] as IsAnimeData[]);
 
   return { popularAnimeData, trendingAnimeData };
+}
+
+function filterUniqueAnimeData(data: IsAnimeData[]) {
+  return (data as IsAnimeData[]).reduce((acc, cur) => {
+    if (!acc.find((item) => item?.mal_id === cur.mal_id)) {
+      return [...acc, cur];
+    }
+    return acc;
+  }, [] as IsAnimeData[]);
 }
 
 export async function getAiring(trendingData: IsAnimeData[]) {
