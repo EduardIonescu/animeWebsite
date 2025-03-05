@@ -41,11 +41,11 @@ export async function getData(
 export async function getHomeData() {
   const popularAnimeUrls = [
     "https://api.jikan.moe/v4/top/anime?tv&limit=20",
-    // "https://api.jikan.moe/v4/top/anime?tv&page=2&limit=20",
+    "https://api.jikan.moe/v4/top/anime?tv&page=2&limit=20",
   ];
   const trendingAnimeUrls = [
     "https://api.jikan.moe/v4/seasons/now?limit=20",
-    // "https://api.jikan.moe/v4/seasons/now?page=2&limit=20",
+    "https://api.jikan.moe/v4/seasons/now?page=2&limit=20",
   ];
   // I want 40 items, the limit is 25 per page
   const popularAnimeDataTemp = await Promise.all(
