@@ -19,6 +19,7 @@
 
 # production
 /build
+/pm2.log
 
 # misc
 .DS_Store

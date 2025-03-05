@@ -5,12 +5,18 @@
   "scripts": {
     "dev": "next dev --turbopack",
     "build": "next build",
-    "start": "next start",
-    "lint": "next lint"
+    "start": "next build && next start -p 5174",
+    "lint": "next lint",
+    "pm2:start": "pnpm exec pm2 start pnpm --name animesun --log pm2.log --time --max-memory-restart 1G -- start ",
+    "pm2:stop": "pnpm exec pm2 stop animesun",
+    "pm2:restart": "pnpm exec pm2 restart animesun",
+    "pm2:delete": "pnpm exec pm2 delete animesun",
+    "pm2:list": "pnpm exec pm2 list"
   },
   "dependencies": {
     "next": "15.1.7",
     "next-themes": "^0.4.4",
+    "pm2": "^5.4.3",
     "react": "^19.0.0",
     "react-dom": "^19.0.0",
     "react-modal": "^3.16.3",
