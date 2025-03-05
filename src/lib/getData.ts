@@ -55,7 +55,7 @@ export async function getHomeData() {
   );
   const popularAnimeData = [
     ...popularAnimeDataTemp[0].data,
-    // ...popularAnimeDataTemp[1].data,
+    ...popularAnimeDataTemp[1].data,
   ] as IsAnimeData[];
 
   const trendingAnimeDataTemp = await Promise.all(
@@ -65,7 +65,7 @@ export async function getHomeData() {
   );
   const trendingAnimeData = [
     ...trendingAnimeDataTemp[0].data,
-    // ...trendingAnimeDataTemp[1].data,
+    ...trendingAnimeDataTemp[1].data,
   ] as IsAnimeData[];
 
   return { popularAnimeData, trendingAnimeData };
