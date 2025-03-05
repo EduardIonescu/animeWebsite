@@ -1,3 +1,4 @@
+import { Episode, Episodes } from "@/types/episode";
 import { IsAnimeData } from "@/types/types";
 
 function delay(t: number) {
@@ -55,7 +56,7 @@ export async function getHomeData() {
   const popularAnimeData = [
     ...popularAnimeDataTemp[0].data,
     // ...popularAnimeDataTemp[1].data,
-  ];
+  ] as IsAnimeData[];
 
   const trendingAnimeDataTemp = await Promise.all(
     trendingAnimeUrls.map(async (url) => {
@@ -65,9 +66,64 @@ export async function getHomeData() {
   const trendingAnimeData = [
     ...trendingAnimeDataTemp[0].data,
     // ...trendingAnimeDataTemp[1].data,
-  ];
+  ] as IsAnimeData[];
 
   return { popularAnimeData, trendingAnimeData };
+}
+
+export async function getAiring(trendingData: IsAnimeData[]) {
+  const episodes = await Promise.all(
+    trendingData.map(async (item) => {
+      const url = `https://api.jikan.moe/v4/anime/${item.mal_id}/episodes`;
+
+      const res = (await getData(url)) as Episodes;
+
+      if (!res || !("data" in res) || !res.data) {
+        return;
+      }
+
+      const now = new Date().getTime();
+      const episodes = res.data
+        .filter((episode) => {
+          const difference = now - new Date(episode.aired).getTime();
+          const TWO_WEEKS_IN_MS = 14 * 24 * 60 * 60 * 1000;
+
+          return difference <= TWO_WEEKS_IN_MS && difference <= now;
+        })
+        .map(
+          (episode) =>
+            ({
+              mal_id: episode.mal_id,
+              aired: episode.aired,
+              score: episode.score,
+              title: episode.title,
+              anime: {
+                image_url: item.images.webp.image_url,
+                title: item.title_english,
+                titleJapanese: item.title,
+                score: item.score,
+                year: item.aired.prop.from.year,
+                mal_id: item.mal_id,
+                episodes_count: item.episodes,
+              },
+            } as Episode)
+        );
+
+      return episodes;
+    })
+  );
+
+  if (!episodes || episodes.length === 0) {
+    return [];
+  }
+
+  return episodes
+    .flat()
+    .sort(
+      (a, b) =>
+        new Date(b?.aired ?? "").getTime() - new Date(a?.aired ?? "").getTime()
+    )
+    .filter((episode) => !!episode);
 }
 
 export async function getDataById(id: number) {
