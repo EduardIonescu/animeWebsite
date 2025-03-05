@@ -107,8 +107,42 @@ export default function AnimeCard({
           <div
             className="relative w-48 h-72 shrink-0 ml-10 block shadow-black 
           shadow-md group-hover:shadow-lg group-hover:shadow-black transition-all 
-          duration-300 ease-out group-hover:scale-[101%]"
+          duration-300 ease-out group-hover:scale-[101%] rounded-md overflow-hidden"
           >
+            <div
+              className="absolute top-0 text-xs bg-darkBlue/75 z-50 pt-1
+				text-shadowLightBlue flex items-center gap-1 py-[2px] px-1 rounded-br-md
+				"
+            >
+              <div className="w-[11px] h-[11px] relative shrink-0 mb-[1px]">
+                <Image
+                  src={starIcon}
+                  fill
+                  sizes="100%"
+                  alt=""
+                  aria-hidden="true"
+                />
+              </div>
+              {score}
+            </div>
+            <div
+              className="absolute top-0 right-0 text-xs bg-lighterBlue/90 pt-1 
+              z-20 text-shadowLightBlue flex items-center gap-1 py-[2px] px-1 
+              rounded-bl-md"
+            >
+              <div className="h-[10px] w-[10px] relative">
+                <Image
+                  src={calendarIcon}
+                  fill
+                  sizes="100%"
+                  alt=""
+                  aria-hidden="true"
+                  className="h-auto"
+                />
+              </div>{" "}
+              {year}
+            </div>
+
             <Image
               src={imageUrl}
               fill
@@ -117,6 +151,8 @@ export default function AnimeCard({
               aria-hidden="true"
               className="object-cover"
             />
+
+            <div></div>
           </div>
         </article>
       </Link>
