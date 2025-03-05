@@ -110,7 +110,7 @@ export default function AnimeCard({
           duration-300 ease-out group-hover:scale-[101%] rounded-md overflow-hidden"
           >
             <div
-              className="absolute top-0 text-xs bg-darkBlue/75 z-50 pt-1
+              className="absolute top-0 text-xs bg-darkBlue/90 z-10 pt-1
 				text-shadowLightBlue flex items-center gap-1 py-[2px] px-1 rounded-br-md
 				"
             >
@@ -127,7 +127,7 @@ export default function AnimeCard({
             </div>
             <div
               className="absolute top-0 right-0 text-xs bg-lighterBlue/90 pt-1 
-              z-20 text-shadowLightBlue flex items-center gap-1 py-[2px] px-1 
+             text-shadowLightBlue flex items-center gap-1 py-[2px] px-1 z-10
               rounded-bl-md"
             >
               <div className="h-[10px] w-[10px] relative">
