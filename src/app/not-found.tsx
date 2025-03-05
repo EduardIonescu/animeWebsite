@@ -5,7 +5,7 @@ export default function NotFound() {
     <main
       className="w-[100vw] sm:w-[34rem] md:w-[45rem] lg:w-[60rem]
 				xl:w-[75rem] h-[100%] mx-auto pb-12 bg-shadowLightBlue
-			text-shadowDarkBlue flex flex-col xl:flex-row flex-wrap 
+			text-shadowDarkBlue flex flex-col flex-wrap 
 			dark:bg-veryDarkBlue -mb-14 dark:text-gray-200 text-center"
     >
       <h2 className="mt-12 text-3xl font-semibold">Not Found</h2>
