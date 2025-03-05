@@ -1,5 +1,4 @@
 import Navbar from "@/components/navbar/navbar";
-import BackToTopButton from "@/components/other/backToTopButton";
 import { ThemeProvider } from "@/components/other/themeProvider";
 import type { Metadata } from "next";
 import localFont from "next/font/local";
@@ -54,7 +53,6 @@ export default function RootLayout({
         >
           <Navbar />
           {children}
-          <BackToTopButton />
         </ThemeProvider>
       </body>
     </html>
