@@ -39,7 +39,9 @@ export const metadata: Metadata = {
     url: "animesun.ednesc.com",
     type: "website",
     locale: "en_US",
-    images: [{ url: "/icon.png", width: 128, height: 128 }],
+    images: [
+      { url: "https://animesun.ednesc.com/icon.png", width: 128, height: 128 },
+    ],
   },
 };
 
