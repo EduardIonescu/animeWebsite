@@ -6,7 +6,41 @@ import "./globals.css";
 
 export const metadata: Metadata = {
   title: "Animesun",
-  description: "Anime database website",
+  description:
+    "A lightning-fast, bloat-free anime database. Find anime information, ratings, reviews, and more with a clean and efficient interface.",
+  keywords: [
+    "anime database",
+    "anime list",
+    "anime reviews",
+    "anime ratings",
+    "anime info",
+    "fast anime database",
+    "lightweight anime",
+    "clean anime list",
+    "simple anime",
+    "myanimelist alt",
+    "faster anime info",
+    "anime tracking",
+    "no-bloat anime",
+    "anime catalog",
+    "anime search",
+    "anime community",
+    "anime details",
+    "anime statistics",
+    "efficient anime",
+    "optimized anime",
+    "anime",
+  ],
+
+  openGraph: {
+    title: "Animesun",
+    description:
+      "A lightning-fast, bloat-free anime database. Find anime information, ratings, reviews, and more with a clean and efficient interface.",
+    url: "animesun.ednesc.com",
+    type: "website",
+    locale: "en_US",
+    images: [{ url: "/icon.png", width: 128, height: 128 }],
+  },
 };
 
 const poppins = localFont({
