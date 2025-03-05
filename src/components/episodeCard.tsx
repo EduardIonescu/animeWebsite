@@ -1,7 +1,7 @@
 "use client";
 
 import calendarIcon from "@/../public/icons/calendar-icon.svg";
-import starIcon from "@/../public/icons/trending-icon.svg";
+import starIcon from "@/../public/icons/star-icon.svg";
 import { Episode } from "@/types/episode";
 import Image from "next/image";
 import Link from "next/link";
